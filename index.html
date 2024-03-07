@@ -7,28 +7,28 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
   <style>
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .swiper-slide img {
-            display: block;
-            width: auto;
-            max-height: 80vh;
-            max-width: 100%;
-            margin: auto;
-        }
-        .features-background {
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        display: block;
+        width: auto;
+        max-height: 80vh;
+        max-width: 100%;
+        margin: auto;
+    }
+    .features-background {
         position: relative;
-        z-index: 0; /* Ensures it creates a stacking context */
+        z-index: 0;
     }
     .features-background::before {
         content: '';
@@ -37,38 +37,36 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url('images/Dolphin.png'); /* Ensure the path is correct */
+        background-image: url('images/Dolphin.png');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        opacity: 0.2; /* Adjust as needed */
-        z-index: -1; /* Places the watermark behind the content */
+        opacity: 0.2;
+        z-index: -1;
     }
     .features-content {
         position: relative;
-        z-index: 1; /* Ensures content is above the watermark */
+        z-index: 1;
     }
-        .toggle-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      width: 100%;
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
     }
-
     #toggleIcon {
-      font-weight: bold;
-      font-size: 24px; /* Adjust size as needed */
-      margin-right: 8px; /* Space between icon and text */
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
     }
-
     .hidden {
-      display: none;
+        display: none;
     }
-    </style>
+  </style>
 </head>
 <body class="font-sans">
-    <section id="hero" class="text-black bg-cover bg-center bg-gray-100">
+<section id="hero" class="text-black bg-cover bg-center" style="background-image: url('images/pano.jpg');">
     <div class="container mx-auto p-4 text-center">
         <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
         <p class="mt-2 font-bold">A family friendly 3-bedroom villa just steps from West Bay Beach</p>
