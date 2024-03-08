@@ -292,7 +292,7 @@
     <section id="Owners" class="py-8 bg-white">
       <div class="container mx-auto px-4">
         <div class="toggle-container" onclick="toggleOwnerDetails()">
-          <div id="toggleIcon">+</div>
+          <div id="toggleIconOwners">+</div>
           <h2 class="text-2xl font-bold">About the Owners</h2>
         </div>
         <div id="OwnerDetails" class="hidden text-center">
@@ -363,14 +363,14 @@ We love Roatan and think that it is such a special place, and we can’t wait to
             }
             function toggleOwnerDetails() {
         var ownerDetails = document.getElementById("OwnerDetails");
-        var toggleIcon = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
+        var toggleIconOwners = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
 
         if (ownerDetails.classList.contains("hidden")) {
             ownerDetails.classList.remove("hidden");
-            toggleIcon.textContent = "-";
+            toggleIconOwners.textContent = "-";
         } else {
             ownerDetails.classList.add("hidden");
-            toggleIcon.textContent = "+";
+            toggleIconOwners.textContent = "+";
         }
     }
         </script>
