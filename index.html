@@ -219,8 +219,8 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+<div class="swiper-button-next accommodationsNext"></div>
+    <div class="swiper-button-prev accommodationsPrev"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
@@ -392,16 +392,16 @@ We love Roatan and think that it is such a special place, and we can’t wait to
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
-            delay: 6500,
+            delay: 5000,
             disableOnInteraction: false,
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: '.swiper-pagination', // Make sure pagination has unique class if you have pagination for this Swiper
             clickable: true,
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.accommodationsNext', // Updated class for next button
+            prevEl: '.accommodationsPrev', // Updated class for prev button
         },
     });
 
