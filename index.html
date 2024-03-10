@@ -333,7 +333,7 @@ We love Roatan and think that it is such a special place, and we can’t wait to
   });
 
   // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
-  var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
+ var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
       loop: true,
       spaceBetween: 30,
       centeredSlides: true,
@@ -342,12 +342,12 @@ We love Roatan and think that it is such a special place, and we can’t wait to
           disableOnInteraction: false,
       },
       pagination: {
-          el: '.swiper-paginationAcc', // Ensure this is correctly referenced in your HTML
+          el: '.swiper-paginationAcc', // Corrected unique class name
           clickable: true,
       },
       navigation: {
-          nextEl: '.accommodationsNext', // Ensure this is correctly referenced in your HTML
-          prevEl: '.accommodationsPrev', // Ensure this is correctly referenced in your HTML
+          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
+          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
       },
   });
 
