@@ -203,10 +203,30 @@
       </section>
 
 <section class="container mx-auto p-4">
-  <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
-  <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
-    <div class="accommodations">
-      <ul class="accommodations-list">
+    <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
+    <!-- Swiper -->
+    <div class="swiper-container accommodationsSwiper">
+        <div class="swiper-wrapper">
+            <!-- Add Swiper Slides with images for accommodations here -->
+            <div class="swiper-slide"><img src="images/8.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/6.jpg" alt="Image description"></div>
+          <div class="swiper-slide"><img src="images/13.jpg" alt="Image description"></div>
+              <div class="swiper-slide"><img src="images/25.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/16.jpg" alt="Image description"></div>
+          <div class="swiper-slide"><img src="images/17.jpg" alt="Image description"></div>
+            <!-- more slides -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
+        <div class="accommodations">
+            <ul class="accommodations-list">
+
         <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 3 Bedrooms</li>
         <li><img src="images/icon.JPG" alt="" class="icon inline-block">    1 King Bed, 2 Queen Beds, 1 Full Bed</li>
         <li><img src="images/icon.JPG" alt="" class="icon inline-block">    All Bedrooms have full en-suite bathrooms</li>
@@ -346,24 +366,45 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 </section>
 
    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-       <script>
-           var mySwiper = new Swiper('.mySwiper', {
-            loop: true,
-            spaceBetween: 30,
-            centeredSlides: true,
-            autoplay: {
-                delay: 6500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+      <script>
+    // Initialize the first Swiper
+    var mySwiper = new Swiper('.mySwiper', {
+        loop: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 6500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    // Initialize the second Swiper for accommodations
+    var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
+        loop: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 6500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
         var toggleIcon = document.getElementById("toggleIcon");
