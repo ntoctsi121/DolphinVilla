@@ -125,10 +125,10 @@
         <a href="#accommodations" class="hover:text-gray-800">Accommodations</a>
         <a href="#amenities" class="hover:text-gray-800">Amenities</a>
         <a href="#features" class="hover:text-gray-800">Features</a>
-        <a href="#location" class="hover:text-gray-800">Location</a>
+        <a href="#location" id="menuLocation" class="hover:text-gray-800">Location</a>
         <a href="#Owners" id="menuOwners" class="hover:text-gray-800">Owners</a>
-        <a href="#Calendar" class="hover:text-gray-800">Availability</a>
-        <a href="#Rates" class="hover:text-gray-800">Rates</a>
+        <a href="#Calendar" id="menuCalendar" class="hover:text-gray-800">Calendar</a>
+        <a href="#Rates" id="menuRates" class="hover:text-gray-800">Rates</a>
         <a href="#contact" class="hover:text-gray-800">Contact</a>
       </div>
     </div>
@@ -399,6 +399,21 @@ We love Roatan and think that it is such a special place, and we can’t wait to
       },
   });
 
+document.getElementById('menuLocation').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const locationDetails = document.getElementById('locationDetails');
+  const toggleIcon = document.getElementById('toggleIcon');
+  
+  // Check if the details are already visible
+  if (locationDetails.classList.contains('hidden')) {
+    toggleLocationDetails(); // Call the function to show the details
+    document.location.href = '#location'; // Navigate to the Location section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#location';
+  }
+});
+  
 document.getElementById('menuOwners').addEventListener('click', function(e) {
   e.preventDefault(); // Prevent default anchor behavior
   const ownerDetails = document.getElementById('OwnerDetails');
@@ -414,6 +429,35 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
   }
 });
 
+  document.getElementById('menuCalendar').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const calendarDetails = document.getElementById('CalDetails');
+  const toggleIconCal = document.getElementById('toggleIconCal');
+  
+  // Check if the details are already visible
+  if (calendarDetails.classList.contains('hidden')) {
+    toggleCalDetails(); // Call the function to show the details
+    document.location.href = '#Calendar'; // Navigate to the Calendar section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Calendar';
+  }
+});
+
+  document.getElementById('menuRates').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const rateDetails = document.getElementById('RateDetails');
+  const toggleIconRate = document.getElementById('toggleIconRate');
+  
+  // Check if the details are already visible
+  if (rateDetails.classList.contains('hidden')) {
+    toggleRateDetails(); // Call the function to show the details
+    document.location.href = '#Rates'; // Navigate to the Rates section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Rates';
+  }
+});
   
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
