@@ -251,7 +251,7 @@
     </div>
   </div>
 </section>
-
+  
     <section id="Owners" class="py-8 bg-white">
       <div class="container mx-auto px-4">
         <div class="toggle-container" onclick="toggleOwnerDetails()">
@@ -266,6 +266,19 @@ Years later, in 2015, we got married on Roatan, and brought 80 of our closest fr
 Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
 We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
 </p>
+        </div>
+      </div>
+    </section>
+
+      <section id="CalendarRates" class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="toggle-container" onclick="toggleCalDetails()">
+          <div id="toggleIconCal">+</div>
+          <h2 class="text-2xl font-bold">Calendar</h2>
+        </div>
+        <div id="CalDetails" class="hidden text-center">
+          <img src="images/cal.png" alt="Calendar" class="mx-auto my-4" style="max-width: 38%; height: auto;">
+          
         </div>
       </div>
     </section>
@@ -365,6 +378,19 @@ We love Roatan and think that it is such a special place, and we can’t wait to
         } else {
             ownerDetails.classList.add("hidden");
             toggleIconOwners.textContent = "+";
+        }
+    }
+
+   function toggleCalDetails() {
+        var CalDetails = document.getElementById("CalDetails");
+        var toggleIconCal = document.getElementById("toggleIconCal"); // Ensure unique ID for toggle icon
+
+        if (CalDetails.classList.contains("hidden")) {
+            CalDetails.classList.remove("hidden");
+            toggleIconCal.textContent = "-";
+        } else {
+            CalDetails.classList.add("hidden");
+            toggleIconCal.textContent = "+";
         }
     }
         </script>
