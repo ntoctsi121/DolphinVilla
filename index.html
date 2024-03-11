@@ -87,6 +87,11 @@
         font-size: 24px;
         margin-right: 8px;
     }
+    #toggleIconRate {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
     .hidden {
         display: none;
     }
@@ -288,6 +293,19 @@ We love Roatan and think that it is such a special place, and we can’t wait to
       </div>
     </section>
 
+  <section id="Rates" class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="toggle-container" onclick="toggleRateDetails()">
+          <div id="toggleIconRate">+</div>
+          <h2 class="text-2xl font-bold">Rate Calendar</h2>
+        </div>
+        <div id="RateDetails" class="hidden text-center">
+          <p class="text-lg mb-4">(*rate calendar subject to Change)</p> 
+          <img src="images/cal2.png" alt="RateCalendar" class="mx-auto my-4" style="max-width: 50%; height: auto;">
+           </div>
+      </div>
+    </section>
+
     <section id="contact" class="bg-gray-100 py-8">
     <div class="container mx-auto px-4">
         <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
@@ -396,6 +414,18 @@ We love Roatan and think that it is such a special place, and we can’t wait to
         } else {
             CalDetails.classList.add("hidden");
             toggleIconCal.textContent = "+";
+        }
+    }
+   function toggleRateDetails() {
+        var RateDetails = document.getElementById("RateDetails");
+        var toggleIconRate = document.getElementById("toggleIconRate"); // Ensure unique ID for toggle icon
+
+        if (RateDetails.classList.contains("hidden")) {
+            RateDetails.classList.remove("hidden");
+            toggleIconRate.textContent = "-";
+        } else {
+            RateDetails.classList.add("hidden");
+            toggleIconRate.textContent = "+";
         }
     }
         </script>
