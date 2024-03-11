@@ -399,6 +399,22 @@ We love Roatan and think that it is such a special place, and we can’t wait to
       },
   });
 
+document.getElementById('menuOwners').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ownerDetails = document.getElementById('OwnerDetails');
+  const toggleIconOwners = document.getElementById('toggleIconOwners');
+  
+  // Check if the details are already visible
+  if (ownerDetails.classList.contains('hidden')) {
+    toggleOwnerDetails(); // Call the function to show the details
+    document.location.href = '#Owners'; // Navigate to the Owners section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Owners';
+  }
+});
+
+  
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
         var toggleIcon = document.getElementById("toggleIcon");
