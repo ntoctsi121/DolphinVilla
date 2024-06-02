@@ -6,184 +6,286 @@
   <title>Beach Villa in Roatan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
   <style>
-    .swiper-container { width: 100%; height: 100%; }
-    .swiper-slide { text-align: center; font-size: 18px; background: #fff; display: flex; justify-content: center; align-items: center; }
-    .swiper-slide img { display: block; width: auto; max-height: 80vh; max-width: 100%; margin: auto; }
-    .hero-background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('images/pano.jpg') center center / cover no-repeat; opacity: 0.5; z-index: -1; }
-    .hero-content { position: relative; z-index: 1; }
-    .features-background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('images/Dolphin.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.2; z-index: -1; }
-    .features-content { position: relative; z-index: 1; }
-    .toggle-container { display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%; }
-    #toggleIcon, #toggleIconOwners, #toggleIconCal, #toggleIconRate { font-weight: bold; font-size: 24px; margin-right: 8px; }
-    .hidden { display: none; }
-    .accommodations-list, .amenities-list { list-style-type: none; padding: 0; }
-    .icon { width: 1em; height: 1em; vertical-align: middle; }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        display: block;
+        width: auto;
+        max-height: 80vh;
+        max-width: 100%;
+        margin: auto;
+    }
+    .hero-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('images/pano.jpg') center center / cover no-repeat;
+        opacity: 0.5; /* Adjust opacity to 50% */
+        z-index: -1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    .features-background {
+        position: relative;
+        z-index: 0;
+    }
+    .features-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('images/Dolphin.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.2;
+        z-index: -1;
+    }
+    .features-content {
+        position: relative;
+        z-index: 1;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+    }
+    #toggleIcon {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+     #toggleIconOwners {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    #toggleIconCal {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    #toggleIconRate {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    .hidden {
+        display: none;
+    }
+    .accommodations-list, .amenities-list {
+  list-style-type: none; /* Removes default bullets */
+  padding: 0; /* Removes default padding */
+}
+
+.icon {
+  width: 1em; /* Adjusts size to match the text size */
+  height: 1em; /* Adjusts size to match the text size */
+  vertical-align: middle; /* Aligns icon with text */
+}
   </style>
 </head>
 <body class="font-sans">
-  <header class="sticky top-0 bg-white shadow-lg z-50">
-    <nav class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-center">
-        <div class="flex flex-wrap justify-center gap-2">
-          <a href="#gallery" class="hover:text-gray-800">| Gallery |</a>
-          <a href="#accommodations" class="hover:text-gray-800">| Accommodations |</a>
-          <a href="#amenities" class="hover:text-gray-800">| Amenities |</a>
-          <a href="#features" class="hover:text-gray-800">| Features |</a>
-          <a href="#location" class="hover:text-gray-800">| Location |</a>
-          <a href="#Owners" class="hover:text-gray-800">| Owners |</a>
-          <a href="#Calendar" class="hover:text-gray-800">| Calendar |</a>
-          <a href="#Rates" class="hover:text-gray-800">| Rates |</a>
-          <a href="#contact" class="hover:text-gray-800">| Book/Contact Us |</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section id="hero" class="hero-background text-black bg-cover bg-center relative">
-      <div class="hero-content container mx-auto p-4 text-center">
+<section id="hero" class="hero-background text-black bg-cover bg-center relative">
+    <div class="hero-content container mx-auto p-4 text-center">
         <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
-        <p class="mt-2 font-bold">A family-friendly 3-bedroom villa just steps from West Bay Beach</p>
-      </div>
-    </section>
+        <p class="mt-2 font-bold">A family friendly 3-bedroom villa just steps from West Bay Beach</p>
+    </div>
+</section>
 
-    <section id="gallery" class="container mx-auto p-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Ocean One Dolphin Villa</h2>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/4.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa" loading="lazy"></div>
+<!-- Navigation Menu -->
+<nav class="bg-white shadow-lg">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-center">
+      <div class="flex flex-wrap justify-center gap-2"> <!-- Updated classes for wrapping and spacing -->
+        <!-- Menu Items -->
+        <a href="#gallery" class="hover:text-gray-800">| Gallery |</a>
+        <a href="#accommodations" class="hover:text-gray-800">| Accommodations |</a>
+        <a href="#amenities" class="hover:text-gray-800">| Amenities |</a>
+        <a href="#features" class="hover:text-gray-800">| Features |</a>
+        <a href="#location" id="menuLocation" class="hover:text-gray-800">| Location |</a>
+        <a href="#Owners" id="menuOwners" class="hover:text-gray-800">| Owners |</a>
+        <a href="#Calendar" id="menuCalendar" class="hover:text-gray-800">| Calendar |</a>
+        <a href="#Rates" id="menuRates" class="hover:text-gray-800">| Rates |</a>
+        <a href="#contact" class="hover:text-gray-800">| Book/Contact Us |</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <section id="gallery" class="container mx-auto p-4">
+        <h2 class="text-2xl font-bold text-center mb-8">Ocean One Dolphin Villa</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>  
+              <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
+                <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
+                <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"> </div>
+                <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"> <img src="images/4.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
+                <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
+                <!-- Additional slides here -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </section>
+      </section>
 
-    <section id="accommodations" class="container mx-auto p-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
-      <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
+<section id="accommodations"  class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
+    
+    <!-- Accommodations List -->
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
         <div class="accommodations">
-          <ul class="accommodations-list">
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 3 Bedrooms</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 1 King Bed, 2 Queen Beds, 1 Full Bed</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> All Bedrooms have full en-suite bathrooms</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 5 total bathrooms including rooftop bathroom & outdoor shower</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Comfortably accommodates 7 adults</li>
-          </ul>
+            <ul class="accommodations-list">
+                <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 3 Bedrooms</li>
+                <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 1 King Bed, 2 Queen Beds, 1 Full Bed</li>
+                <li><img src="images/icon.JPG" alt="" class="icon inline-block"> All Bedrooms have full en-suite bathrooms</li>
+                <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 5 total bathrooms including rooftop bathroom & outdoor shower</li>
+                <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Comfortably accommodates 7 adults</li>
+                <!-- More items here -->
+            </ul>
         </div>
-      </div>
-      <div class="swiper accommodationsSwiper mt-8">
+    </div>
+
+    <!-- Accommodations Swiper -->
+    <div class="swiper accommodationsSwiper mt-8">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="images/8.jpg" alt="Image description" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/6.jpg" alt="Image description" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/13.jpg" alt="Image description" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/25.jpg" alt="Image description" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/16.jpg" alt="Image description" loading="lazy"></div>
-          <div class="swiper-slide"><img src="images/17.jpg" alt="Image description" loading="lazy"></div>
+            <!-- Swiper slides with images for accommodations -->
+            <div class="swiper-slide"><img src="images/8.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/6.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/13.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/25.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/16.jpg" alt="Image description"></div>
+            <div class="swiper-slide"><img src="images/17.jpg" alt="Image description"></div>
+            <!-- Additional swiper slides as needed -->
         </div>
+        <!-- Unique Pagination for this Swiper -->
         <div class="swiper-pagination swiper-paginationAcc"></div>
+        <!-- Unique Navigation buttons for this Swiper -->
         <div class="swiper-button-next swiper-button-nextAcc"></div>
         <div class="swiper-button-prev swiper-button-prevAcc"></div>
-      </div>
-    </section>
+    </div>
+</section>
+    
 
+</section>
+  
     <section id="amenities" class="container mx-auto p-4">
-      <h2 class="text-2xl font-bold text-center mb-8">Amenities</h2>
-      <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
-        <div class="Amenities">
-          <ul class="Amenities-list">
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Fully Equipped Kitchen with breakfast bar</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Coffee maker, microwave, pots and pans, cooking utensils, and more</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop Jacuzzi</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop propane grill with outdoor kitchen</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 24 hour security</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private parking space with secure gated entry</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Air conditioning</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Hot water</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Washer and Dryer in Villa</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Backup generator</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private Wifi</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Desk / Workspace</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Cable TV/ Smart TV</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Beach towels included</li>
-            <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Large community pool</li>
-          </ul>
-        </div>
-      </div>
+  <h2 class="text-2xl font-bold text-center mb-8">Amenities</h2>
+  <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
+    <div class="Amenities">
+      <ul class="Amenties-list">
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Fully Equipped Kitchen with breakfast bar</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block">    Coffee maker, microwave, pots and pans, cooking utensils, and more</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop Jacuzzi</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop propane grill with outdoor kitchen</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 24 hour security</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private parking space with secure gated entry</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Air conditioning</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Hot water</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Washer and Dryer in Villa</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Backup generator</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private Wifi</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Desk / Workspace</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Cable TV/ Smart TV</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Beach towels included</li>
+        <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Large community pool</li>
+      </ul>
+    </div>
+    
+</section>
+
+  
+<section id="features" class="container mx-auto p-4 features-background mt-8">
+
+  <h2 class="text-2xl font-bold text-center mb-8">Features</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 features-content">
+    <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Beachfront Access</h3>
+        <p>Steps away from West Bay Beach, the premiere beach in Roatan. Access through Paradise Beach Resort to beach loungers with towel service, cushions, umbrellas, and security guards to watch your belongings are provided at no additional charge.</p>
+    </div>
+    <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Modern Pool</h3>
+        <p>A stunning modern pool just steps from back porch with a sunbathing area, exclusive only to the 10 villas of the Ocean One Property.</p>
+    </div>
+    <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Rooftop Terrace</h3>
+        <p>Rooftop terrace eqipped with jacuzzi, bathroom, shower, grill, and countertop.</p>
+    </div>
+     <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Modern Unit</h3>
+        <p>Unit with modern decor and features, decorated exclusively with local paintings and artwork from Roatan.</p>
+    </div>
+        <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Non-Smoking Unit</h3>
+        <p></p>
+    </div>
+   
+    <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Seamless Airport Transfer</h3>
+        <p>Roundtrip aiport pickup and dropoff arranged through resort management.</p>
+    </div>
+  <div class="feature-item">
+      <h3 class="text-xl font-semibold mb-2">Access to Paradise Beach Hotel Amenities Included</h3>
+      <p>Full access to amenities at adjacent Paradise Beach Hotel including on-site restaurant and beach bar, dive shop, large shaded pool, rooftop pool, gym, and nightly entertainment (live music, Garifuna dancers, fire dancers).  Option to purchase breakfast included.</p>
+  </div>
     </section>
 
-    <section id="features" class="container mx-auto p-4 features-background mt-8">
-      <h2 class="text-2xl font-bold text-center mb-8">Features</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 features-content">
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Beachfront Access</h3>
-          <p>Steps away from West Bay Beach, the premiere beach in Roatan. Access through Paradise Beach Resort to beach loungers with towel service, cushions, umbrellas, and security guards to watch your belongings are provided at no additional charge.</p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Modern Pool</h3>
-          <p>A stunning modern pool just steps from back porch with a sunbathing area, exclusive only to the 10 villas of the Ocean One Property.</p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Rooftop Terrace</h3>
-          <p>Rooftop terrace equipped with jacuzzi, bathroom, shower, grill, and countertop.</p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Modern Unit</h3>
-          <p>Unit with modern decor and features, decorated exclusively with local paintings and artwork from Roatan.</p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Non-Smoking Unit</h3>
-          <p></p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Seamless Airport Transfer</h3>
-          <p>Roundtrip airport pickup and dropoff arranged through resort management.</p>
-        </div>
-        <div class="feature-item">
-          <h3 class="text-xl font-semibold mb-2">Access to Paradise Beach Hotel Amenities Included</h3>
-          <p>Full access to amenities at adjacent Paradise Beach Hotel including on-site restaurant and beach bar, dive shop, large shaded pool, rooftop pool, gym, and nightly entertainment (live music, Garifuna dancers, fire dancers). Option to purchase breakfast included.</p>
-        </div>
+   <section id="location" class="py-8">
+  <div class="container mx-auto px-4">
+    <div class="toggle-container" onclick="toggleLocationDetails()">
+      <div id="toggleIcon">+</div>
+      <h2 class="text-2xl font-bold">Location</h2>
+    </div>
+    <div id="locationDetails" class="hidden text-center">
+      <p class="text-lg mb-4">Discover the stunning location of our beach villa, nestled in the heart of West Bay Beach in Roatan, Honduras, offering direct beach access.</p>
+      <div>
+        <a href="https://www.google.com/maps?ll=16.273886476038758,-86.59786119821244&q=16.273886476038758,-86.59786119821244&hl=en&t=m&z=16" target="_blank" class="text-blue-500 hover:text-blue-700 text-lg">View Location on Google Maps</a>
       </div>
-    </section>
-
-    <section id="location" class="py-8">
-      <div class="container mx-auto px-4">
-        <div class="toggle-container" onclick="toggleLocationDetails()">
-          <div id="toggleIcon">+</div>
-          <h2 class="text-2xl font-bold">Location</h2>
-        </div>
-        <div id="locationDetails" class="hidden text-center">
-          <p class="text-lg mb-4">Discover the stunning location of our beach villa, nestled in the heart of West Bay Beach in Roatan, Honduras, offering direct beach access.</p>
-          <div>
-            <a href="https://www.google.com/maps?ll=16.273886476038758,-86.59786119821244&q=16.273886476038758,-86.59786119821244&hl=en&t=m&z=16" target="_blank" class="text-blue-500 hover:text-blue-700 text-lg">View Location on Google Maps</a>
-          </div>
-          <div class="mt-4">
-            <img src="images/loc1.png" alt="Location" class="mx-auto" style="max-width: 75%; height: auto;">
-          </div>
-        </div>
+      <!-- Photo addition -->
+      <div class="mt-4">
+        <img src="images/loc1.png" alt="Location" class="mx-auto" style="max-width: 75%; height: auto;">
       </div>
-    </section>
-
+    </div>
+  </div>
+</section>
+  
     <section id="Owners" class="py-8">
       <div class="container mx-auto px-4">
         <div class="toggle-container" onclick="toggleOwnerDetails()">
@@ -193,30 +295,30 @@
         <div id="OwnerDetails" class="hidden text-center">
           <img src="images/fam2.jpg" alt="The Family" class="mx-auto my-4" style="max-width: 43%; height: auto;">
           <p class="text-lg mb-4">Hi! We are Nick and Becky. We live in Charlotte, NC with our 2 kids, Jayden (5) and Juliette (2), and our 2 rescue dogs.
-            Becky first discovered Roatan in 2007, when she spent a year there before starting medical school, volunteering in a clinic during the week and working as a dive master on weekends. She continued to visit the island frequently, returning for multiple rotations during medical school and residency. When she met Nick, he began to travel with her, volunteering his finance services wherever they could be used.
-            Years later, in 2015, we got married on Roatan, and brought 80 of our closest friends and family to the island to celebrate. It’s one of our favorite memories of all time.
-            Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
-            We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
-          </p>
+Becky first discovered Roatan in 2007, when she spent a year there before starting medical school, volunteering in a clinic during the week and working as a dive master on weekends. She continued to visit the island frequently, returning for multiple rotations during medical school and residency. When she met Nick, he began to travel with her, volunteering his finance services wherever they could be used.
+Years later, in 2015, we got married on Roatan, and brought 80 of our closest friends and family to the island to celebrate. It’s one of our favorite memories of all time. 
+Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
+We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
+</p>
         </div>
       </div>
     </section>
 
-    <section id="Calendar" class="py-8">
+     <section id="Calendar" class="py-8">
       <div class="container mx-auto px-4">
         <div class="toggle-container" onclick="toggleCalDetails()">
           <div id="toggleIconCal">+</div>
-          <h2 class="text-2xl font-bold">Villa Availability</h2>
+          <h2 class="text-2xl font-bold">Villa Availabilty</h2>
         </div>
         <div id="CalDetails" class="hidden text-center">
           <p class="text-lg mb-4">(*Open dates subject to change)</p> 
           <img src="images/cal.png" alt="Calendar" class="mx-auto my-4" style="max-width: 75%; height: auto;">
           <img src="images/cal2025.png" alt="Calendar2025" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        </div>
+           </div>
       </div>
     </section>
 
-    <section id="Rates" class="py-8">
+  <section id="Rates" class="py-8">
       <div class="container mx-auto px-4">
         <div class="toggle-container" onclick="toggleRateDetails()">
           <div id="toggleIconRate">+</div>
@@ -225,165 +327,192 @@
         <div id="RateDetails" class="hidden text-center">
           <p class="text-lg mb-4">(*Rate calendar subject to change)</p> 
           <img src="images/cal2.png" alt="RateCalendar" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        </div>
+           </div>
       </div>
     </section>
 
     <section id="contact" class="bg-gray-100 py-8">
-      <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4">
         <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
         <div class="text-center mb-6">
-          <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
-          <div class="mt-2"></div>
-          <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
-            <a href="http://www.oceanoneroatan.com/" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16l5.447 2.724A1 1 0 0015 20.382V11.618a1 1 0 00-.553-.894L9 8m0 12V4m0 0l6-3 6 3m-6 3v16"></path></svg>
-              Visit Official OceanOne Booking Website
-            </a>
-          </div>
-          <p class="mt-8"></p>
+            <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
+            <div class="mt-2"> </div>
+            <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
+                <a href="http://www.oceanoneroatan.com/" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16l5.447 2.724A1 1 0 0015 20.382V11.618a1 1 0 00-.553-.894L9 8m0 12V4m0 0l6-3 6 3m-6 3v16"></path></svg>
+                    Visit Official OceanOne Booking Website
+                </a>
+            </div>
+            <p class="mt-8"></p>
         </div>
         <p class="text-2xl font-bold text-center mb-6">Contact Us</p>
         <p class="text-lg text-center mb-6">Please contact us with any questions you may have!</p>
         <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-8">
-          <a href="mailto:DolphinVillaRoatan@gmail.com" class="flex items-center text-blue-500 hover:text-blue-700">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a7.5 7.5 0 01-15 0V12m15-4v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
-            DolphinVillaRoatan@gmail.com
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61557083972658" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 5.936 4.325 10.861 10 11.85V15.386h-3v-3.313h3V9.5c0-3 1.792-4.668 4.533-4.668 1.312 0 2.686.237 2.686.237v2.961h-1.513c-1.494 0-1.954.93-1.954 1.886v2.28h3.286l-.525 3.313h-2.761v8.537c5.675-.989 10-5.914 10-11.85z"/></svg>
-            Message us on Facebook
-          </a>
-          <a href="https://www.instagram.com/dolphinvillaroatan/" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-10-67.7-24.1-94.6-16.5-31.8-40.9-56.2-72.7-72.7-27-14.1-58.7-22.4-94.6-24.1C273.5 0 271 0 268.4 0h-88.8c-2.6 0-5.1.1-7.6.2-35.9 1.7-67.7 10-94.6 24.1-31.8 16.5-56.2 40.9-72.7 72.7-14.1 27-22.4 58.7-24.1 94.6-.1 2.5-.2 5-.2 7.6v88.8c0 2.6.1 5.1.2 7.6 1.7 35.9 10 67.7 24.1 94.6 16.5 31.8 40.9 56.2 72.7 72.7 27 14.1 58.7 22.4 94.6 24.1 2.5.1 5 .2 7.6.2h88.8c2.6 0 5.1-.1 7.6-.2 35.9-1.7 67.7-10 94.6-24.1 31.8-16.5 56.2-40.9 72.7-72.7 14.1-27 22.4-58.7 24.1-94.6.1-2.5.2-5 .2-7.6v-88.8c0-2.6-.1-5.1-.2-7.6zM224.1 338c-45.4 0-82.1-36.7-82.1-82.1s36.7-82.1 82.1-82.1 82.1 36.7 82.1 82.1-36.7 82.1-82.1 82.1zm124.6-82.1c0-16.6 13.5-30.1 30.1-30.1s30.1 13.5 30.1 30.1-13.5 30.1-30.1 30.1-30.1-13.5-30.1-30.1zm47.6 124.6c0 25.9-21 46.9-46.9 46.9H99.6c-25.9 0-46.9-21-46.9-46.9V192.3c0-25.9 21-46.9 46.9-46.9h249.2c25.9 0 46.9 21 46.9 46.9v187.2z"/></svg>
-            Follow us on Instagram
-          </a>
+            <a href="mailto:DolphinVillaRoatan@gmail.com" class="flex items-center text-blue-500 hover:text-blue-700">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a7.5 7.5 0 01-15 0V12m15-4v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+                DolphinVillaRoatan@gmail.com
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61557083972658" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 5.936 4.325 10.861 10 11.85V15.386h-3v-3.313h3V9.5c0-3 1.792-4.668 4.533-4.668 1.312 0 2.686.237 2.686.237v2.961h-1.513c-1.494 0-1.954.93-1.954 1.886v2.28h3.286l-.525 3.313h-2.761v8.537c5.675-.989 10-5.914 10-11.85z"/></svg>
+                Message us on Facebook
+            </a>
+<a href="https://www.instagram.com/dolphinvillaroatan/" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-10-67.7-24.1-94.6-16.5-31.8-40.9-56.2-72.7-72.7-27-14.1-58.7-22.4-94.6-24.1C273.5 0 271 0 268.4 0h-88.8c-2.6 0-5.1.1-7.6.2-35.9 1.7-67.7 10-94.6 24.1-31.8 16.5-56.2 40.9-72.7 72.7-14.1 27-22.4 58.7-24.1 94.6-.1 2.5-.2 5-.2 7.6v88.8c0 2.6.1 5.1.2 7.6 1.7 35.9 10 67.7 24.1 94.6 16.5 31.8 40.9 56.2 72.7 72.7 27 14.1 58.7 22.4 94.6 24.1 2.5.1 5 .2 7.6.2h88.8c2.6 0 5.1-.1 7.6-.2 35.9-1.7 67.7-10 94.6-24.1 31.8-16.5 56.2-40.9 72.7-72.7 14.1-27 22.4-58.7 24.1-94.6.1-2.5.2-5 .2-7.6v-88.8c0-2.6-.1-5.1-.2-7.6zM224.1 338c-45.4 0-82.1-36.7-82.1-82.1s36.7-82.1 82.1-82.1 82.1 36.7 82.1 82.1-36.7 82.1-82.1 82.1zm124.6-82.1c0-16.6 13.5-30.1 30.1-30.1s30.1 13.5 30.1 30.1-13.5 30.1-30.1 30.1-30.1-13.5-30.1-30.1zm47.6 124.6c0 25.9-21 46.9-46.9 46.9H99.6c-25.9 0-46.9-21-46.9-46.9V192.3c0-25.9 21-46.9 46.9-46.9h249.2c25.9 0 46.9 21 46.9 46.9v187.2z"/></svg>
+                Follow us on Instagram
+            </a>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-gray-100 py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p class="text-lg">© 2024 Dolphin Villa Roatan. All rights reserved.</p>
     </div>
-  </footer>
+</section>
 
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" async></script>
-  <script>
-    const mySwiper = new Swiper('.mySwiper', {
+ <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  // Initialize the first Swiper
+  var mySwiper = new Swiper('.mySwiper', {
       loop: true,
       spaceBetween: 30,
       centeredSlides: true,
-      autoplay: { delay: 6500, disableOnInteraction: false },
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-    });
+      autoplay: {
+          delay: 6500,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+  });
 
-    const accommodationsSwiper = new Swiper('.accommodationsSwiper', {
+  // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
+ var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
       loop: true,
       spaceBetween: 30,
       centeredSlides: true,
-      autoplay: { delay: 5000, disableOnInteraction: false },
-      pagination: { el: '.swiper-paginationAcc', clickable: true },
-      navigation: { nextEl: '.swiper-button-nextAcc', prevEl: '.swiper-button-prevAcc' }
-    });
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: '.swiper-paginationAcc', // Corrected unique class name
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
+          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
+      },
+  });
 
-    document.getElementById('menuLocation').addEventListener('click', function(e) {
-      e.preventDefault();
-      const locationDetails = document.getElementById('locationDetails');
-      const toggleIcon = document.getElementById('toggleIcon');
-      if (locationDetails.classList.contains('hidden')) {
-        toggleLocationDetails();
-        document.location.href = '#location';
-      } else {
-        document.location.href = '#location';
-      }
-    });
+document.getElementById('menuLocation').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const locationDetails = document.getElementById('locationDetails');
+  const toggleIcon = document.getElementById('toggleIcon');
+  
+  // Check if the details are already visible
+  if (locationDetails.classList.contains('hidden')) {
+    toggleLocationDetails(); // Call the function to show the details
+    document.location.href = '#location'; // Navigate to the Location section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#location';
+  }
+});
+  
+document.getElementById('menuOwners').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ownerDetails = document.getElementById('OwnerDetails');
+  const toggleIconOwners = document.getElementById('toggleIconOwners');
+  
+  // Check if the details are already visible
+  if (ownerDetails.classList.contains('hidden')) {
+    toggleOwnerDetails(); // Call the function to show the details
+    document.location.href = '#Owners'; // Navigate to the Owners section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Owners';
+  }
+});
 
-    document.getElementById('menuOwners').addEventListener('click', function(e) {
-      e.preventDefault();
-      const ownerDetails = document.getElementById('OwnerDetails');
-      const toggleIconOwners = document.getElementById('toggleIconOwners');
-      if (ownerDetails.classList.contains('hidden')) {
-        toggleOwnerDetails();
-        document.location.href = '#Owners';
-      } else {
-        document.location.href = '#Owners';
-      }
-    });
+  document.getElementById('menuCalendar').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const calendarDetails = document.getElementById('CalDetails');
+  const toggleIconCal = document.getElementById('toggleIconCal');
+  
+  // Check if the details are already visible
+  if (calendarDetails.classList.contains('hidden')) {
+    toggleCalDetails(); // Call the function to show the details
+    document.location.href = '#Calendar'; // Navigate to the Calendar section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Calendar';
+  }
+});
 
-    document.getElementById('menuCalendar').addEventListener('click', function(e) {
-      e.preventDefault();
-      const calendarDetails = document.getElementById('CalDetails');
-      const toggleIconCal = document.getElementById('toggleIconCal');
-      if (calendarDetails.classList.contains('hidden')) {
-        toggleCalDetails();
-        document.location.href = '#Calendar';
-      } else {
-        document.location.href = '#Calendar';
-      }
-    });
+  document.getElementById('menuRates').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const rateDetails = document.getElementById('RateDetails');
+  const toggleIconRate = document.getElementById('toggleIconRate');
+  
+  // Check if the details are already visible
+  if (rateDetails.classList.contains('hidden')) {
+    toggleRateDetails(); // Call the function to show the details
+    document.location.href = '#Rates'; // Navigate to the Rates section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Rates';
+  }
+});
+  
+        function toggleLocationDetails() {
+        var locationDetails = document.getElementById("locationDetails");
+        var toggleIcon = document.getElementById("toggleIcon");
 
-    document.getElementById('menuRates').addEventListener('click', function(e) {
-      e.preventDefault();
-      const rateDetails = document.getElementById('RateDetails');
-      const toggleIconRate = document.getElementById('toggleIconRate');
-      if (rateDetails.classList.contains('hidden')) {
-        toggleRateDetails();
-        document.location.href = '#Rates';
-      } else {
-        document.location.href = '#Rates';
-      }
-    });
+        if (locationDetails.classList.contains("hidden")) {
+          locationDetails.classList.remove("hidden");
+          toggleIcon.textContent = "-";
+        } else {
+          locationDetails.classList.add("hidden");
+          toggleIcon.textContent = "+";
+        }
+            }
+            function toggleOwnerDetails() {
+        var ownerDetails = document.getElementById("OwnerDetails");
+        var toggleIconOwners = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
 
-    function toggleLocationDetails() {
-      const locationDetails = document.getElementById("locationDetails");
-      const toggleIcon = document.getElementById("toggleIcon");
-      if (locationDetails.classList.contains("hidden")) {
-        locationDetails.classList.remove("hidden");
-        toggleIcon.textContent = "-";
-      } else {
-        locationDetails.classList.add("hidden");
-        toggleIcon.textContent = "+";
-      }
+        if (ownerDetails.classList.contains("hidden")) {
+            ownerDetails.classList.remove("hidden");
+            toggleIconOwners.textContent = "-";
+        } else {
+            ownerDetails.classList.add("hidden");
+            toggleIconOwners.textContent = "+";
+        }
     }
 
-    function toggleOwnerDetails() {
-      const ownerDetails = document.getElementById("OwnerDetails");
-      const toggleIconOwners = document.getElementById("toggleIconOwners");
-      if (ownerDetails.classList.contains("hidden")) {
-        ownerDetails.classList.remove("hidden");
-        toggleIconOwners.textContent = "-";
-      } else {
-        ownerDetails.classList.add("hidden");
-        toggleIconOwners.textContent = "+";
-      }
-    }
+   function toggleCalDetails() {
+        var CalDetails = document.getElementById("CalDetails");
+        var toggleIconCal = document.getElementById("toggleIconCal"); // Ensure unique ID for toggle icon
 
-    function toggleCalDetails() {
-      const CalDetails = document.getElementById("CalDetails");
-      const toggleIconCal = document.getElementById("toggleIconCal");
-      if (CalDetails.classList.contains("hidden")) {
-        CalDetails.classList.remove("hidden");
-        toggleIconCal.textContent = "-";
-      } else {
-        CalDetails.classList.add("hidden");
-        toggleIconCal.textContent = "+";
-      }
+        if (CalDetails.classList.contains("hidden")) {
+            CalDetails.classList.remove("hidden");
+            toggleIconCal.textContent = "-";
+        } else {
+            CalDetails.classList.add("hidden");
+            toggleIconCal.textContent = "+";
+        }
     }
+   function toggleRateDetails() {
+        var RateDetails = document.getElementById("RateDetails");
+        var toggleIconRate = document.getElementById("toggleIconRate"); // Ensure unique ID for toggle icon
 
-    function toggleRateDetails() {
-      const RateDetails = document.getElementById("RateDetails");
-      const toggleIconRate = document.getElementById("toggleIconRate");
-      if (RateDetails.classList.contains("hidden")) {
-        RateDetails.classList.remove("hidden");
-        toggleIconRate.textContent = "-";
-      } else {
-        RateDetails.classList.add("hidden");
-        toggleIconRate.textContent = "+";
-      }
+        if (RateDetails.classList.contains("hidden")) {
+            RateDetails.classList.remove("hidden");
+            toggleIconRate.textContent = "-";
+        } else {
+            RateDetails.classList.add("hidden");
+            toggleIconRate.textContent = "+";
+        }
     }
-  </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
