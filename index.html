@@ -1,121 +1,119 @@
----
-layout: default
-title: Home
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="icon" type="image/jpeg" href="images/icon.JPG">
-    <style>
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .swiper-slide img {
-            display: block;
-            width: auto;
-            max-height: 80vh;
-            max-width: 100%;
-            margin: auto;
-        }
-        .hero-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/pano.jpg') center center / cover no-repeat;
-            opacity: 0.5;
-            z-index: -1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .features-background {
-            position: relative;
-            z-index: 0;
-        }
-        .features-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('images/Dolphin.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.2;
-            z-index: -1;
-        }
-        .features-content {
-            position: relative;
-            z-index: 1;
-        }
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            width: 100%;
-        }
-        #toggleIcon {
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 8px;
-        }
-        #toggleIconOwners {
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 8px;
-        }
-        #toggleIconCal {
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 8px;
-        }
-        #toggleIconRate {
-            font-weight: bold;
-            font-size: 24px;
-            margin-right: 8px;
-        }
-        .hidden {
-            display: none;
-        }
-        .accommodations-list, .amenities-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: middle;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beach Villa in Roatan/title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/icon.JPG">
+  <style>
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        display: block;
+        width: auto;
+        max-height: 80vh;
+        max-width: 100%;
+        margin: auto;
+    }
+    .hero-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('images/pano.jpg') center center / cover no-repeat;
+        opacity: 0.5; /* Adjust opacity to 50% */
+        z-index: -1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    .features-background {
+        position: relative;
+        z-index: 0;
+    }
+    .features-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('images/Dolphin.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.2;
+        z-index: -1;
+    }
+    .features-content {
+        position: relative;
+        z-index: 1;
+    }
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+    }
+    #toggleIcon {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+     #toggleIconOwners {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    #toggleIconCal {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    #toggleIconRate {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
+    .hidden {
+        display: none;
+    }
+    .accommodations-list, .amenities-list {
+  list-style-type: none; /* Removes default bullets */
+  padding: 0; /* Removes default padding */
+}
+
+.icon {
+  width: 1em; /* Adjusts size to match the text size */
+  height: 1em; /* Adjusts size to match the text size */
+  vertical-align: middle; /* Aligns icon with text */
+}
+  </style>
 </head>
 <body class="font-serif">
-    <section id="hero" class="hero-background text-black bg-cover bg-center relative">
-        <div class="hero-content container mx-auto p-4 text-center">
-            <h1 class="text-4xl font-bold">{{ site.title }}</h1>
-            <p class="mt-2 font-bold">{{ site.description }}</p>
-        </div>
-    </section>
+<section id="hero" class="hero-background text-black bg-cover bg-center relative">
+    <div class="hero-content container mx-auto p-4 text-center">
+        <h1 class="text-4xl font-bold">A Luxury Villa in Paradise-Test</h1>
+        <p class="mt-2 font-bold">A family friendly 3-bedroom villa just steps from West Bay Beach</p>
+    </div>
+</section>
 
 <!-- Navigation Menu -->
 <nav class="bg-white shadow-lg">
