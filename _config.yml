@@ -1,2 +1,25 @@
-title: Dolphin Villa Roatan
-description: A family-friendly villa in West Bay, Roatan, Honduras.
+# _config.yml
+title: "Dolphin Villa Roatan"
+description: "A luxury villa in Roatan, Honduras"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.dolphinvillaroatan.com" # the base hostname & protocol for your site
+theme: minima
+
+# Customization options
+paginate: 5 # amount of posts to show
+paginate_path: "/page/:num/"
+
+# Author settings
+author:
+  name: "Nick and Becky"
+  email: "dolphinvillaroatan@gmail.com.com"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
