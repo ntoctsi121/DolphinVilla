@@ -46,6 +46,7 @@
         <a href="#Owners" id="menuOwners" class="hover:text-gray-800">| Owners |</a>
         <a href="#Calendar" id="menuCalendar" class="hover:text-gray-800">| Calendar |</a>
         <a href="#Rates" id="menuRates" class="hover:text-gray-800">| Rates |</a>
+        <a href="#Reviews" id="menuReviews" class="hover:text-gray-800">| Reviews |</a>
         <a href="#contact" class="hover:text-gray-800">| Book/Contact Us |</a>
       </div>
     </div>
@@ -253,6 +254,19 @@ We love Roatan and think that it is such a special place, and we can’t wait to
       </div>
     </section>
 
+   <section id="Reviews" class="py-8">
+      <div class="container mx-auto px-4">
+        <div class="toggle-container" onclick="toggleReviewsDetails()">
+          <div id="toggleIconReviews">+</div>
+          <h2 class="text-2xl font-bold">Reviews</h2>
+        </div>
+        <div id="ReviewsDetails" class="hidden text-center">
+         
+          <img src="images/Review1.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
+           </div>
+      </div>
+    </section>
+
     <section id="contact" class="bg-gray-100 py-8">
     <div class="container mx-auto px-4">
         <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
@@ -385,7 +399,21 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
     document.location.href = '#Rates';
   }
 });
+
+  document.getElementById('menuReviews').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ReviewsDetails = document.getElementById('ReviewsDetails');
+  const toggleIconReviews = document.getElementById('toggleIconReviews');
   
+  // Check if the details are already visible
+  if (ReviewsDetails.classList.contains('hidden')) {
+    toggleReviewsDetails(); // Call the function to show the details
+    document.location.href = '#Reviews'; // Navigate to the Reviews section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Reviews';
+  }
+});
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
         var toggleIcon = document.getElementById("toggleIcon");
@@ -433,6 +461,18 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
         } else {
             RateDetails.classList.add("hidden");
             toggleIconRate.textContent = "+";
+        }
+    }
+     function toggleReviewsDetails() {
+        var ReviewsDetails = document.getElementById("ReviewsDetails");
+        var toggleIconReviews = document.getElementById("toggleIconReviews"); // Ensure unique ID for toggle icon
+
+        if (ReviewsDetails.classList.contains("hidden")) {
+            ReviewsDetails.classList.remove("hidden");
+            toggleIconReviews.textContent = "-";
+        } else {
+            ReviewsDetails.classList.add("hidden");
+            toggleIconReviews.textContent = "+";
         }
     }
         </script>
