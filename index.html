@@ -600,6 +600,18 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
           toggleIcon.textContent = '+';
         }
       });
+
+  function toggleReviewDetails() {
+    var reviews = document.getElementById("reviewDetails");
+    var toggleIcon = document.getElementById("toggleIconReviews");
+    if (reviews.classList.contains("hidden")) {
+      reviews.classList.remove("hidden");
+      toggleIcon.textContent = "-";
+    } else {
+      reviews.classList.add("hidden");
+      toggleIcon.textContent = "+";
+    }
+  }
         </script>
     </body>
     </html>
