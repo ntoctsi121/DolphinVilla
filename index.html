@@ -92,6 +92,11 @@
         font-size: 24px;
         margin-right: 8px;
     }
+     #toggleIconReview {
+        font-weight: bold;
+        font-size: 24px;
+        margin-right: 8px;
+    }
     .hidden {
         display: none;
     }
@@ -129,6 +134,7 @@
         <a href="#Owners" id="menuOwners" class="hover:text-gray-800">| Owners |</a>
         <a href="#Calendar" id="menuCalendar" class="hover:text-gray-800">| Calendar |</a>
         <a href="#Rates" id="menuRates" class="hover:text-gray-800">| Rates |</a>
+        <a href="#Reviews" id="menuRates" class="hover:text-gray-800">| Reviews |</a>
         <a href="#contact" class="hover:text-gray-800">| Book/Contact Us |</a>
       </div>
     </div>
@@ -336,6 +342,20 @@ We love Roatan and think that it is such a special place, and we can’t wait to
       </div>
     </section>
 
+<section id="Reviews" class="container mx-auto p-4">
+        <h2 class="text-2xl font-bold text-center mb-8">Reviews</h2>
+        <div class="swiper ReviewSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="Review1.jpg" alt="Review"></div>  
+               
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+      </section>
+  
+
     <section id="contact" class="bg-gray-100 py-8">
     <div class="container mx-auto px-4">
         <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
@@ -392,6 +412,25 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 
   // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
  var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
+      loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: '.swiper-paginationAcc', // Corrected unique class name
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
+          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
+      },
+  });
+
+  // Ensure the unique class names for the third Swiper's controls are correctly applied in HTML
+ var ReviewSwiper = new Swiper('.ReviewSwiper', {
       loop: true,
       spaceBetween: 30,
       centeredSlides: true,
@@ -516,6 +555,19 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
         } else {
             RateDetails.classList.add("hidden");
             toggleIconRate.textContent = "+";
+        }
+    }
+
+   function toggleReviewDetails() {
+        var RateDetails = document.getElementById("Reviews");
+        var toggleIconReview = document.getElementById("toggleIconReview"); // Ensure unique ID for toggle icon
+
+        if (ReviewDetails.classList.contains("hidden")) {
+            ReviewDetails.classList.remove("hidden");
+            toggleIconReview.textContent = "-";
+        } else {
+            ReviewDetails.classList.add("hidden");
+            toggleIconReview.textContent = "+";
         }
     }
         </script>
