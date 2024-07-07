@@ -9,25 +9,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
   <style>
-    .swiper-container {
-        width: 100%;
-        height: 100%;
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .swiper-slide img {
-        display: block;
-        width: auto;
-        max-height: 80vh;
-        max-width: 100%;
-        margin: auto;
-    }
+    .swiper-container { width: 100%; height: 100%; }
+    .swiper-slide { text-align: center; font-size: 18px; background: #fff; display: flex; justify-content: center; align-items: center; }
+    .swiper-slide img { display: block; width: auto; max-height: 80vh; max-width: 100%; margin: auto; }
+    
     .hero-background::before {
         content: '';
         position: absolute;
@@ -65,51 +50,12 @@
         position: relative;
         z-index: 1;
     }
-    .toggle-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        width: 100%;
-    }
-    #toggleIcon {
-        font-weight: bold;
-        font-size: 24px;
-        margin-right: 8px;
-    }
-     #toggleIconOwners {
-        font-weight: bold;
-        font-size: 24px;
-        margin-right: 8px;
-    }
-    #toggleIconCal {
-        font-weight: bold;
-        font-size: 24px;
-        margin-right: 8px;
-    }
-    #toggleIconRate {
-        font-weight: bold;
-        font-size: 24px;
-        margin-right: 8px;
-    }
-     #toggleIconReviews {
-        font-weight: bold;
-        font-size: 24px;
-        margin-right: 8px;
-    }
-    .hidden {
-        display: none;
-    }
-    .accommodations-list, .amenities-list {
-  list-style-type: none; /* Removes default bullets */
-  padding: 0; /* Removes default padding */
-}
-
-.icon {
-  width: 1em; /* Adjusts size to match the text size */
-  height: 1em; /* Adjusts size to match the text size */
-  vertical-align: middle; /* Aligns icon with text */
-}
+    .toggle-container { display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%; }
+    #toggleIcon, #toggleIconOwners, #toggleIconCal, #toggleIconRate, #toggleIconReviews { font-weight: bold; font-size: 24px; margin-right: 8px; }
+    .hidden { display: none; }
+    .accommodations-list, .amenities-list { list-style-type: none; padding: 0; }
+    .icon { width: 1em; height: 1em; vertical-align: middle; }
+    
   </style>
 </head>
 <body class="font-serif">
@@ -344,7 +290,7 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 
 <section id="Reviews" class="py-8">
   <div class="container mx-auto px-4">
-    <div class="toggle-container" onclick="toggleReviewDetails()">
+    <div class="toggle-container" onclick="toggleReviewsDetails()">
       <div id="toggleIconReviews">+</div>
       <h2 class="text-2xl font-bold">Reviews</h2>
     </div>
