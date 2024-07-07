@@ -92,7 +92,7 @@
         font-size: 24px;
         margin-right: 8px;
     }
-     #toggleIconReview {
+     #toggleIconReviews {
         font-weight: bold;
         font-size: 24px;
         margin-right: 8px;
@@ -558,16 +558,16 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
         }
     }
 
-   function toggleReviewDetails() {
-        var ReviewDetails = document.getElementById("Reviews");
-        var toggleIconReview = document.getElementById("toggleIconReview"); // Ensure unique ID for toggle icon
+   function toggleReviewsDetails() {
+        var ReviewsDetails = document.getElementById("Reviews");
+        var toggleIconReviews = document.getElementById("toggleIconReviews"); // Ensure unique ID for toggle icon
 
-        if (ReviewDetails.classList.contains("hidden")) {
-            ReviewDetails.classList.remove("hidden");
-            toggleIconReview.textContent = "-";
+        if (ReviewsDetails.classList.contains("hidden")) {
+            ReviewsDetails.classList.remove("hidden");
+            toggleIconReviews.textContent = "-";
         } else {
-            ReviewDetails.classList.add("hidden");
-            toggleIconReview.textContent = "+";
+            ReviewsDetails.classList.add("hidden");
+            toggleIconReviews.textContent = "+";
         }
     }
         </script>
