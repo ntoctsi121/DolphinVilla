@@ -343,21 +343,29 @@ We love Roatan and think that it is such a special place, and we can’t wait to
     </section>
 
 <section id="Reviews" class="py-8">
-  <div class="container mx-auto px-4">
-    <div class="toggle-container" onclick="toggleReviewsDetails()">
-      <div id="toggleIconReviews">+</div>
-      <h2 class="text-2xl font-bold">Reviews</h2>
-        </div>
-        <div class="swiper ReviewSwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="Review1.JPG" alt="Review"></div>  
-              
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleReviewsDetails()">
+        <div id="toggleIconReviews">+</div>
+        <h2 class="text-2xl font-bold">Reviews</h2>
+      </div>
+      <div id="reviewsDetails" class="hidden text-center">
+        <!-- Reviews content -->
+        <div class="swiper reviewsSwiper">
+          <div class="swiper-wrapper">
+            <!-- Swiper slides for reviews -->
+            <div class="swiper-slide">
+              <p>"Great place! Loved it!"</p>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+             <div class="swiper-slide"><img src="Review1.JPG" alt="Review"></div>
+          </div>
+          <!-- Swiper pagination and navigation -->
+          <div class="swiper-pagination swiper-paginationReviews"></div>
+          <div class="swiper-button-next swiper-button-nextReviews"></div>
+          <div class="swiper-button-prev swiper-button-prevReviews"></div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
   
 
     <section id="contact" class="bg-gray-100 py-8">
@@ -511,6 +519,24 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
     document.location.href = '#Rates';
   }
 });
+
+    document.getElementById('menuReviews').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ReviewsDetails = document.getElementById('ReviewsDetails');
+  const toggleIconReviews = document.getElementById('toggleIconReviews');
+  
+  // Check if the details are already visible
+  if (rateDetails.classList.contains('hidden')) {
+    toggleReviewsDetails(); // Call the function to show the details
+    document.location.href = '#Reviews'; // Navigate to the Reviews section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Reviews';
+  }
+});
+
+
+
   
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
