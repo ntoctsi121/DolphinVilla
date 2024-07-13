@@ -286,10 +286,10 @@
    <section id="location" class="py-8">
   <div class="container mx-auto px-4">
     <div class="toggle-container" onclick="toggleLocationDetails()">
-      <div id="toggleIconLocation">+</div>
+      <div id="toggleIcon">+</div>
       <h2 class="text-2xl font-bold">Location</h2>
     </div>
-    <div id="locationDetails" class="toggle-content hidden text-center">
+    <div id="locationDetails" class="hidden text-center">
       <p class="text-lg mb-4">Discover the stunning location of our beach villa, nestled in the heart of West Bay Beach in Roatan, Honduras, offering direct beach access.</p>
       <div>
         <a href="https://www.google.com/maps?ll=16.273886476038758,-86.59786119821244&q=16.273886476038758,-86.59786119821244&hl=en&t=m&z=16" target="_blank" class="text-blue-500 hover:text-blue-700 text-lg">View Location on Google Maps</a>
@@ -491,100 +491,129 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
   // Initialize the first Swiper
-   document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.swiper', {
-      slidesPerView: 1,
-      spaceBetween: 10,
+  var mySwiper = new Swiper('.mySwiper', {
       loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+          delay: 6500,
+          disableOnInteraction: false,
+      },
       pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+          el: '.swiper-pagination',
+          clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
       },
-    });
+  });
 
-    var accSwiper = new Swiper('.accommodationsSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 10,
+  // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
+ var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
       loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+      },
       pagination: {
-        el: '.swiper-paginationAcc',
-        clickable: true,
+          el: '.swiper-paginationAcc', // Corrected unique class name
+          clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-nextAcc',
-        prevEl: '.swiper-button-prevAcc',
+          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
+          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
       },
-    });
-     
+  });
+
   initLightbox();
 
-  function toggleSection(sectionId, iconId) {
-      var section = document.getElementById(sectionId);
-      var icon = document.getElementById(iconId);
-      if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        icon.textContent = '-';
-      } else {
-        section.classList.add('hidden');
-        icon.textContent = '+';
-      }
-    }
-
-function openSection(sectionId, iconId) {
-      var section = document.getElementById(sectionId);
-      var icon = document.getElementById(iconId);
-      if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        icon.textContent = '-';
-      }
-    }
-     
- document.getElementById('menuLocation').addEventListener('click', function (e) {
-      e.preventDefault();
-      openSection('locationDetails', 'toggleIconLocation');
-      document.getElementById('location').scrollIntoView();
-    });
-
-    document.getElementById('menuOwners').addEventListener('click', function (e) {
-      e.preventDefault();
-      openSection('ownersDetails', 'toggleIconOwners');
-      document.getElementById('Owners').scrollIntoView();
-    });
-
-    document.getElementById('menuCalendar').addEventListener('click', function (e) {
-      e.preventDefault();
-      openSection('calendarDetails', 'toggleIconCalendar');
-      document.getElementById('Calendar').scrollIntoView();
-    });
-
-    document.getElementById('menuRates').addEventListener('click', function (e) {
-      e.preventDefault();
-      openSection('ratesDetails', 'toggleIconRates');
-      document.getElementById('Rates').scrollIntoView();
-    });
-
-    document.getElementById('menuReviews').addEventListener('click', function (e) {
-      e.preventDefault();
-      openSection('reviewsDetails', 'toggleIconReviews');
-      document.getElementById('Reviews').scrollIntoView();
-    });
-  });
+document.getElementById('menuLocation').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const locationDetails = document.getElementById('locationDetails');
+  const toggleIcon = document.getElementById('toggleIcon');
   
+  // Check if the details are already visible
+  if (locationDetails.classList.contains('hidden')) {
+    toggleLocationDetails(); // Call the function to show the details
+    document.location.href = '#location'; // Navigate to the Location section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#location';
+  }
+});
+  
+document.getElementById('menuOwners').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ownerDetails = document.getElementById('OwnerDetails');
+  const toggleIconOwners = document.getElementById('toggleIconOwners');
+  
+  // Check if the details are already visible
+  if (ownerDetails.classList.contains('hidden')) {
+    toggleOwnerDetails(); // Call the function to show the details
+    document.location.href = '#Owners'; // Navigate to the Owners section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Owners';
+  }
+});
 
+  document.getElementById('menuCalendar').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const calendarDetails = document.getElementById('CalDetails');
+  const toggleIconCal = document.getElementById('toggleIconCal');
+  
+  // Check if the details are already visible
+  if (calendarDetails.classList.contains('hidden')) {
+    toggleCalDetails(); // Call the function to show the details
+    document.location.href = '#Calendar'; // Navigate to the Calendar section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Calendar';
+  }
+});
+
+  document.getElementById('menuRates').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const rateDetails = document.getElementById('RateDetails');
+  const toggleIconRate = document.getElementById('toggleIconRate');
+  
+  // Check if the details are already visible
+  if (rateDetails.classList.contains('hidden')) {
+    toggleRateDetails(); // Call the function to show the details
+    document.location.href = '#Rates'; // Navigate to the Rates section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Rates';
+  }
+});
+
+  document.getElementById('menuReviews').addEventListener('click', function(e) {
+  e.preventDefault(); // Prevent default anchor behavior
+  const ReviewsDetails = document.getElementById('ReviewsDetails');
+  const toggleIconReviews = document.getElementById('toggleIconReviews');
+  
+  // Check if the details are already visible
+  if (ReviewsDetails.classList.contains('hidden')) {
+    toggleReviewsDetails(); // Call the function to show the details
+    document.location.href = '#Reviews'; // Navigate to the Reviews section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Reviews';
+  }
+});
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
-        var toggleIconLocation = document.getElementById("toggleIconLocation");
+        var toggleIcon = document.getElementById("toggleIcon");
 
         if (locationDetails.classList.contains("hidden")) {
           locationDetails.classList.remove("hidden");
-          toggleIconLocation.textContent = "-";
+          toggleIcon.textContent = "-";
         } else {
           locationDetails.classList.add("hidden");
-          toggleIconLocation.textContent = "+";
+          toggleIcon.textContent = "+";
         }
             }
             function toggleOwnerDetails() {
