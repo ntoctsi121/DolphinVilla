@@ -63,6 +63,24 @@
     transform: scaleX(1);
   }
 
+     #lightbox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
     
   </style>
 </head>
@@ -99,30 +117,30 @@
         <h2 class="text-2xl font-bold text-center mb-8">Ocean One Dolphin Villa</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>  
-               <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>  
-              <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>  
-              <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise"></div>
-              <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
-                <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
-               <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>  
-              <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>  
-                <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"> </div>
-                <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"> <img src="images/4.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
-                <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
+              <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex" class="gallery-image"></div>  
+              <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex" class="gallery-image"></div>  
+              <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex" class="gallery-image"></div>  
+              <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise" class="gallery-image"></div>
+              <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach" class="gallery-image" ></div>
+                <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One" class="gallery-image" ></div>
+               <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room" class="gallery-image"></div>  
+              <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room" class="gallery-image"></div>  
+                <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa" class="gallery-image"> </div>
+                <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"> <img src="images/4.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa" class="gallery-image"></div>
+                <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa" class="gallery-image"></div>
                 <!-- Additional slides here -->
             </div>
             <div class="swiper-pagination"></div>
@@ -347,6 +365,29 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+
+    function initLightbox() {
+    document.querySelectorAll('.gallery-image').forEach(image => {
+      image.addEventListener('click', () => {
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        document.body.appendChild(lightbox);
+
+        const img = document.createElement('img');
+        img.src = image.src;
+        while (lightbox.firstChild) {
+          lightbox.removeChild(lightbox.firstChild);
+        }
+        lightbox.appendChild(img);
+
+        lightbox.addEventListener('click', e => {
+          if (e.target !== e.currentTarget) return;
+          document.body.removeChild(lightbox);
+        });
+      });
+    });
+  }
+
   // Initialize the first Swiper
   var mySwiper = new Swiper('.mySwiper', {
       loop: true,
@@ -384,6 +425,8 @@ We love Roatan and think that it is such a special place, and we can’t wait to
           prevEl: '.swiper-button-prevAcc', // Corrected unique class name
       },
   });
+
+  initLightbox();
 
 document.getElementById('menuLocation').addEventListener('click', function(e) {
   e.preventDefault(); // Prevent default anchor behavior
