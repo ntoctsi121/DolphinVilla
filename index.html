@@ -530,6 +530,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
   initLightbox();
 
+  function toggleSection(sectionId, iconId) {
+    var section = document.getElementById(sectionId);
+    var icon = document.getElementById(iconId);
+    if (section.classList.contains('is-visible')) {
+      section.classList.remove('is-visible');
+      icon.textContent = '+';
+    } else {
+      section.classList.add('is-visible');
+      icon.textContent = '-';
+    }
+  }
+document.getElementById('menuLocation').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('location').scrollIntoView({ behavior: 'smooth' });
+    toggleSection('locationDetails', 'toggleIconLocation');
+  });
+
+  document.getElementById('menuOwners').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('owners').scrollIntoView({ behavior: 'smooth' });
+    toggleSection('ownersDetails', 'toggleIconOwners');
+  });
+
+  document.getElementById('menuCalendar').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('calendar').scrollIntoView({ behavior: 'smooth' });
+    toggleSection('calendarDetails', 'toggleIconCalendar');
+  });
+
+  document.getElementById('menuRates').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('rates').scrollIntoView({ behavior: 'smooth' });
+    toggleSection('ratesDetails', 'toggleIconRates');
+  });
+
+  document.getElementById('menuReviews').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+    toggleSection('reviewsDetails', 'toggleIconReviews');
+  });
+  
 document.getElementById('menuLocation').addEventListener('click', function(e) {
   e.preventDefault(); // Prevent default anchor behavior
   const locationDetails = document.getElementById('locationDetails');
