@@ -78,7 +78,7 @@
 
 .lightbox .lightbox-content {
     position: relative;
-    max-width: 90%;
+    max-width: calc(100% - 100px); /* Adjust based on your button width and positioning */
     max-height: 90vh;
     display: flex;
     justify-content: center;
@@ -96,7 +96,7 @@
 }
 
 .lightbox .nav-button {
-    position: absolute;
+       position: fixed;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(255, 255, 255, 0.5);
@@ -105,10 +105,16 @@
     text-decoration: none;
     font-size: 18px;
     border-radius: 4px;
+    z-index: 1010; /* Ensure buttons are above the image */
 }
 
-.lightbox .nav-button.prev { left: 10px; }
-.lightbox .nav-button.next { right: 10px; }
+.lightbox .nav-button.prev { left: 20px; }
+.lightbox .nav-button.next { right: 20px; }
+  
+/* Optional: Add hover effect for better visibility */
+.lightbox .nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
   </style>
 </head>
 <body class="font-serif">
