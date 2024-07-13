@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -75,18 +75,14 @@
     justify-content: center;
     align-items: center;
   }
-#lightbox .lightbox-content {
-  position: relative;
-  width: 90%;  /* Set a maximum width */
-  height: 90%; /* Set a maximum height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  #lightbox .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
   }
   #lightbox img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* This ensures the image keeps its aspect ratio */
     border-radius: 6px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
@@ -388,100 +384,87 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 <script>
 
  
- function initLightbox() {
-  let currentIndex = 0;
-  const images = document.querySelectorAll('.gallery-image');
+ 
+  function initLightbox() {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.gallery-image');
 
-  images.forEach((image, index) => {
-    image.addEventListener('click', (e) => {
-      e.preventDefault();
-      currentIndex = index;
-      showLightbox();
+    images.forEach((image, index) => {
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showLightbox();
+      });
     });
-  });
 
-  function showLightbox() {
-  const lightbox = document.createElement('div');
-  lightbox.id = 'lightbox';
-  document.body.appendChild(lightbox);
+    function showLightbox() {
+      const lightbox = document.createElement('div');
+      lightbox.id = 'lightbox';
+      document.body.appendChild(lightbox);
 
-  const content = document.createElement('div');
-  content.className = 'lightbox-content';
-  lightbox.appendChild(content);
+      const content = document.createElement('div');
+      content.className = 'lightbox-content';
+      lightbox.appendChild(content);
 
-  const img = document.createElement('img');
-  img.style.opacity = '0'; // Start with the image invisible
-  content.appendChild(img);
+      const img = document.createElement('img');
+      img.src = images[currentIndex].src;
+      content.appendChild(img);
 
-  const prevButton = document.createElement('a');
-  prevButton.className = 'nav-button prev';
-  prevButton.textContent = '❮';
-  prevButton.href = '#';
-  content.appendChild(prevButton);
+      const prevButton = document.createElement('a');
+      prevButton.className = 'nav-button prev';
+      prevButton.textContent = '❮';
+      prevButton.href = '#';
+      content.appendChild(prevButton);
 
-  const nextButton = document.createElement('a');
-  nextButton.className = 'nav-button next';
-  nextButton.textContent = '❯';
-  nextButton.href = '#';
-  content.appendChild(nextButton);
+      const nextButton = document.createElement('a');
+      nextButton.className = 'nav-button next';
+      nextButton.textContent = '❯';
+      nextButton.href = '#';
+      content.appendChild(nextButton);
 
-  function updateImage() {
-    img.style.opacity = '0'; // Hide the image
-    img.src = images[currentIndex].src;
-    img.onload = function() {
-      img.style.opacity = '1'; // Show the image once it's loaded
-    };
+      prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        img.src = images[currentIndex].src;
+      });
+
+      nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % images.length;
+        img.src = images[currentIndex].src;
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target !== e.currentTarget) return;
+        document.body.removeChild(lightbox);
+      });
+
+      // Swipe detection
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      lightbox.addEventListener('touchstart', (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+
+      lightbox.addEventListener('touchend', (e) => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        if (touchendX < touchstartX) {
+          // Swipe left
+          currentIndex = (currentIndex + 1) % images.length;
+        }
+        if (touchendX > touchstartX) {
+          // Swipe right
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+        }
+        img.src = images[currentIndex].src;
+      }
+    }
   }
-
-  updateImage(); // Initial image load
-
-  prevButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent event from bubbling up to lightbox
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-  });
-
-  nextButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // Prevent event from bubbling up to lightbox
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  });
-
-  // Move this event listener to the lightbox itself
-  lightbox.addEventListener('click', (e) => {
-    // Close the lightbox if the click is on the lightbox background
-    if (e.target === lightbox) {
-      document.body.removeChild(lightbox);
-    }
-  });
-
-  // Swipe detection
-  let touchstartX = 0;
-  let touchendX = 0;
-
-  lightbox.addEventListener('touchstart', (e) => {
-    touchstartX = e.changedTouches[0].screenX;
-  });
-
-  lightbox.addEventListener('touchend', (e) => {
-    touchendX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    if (touchendX < touchstartX) {
-      // Swipe left
-      currentIndex = (currentIndex + 1) % images.length;
-    }
-    if (touchendX > touchstartX) {
-      // Swipe right
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-    }
-    updateImage();
-  }
-}
   // Initialize the first Swiper
   var mySwiper = new Swiper('.mySwiper', {
       loop: true,
