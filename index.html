@@ -414,8 +414,80 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+function toggleLocationDetails() {
+    var locationDetails = document.getElementById("locationDetails");
+    var toggleIcon = document.getElementById("toggleIcon");
+    if (locationDetails.classList.contains("hidden")) {
+        locationDetails.classList.remove("hidden");
+        toggleIcon.textContent = "-";
+    } else {
+        locationDetails.classList.add("hidden");
+        toggleIcon.textContent = "+";
+    }
+}
+             function toggleOwnerDetails() {
+        var ownerDetails = document.getElementById("OwnerDetails");
+        var toggleIconOwners = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
 
- 
+        if (ownerDetails.classList.contains("hidden")) {
+            ownerDetails.classList.remove("hidden");
+            toggleIconOwners.textContent = "-";
+        } else {
+            ownerDetails.classList.add("hidden");
+            toggleIconOwners.textContent = "+";
+        }
+    }
+
+   function toggleCalDetails() {
+        var CalDetails = document.getElementById("CalDetails");
+        var toggleIconCal = document.getElementById("toggleIconCal"); // Ensure unique ID for toggle icon
+
+        if (CalDetails.classList.contains("hidden")) {
+            CalDetails.classList.remove("hidden");
+            toggleIconCal.textContent = "-";
+        } else {
+            CalDetails.classList.add("hidden");
+            toggleIconCal.textContent = "+";
+        }
+    }
+   function toggleRateDetails() {
+        var RateDetails = document.getElementById("RateDetails");
+        var toggleIconRate = document.getElementById("toggleIconRate"); // Ensure unique ID for toggle icon
+
+        if (RateDetails.classList.contains("hidden")) {
+            RateDetails.classList.remove("hidden");
+            toggleIconRate.textContent = "-";
+        } else {
+            RateDetails.classList.add("hidden");
+            toggleIconRate.textContent = "+";
+        }
+    }
+     function toggleReviewsDetails() {
+        var ReviewsDetails = document.getElementById("ReviewsDetails");
+        var toggleIconReviews = document.getElementById("toggleIconReviews"); // Ensure unique ID for toggle icon
+
+        if (ReviewsDetails.classList.contains("hidden")) {
+            ReviewsDetails.classList.remove("hidden");
+            toggleIconReviews.textContent = "-";
+        } else {
+            ReviewsDetails.classList.add("hidden");
+            toggleIconReviews.textContent = "+";
+        }
+    }
+
+function animateNavLinks() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach((link, index) => {
+        link.style.opacity = '0';
+        link.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+            link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            link.style.opacity = '1';
+            link.style.transform = 'translateY(0)';
+        }, 100 * index);
+    });
+}
+
  
 document.addEventListener('DOMContentLoaded', function() {
     const galleryLightbox = document.getElementById('galleryLightbox');
@@ -489,62 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
     accommodationsLightbox.addEventListener('click', (e) => {
         if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
     });
-});
-  // Initialize the first Swiper
-  var mySwiper = new Swiper('.mySwiper', {
-      loop: true,
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-          delay: 6500,
-          disableOnInteraction: false,
-      },
-      pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-      },
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-  });
 
-  // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
- var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
-      loop: true,
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-      },
-      pagination: {
-          el: '.swiper-paginationAcc', // Corrected unique class name
-          clickable: true,
-      },
-      navigation: {
-          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
-          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
-      },
-  });
-
-  initLightbox();
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to toggle location details
-  function toggleLocationDetails() {
-    var locationDetails = document.getElementById("locationDetails");
-    var toggleIcon = document.getElementById("toggleIcon");
-    if (locationDetails.classList.contains("hidden")) {
-      locationDetails.classList.remove("hidden");
-      toggleIcon.textContent = "-";
-    } else {
-      locationDetails.classList.add("hidden");
-      toggleIcon.textContent = "+";
-    }
-  }
-
-  // Event listener for menu item click
+// Event listener for menu item click
   document.getElementById('menuLocation').addEventListener('click', function(e) {
     e.preventDefault(); // Prevent default anchor behavior
     var locationSection = document.getElementById('location');
@@ -556,11 +574,6 @@ document.addEventListener('DOMContentLoaded', function() {
       toggleLocationDetails();
     }
   });
-
-  // Event listener for toggle container click
-  document.querySelector('#location .toggle-container').addEventListener('click', toggleLocationDetails);
-});
-  
 document.getElementById('menuOwners').addEventListener('click', function(e) {
   e.preventDefault(); // Prevent default anchor behavior
   const ownerDetails = document.getElementById('OwnerDetails');
@@ -620,72 +633,58 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
     document.location.href = '#Reviews';
   }
 });
-      
-            function toggleOwnerDetails() {
-        var ownerDetails = document.getElementById("OwnerDetails");
-        var toggleIconOwners = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
+    // Event listener for toggle container click
+  document.querySelector('#location .toggle-container').addEventListener('click', toggleLocationDetails);
+  
+  // Initialize the first Swiper
+  var mySwiper = new Swiper('.mySwiper', {
+      loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+          delay: 6500,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+  });
 
-        if (ownerDetails.classList.contains("hidden")) {
-            ownerDetails.classList.remove("hidden");
-            toggleIconOwners.textContent = "-";
-        } else {
-            ownerDetails.classList.add("hidden");
-            toggleIconOwners.textContent = "+";
-        }
-    }
+  // Ensure the unique class names for the second Swiper's controls are correctly applied in HTML
+ var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
+      loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+      },
+      pagination: {
+          el: '.swiper-paginationAcc', // Corrected unique class name
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-nextAcc', // Corrected unique class name
+          prevEl: '.swiper-button-prevAcc', // Corrected unique class name
+      },
+  });
 
-   function toggleCalDetails() {
-        var CalDetails = document.getElementById("CalDetails");
-        var toggleIconCal = document.getElementById("toggleIconCal"); // Ensure unique ID for toggle icon
+ 
 
-        if (CalDetails.classList.contains("hidden")) {
-            CalDetails.classList.remove("hidden");
-            toggleIconCal.textContent = "-";
-        } else {
-            CalDetails.classList.add("hidden");
-            toggleIconCal.textContent = "+";
-        }
-    }
-   function toggleRateDetails() {
-        var RateDetails = document.getElementById("RateDetails");
-        var toggleIconRate = document.getElementById("toggleIconRate"); // Ensure unique ID for toggle icon
+ // Call the function when the page loads
+   animateNavLinks();
+  
 
-        if (RateDetails.classList.contains("hidden")) {
-            RateDetails.classList.remove("hidden");
-            toggleIconRate.textContent = "-";
-        } else {
-            RateDetails.classList.add("hidden");
-            toggleIconRate.textContent = "+";
-        }
-    }
-     function toggleReviewsDetails() {
-        var ReviewsDetails = document.getElementById("ReviewsDetails");
-        var toggleIconReviews = document.getElementById("toggleIconReviews"); // Ensure unique ID for toggle icon
+});
+  
+     
 
-        if (ReviewsDetails.classList.contains("hidden")) {
-            ReviewsDetails.classList.remove("hidden");
-            toggleIconReviews.textContent = "-";
-        } else {
-            ReviewsDetails.classList.add("hidden");
-            toggleIconReviews.textContent = "+";
-        }
-    }
-
- function animateNavLinks() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach((link, index) => {
-      link.style.opacity = '0';
-      link.style.transform = 'translateY(10px)';
-      setTimeout(() => {
-        link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        link.style.opacity = '1';
-        link.style.transform = 'translateY(0)';
-      }, 100 * index); // Stagger the animation
-    });
-  }
-
-  // Call the function when the page loads
-  window.addEventListener('load', animateNavLinks);
+ 
         </script>
     </body>
     </html>
