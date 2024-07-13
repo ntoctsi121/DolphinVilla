@@ -488,6 +488,11 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
             toggleIconReviews.textContent = "+";
         }
     }
+
+  function toggleContent(OwnerDetails) {
+  const content = document.getElementById(OwnerDetails);
+  content.classList.toggle('is-visible');
+}
         </script>
     </body>
     </html>
