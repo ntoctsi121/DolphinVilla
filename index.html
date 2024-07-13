@@ -390,93 +390,100 @@ We love Roatan and think that it is such a special place, and we can’t wait to
     </div>
 </section>
 
+  <div id="galleryLightbox" class="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" id="galleryLightboxImage">
+            <a href="#" class="nav-button prev" id="galleryPrevButton">&lt;</a>
+            <a href="#" class="nav-button next" id="galleryNextButton">&gt;</a>
+        </div>
+    </div>
+
+    <div id="accommodationsLightbox" class="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" id="accommodationsLightboxImage">
+            <a href="#" class="nav-button prev" id="accommodationsPrevButton">&lt;</a>
+            <a href="#" class="nav-button next" id="accommodationsNextButton">&gt;</a>
+        </div>
+    </div>
+
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
 
  
  
-  function initLightbox() {
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.gallery-image');
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryLightbox = document.getElementById('galleryLightbox');
+    const galleryLightboxImage = document.getElementById('galleryLightboxImage');
+    const galleryImages = document.querySelectorAll('#gallery .gallery-image');
+    let galleryCurrentIndex = 0;
 
-    images.forEach((image, index) => {
-      image.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentIndex = index;
-        showLightbox();
-      });
+    const accommodationsLightbox = document.getElementById('accommodationsLightbox');
+    const accommodationsLightboxImage = document.getElementById('accommodationsLightboxImage');
+    const accommodationsImages = document.querySelectorAll('#accommodations .gallery-image');
+    let accommodationsCurrentIndex = 0;
+
+    function openLightbox(lightbox, lightboxImage, images, index) {
+        lightboxImage.src = images[index].src;
+        lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox(lightbox) {
+        lightbox.style.display = 'none';
+    }
+
+    function navigateLightbox(direction, currentIndex, images, lightboxImage) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = images.length - 1;
+        if (currentIndex >= images.length) currentIndex = 0;
+        lightboxImage.src = images[currentIndex].src;
+        return currentIndex;
+    }
+
+    // Gallery Lightbox
+    galleryImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            galleryCurrentIndex = index;
+            openLightbox(galleryLightbox, galleryLightboxImage, galleryImages, galleryCurrentIndex);
+        });
     });
 
-   
-
-    function showLightbox() {
-      const lightbox = document.createElement('div');
-      lightbox.id = 'lightbox';
-      document.body.appendChild(lightbox);
-
-      const content = document.createElement('div');
-      content.className = 'lightbox-content';
-      lightbox.appendChild(content);
-
-      const img = document.createElement('img');
-      img.src = images[currentIndex].src;
-      content.appendChild(img);
-
-      const prevButton = document.createElement('a');
-      prevButton.className = 'nav-button prev';
-      prevButton.textContent = '❮';
-      prevButton.href = '#';
-      content.appendChild(prevButton);
-
-      const nextButton = document.createElement('a');
-      nextButton.className = 'nav-button next';
-      nextButton.textContent = '❯';
-      nextButton.href = '#';
-      content.appendChild(nextButton);
-
-      prevButton.addEventListener('click', (e) => {
+    document.getElementById('galleryPrevButton').addEventListener('click', (e) => {
         e.preventDefault();
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        img.src = images[currentIndex].src;
-      });
+        galleryCurrentIndex = navigateLightbox(-1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
+    });
 
-      nextButton.addEventListener('click', (e) => {
+    document.getElementById('galleryNextButton').addEventListener('click', (e) => {
         e.preventDefault();
-        currentIndex = (currentIndex + 1) % images.length;
-        img.src = images[currentIndex].src;
-      });
+        galleryCurrentIndex = navigateLightbox(1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
+    });
 
-      lightbox.addEventListener('click', (e) => {
-        if (e.target !== e.currentTarget) return;
-        document.body.removeChild(lightbox);
-      });
+    // Accommodations Lightbox
+    accommodationsImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            accommodationsCurrentIndex = index;
+            openLightbox(accommodationsLightbox, accommodationsLightboxImage, accommodationsImages, accommodationsCurrentIndex);
+        });
+    });
 
-      // Swipe detection
-      let touchstartX = 0;
-      let touchendX = 0;
+    document.getElementById('accommodationsPrevButton').addEventListener('click', (e) => {
+        e.preventDefault();
+        accommodationsCurrentIndex = navigateLightbox(-1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
+    });
 
-      lightbox.addEventListener('touchstart', (e) => {
-        touchstartX = e.changedTouches[0].screenX;
-      });
+    document.getElementById('accommodationsNextButton').addEventListener('click', (e) => {
+        e.preventDefault();
+        accommodationsCurrentIndex = navigateLightbox(1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
+    });
 
-      lightbox.addEventListener('touchend', (e) => {
-        touchendX = e.changedTouches[0].screenX;
-        handleSwipe();
-      });
+    // Close lightboxes when clicking outside the image
+    galleryLightbox.addEventListener('click', (e) => {
+        if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
+    });
 
-      function handleSwipe() {
-        if (touchendX < touchstartX) {
-          // Swipe left
-          currentIndex = (currentIndex + 1) % images.length;
-        }
-        if (touchendX > touchstartX) {
-          // Swipe right
-          currentIndex = (currentIndex - 1 + images.length) % images.length;
-        }
-        img.src = images[currentIndex].src;
-      }
-    }
-  }
+    accommodationsLightbox.addEventListener('click', (e) => {
+        if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
+    });
+});
   // Initialize the first Swiper
   var mySwiper = new Swiper('.mySwiper', {
       loop: true,
