@@ -24,6 +24,14 @@
     .hidden { display: none; }
     .accommodations-list, .amenities-list { list-style-type: none; padding: 0; }
     .icon { width: 1em; height: 1em; vertical-align: middle; }
+    .toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.toggle-content.is-visible {
+  max-height: 1000px; /* Adjust based on content */
+}
   </style>
 </head>
 <body class="font-serif">
