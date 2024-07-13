@@ -401,81 +401,85 @@ We love Roatan and think that it is such a special place, and we can’t wait to
   });
 
   function showLightbox() {
-    const lightbox = document.createElement('div');
-    lightbox.id = 'lightbox';
-    document.body.appendChild(lightbox);
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  document.body.appendChild(lightbox);
 
-    const content = document.createElement('div');
-    content.className = 'lightbox-content';
-    lightbox.appendChild(content);
+  const content = document.createElement('div');
+  content.className = 'lightbox-content';
+  lightbox.appendChild(content);
 
-    const img = document.createElement('img');
-    img.style.opacity = '0'; // Start with the image invisible
-    content.appendChild(img);
+  const img = document.createElement('img');
+  img.style.opacity = '0'; // Start with the image invisible
+  content.appendChild(img);
 
-    const prevButton = document.createElement('a');
-    prevButton.className = 'nav-button prev';
-    prevButton.textContent = '❮';
-    prevButton.href = '#';
-    content.appendChild(prevButton);
+  const prevButton = document.createElement('a');
+  prevButton.className = 'nav-button prev';
+  prevButton.textContent = '❮';
+  prevButton.href = '#';
+  content.appendChild(prevButton);
 
-    const nextButton = document.createElement('a');
-    nextButton.className = 'nav-button next';
-    nextButton.textContent = '❯';
-    nextButton.href = '#';
-    content.appendChild(nextButton);
+  const nextButton = document.createElement('a');
+  nextButton.className = 'nav-button next';
+  nextButton.textContent = '❯';
+  nextButton.href = '#';
+  content.appendChild(nextButton);
 
-    function updateImage() {
-      img.style.opacity = '0'; // Hide the image
-      img.src = images[currentIndex].src;
-      img.onload = function() {
-        img.style.opacity = '1'; // Show the image once it's loaded
-      };
-    }
+  function updateImage() {
+    img.style.opacity = '0'; // Hide the image
+    img.src = images[currentIndex].src;
+    img.onload = function() {
+      img.style.opacity = '1'; // Show the image once it's loaded
+    };
+  }
 
-    updateImage(); // Initial image load
+  updateImage(); // Initial image load
 
-    prevButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateImage();
-    });
+  prevButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent event from bubbling up to lightbox
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+  });
 
-    nextButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      currentIndex = (currentIndex + 1) % images.length;
-      updateImage();
-    });
+  nextButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent event from bubbling up to lightbox
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+  });
 
-    lightbox.addEventListener('click', (e) => {
-      if (e.target !== e.currentTarget) return;
+  // Move this event listener to the lightbox itself
+  lightbox.addEventListener('click', (e) => {
+    // Close the lightbox if the click is on the lightbox background
+    if (e.target === lightbox) {
       document.body.removeChild(lightbox);
-    });
-
-    // Swipe detection
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    lightbox.addEventListener('touchstart', (e) => {
-      touchstartX = e.changedTouches[0].screenX;
-    });
-
-    lightbox.addEventListener('touchend', (e) => {
-      touchendX = e.changedTouches[0].screenX;
-      handleSwipe();
-    });
-
-    function handleSwipe() {
-      if (touchendX < touchstartX) {
-        // Swipe left
-        currentIndex = (currentIndex + 1) % images.length;
-      }
-      if (touchendX > touchstartX) {
-        // Swipe right
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-      }
-      updateImage();
     }
+  });
+
+  // Swipe detection
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchendX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    if (touchendX < touchstartX) {
+      // Swipe left
+      currentIndex = (currentIndex + 1) % images.length;
+    }
+    if (touchendX > touchstartX) {
+      // Swipe right
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
+    updateImage();
   }
 }
   // Initialize the first Swiper
