@@ -63,7 +63,7 @@
     transform: scaleX(1);
   }
 
-     #lightbox {
+    #lightbox {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -75,13 +75,30 @@
     justify-content: center;
     align-items: center;
   }
+  #lightbox .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
+  }
   #lightbox img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 6px;
+    border-radius: 4px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
-    
+  #lightbox .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+  #lightbox .nav-button.prev { left: 10px; }
+  #lightbox .nav-button.next { right: 10px; }
   </style>
 </head>
 <body class="font-serif">
@@ -366,28 +383,89 @@ We love Roatan and think that it is such a special place, and we can’t wait to
  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
 
-    function initLightbox() {
-    document.querySelectorAll('.gallery-image').forEach(image => {
-      image.addEventListener('click', () => {
-        const lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        document.body.appendChild(lightbox);
+   htmlCopy<script>
+  // ... your existing scripts ...
 
-        const img = document.createElement('img');
-        img.src = image.src;
-        while (lightbox.firstChild) {
-          lightbox.removeChild(lightbox.firstChild);
-        }
-        lightbox.appendChild(img);
+  function initLightbox() {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.gallery-image');
 
-        lightbox.addEventListener('click', e => {
-          if (e.target !== e.currentTarget) return;
-          document.body.removeChild(lightbox);
-        });
+    images.forEach((image, index) => {
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showLightbox();
       });
     });
-  }
 
+    function showLightbox() {
+      const lightbox = document.createElement('div');
+      lightbox.id = 'lightbox';
+      document.body.appendChild(lightbox);
+
+      const content = document.createElement('div');
+      content.className = 'lightbox-content';
+      lightbox.appendChild(content);
+
+      const img = document.createElement('img');
+      img.src = images[currentIndex].src;
+      content.appendChild(img);
+
+      const prevButton = document.createElement('a');
+      prevButton.className = 'nav-button prev';
+      prevButton.textContent = '❮';
+      prevButton.href = '#';
+      content.appendChild(prevButton);
+
+      const nextButton = document.createElement('a');
+      nextButton.className = 'nav-button next';
+      nextButton.textContent = '❯';
+      nextButton.href = '#';
+      content.appendChild(nextButton);
+
+      prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        img.src = images[currentIndex].src;
+      });
+
+      nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % images.length;
+        img.src = images[currentIndex].src;
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target !== e.currentTarget) return;
+        document.body.removeChild(lightbox);
+      });
+
+      // Swipe detection
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      lightbox.addEventListener('touchstart', (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+
+      lightbox.addEventListener('touchend', (e) => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        if (touchendX < touchstartX) {
+          // Swipe left
+          currentIndex = (currentIndex + 1) % images.length;
+        }
+        if (touchendX > touchstartX) {
+          // Swipe right
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+        }
+        img.src = images[currentIndex].src;
+      }
+    }
+  }
   // Initialize the first Swiper
   var mySwiper = new Swiper('.mySwiper', {
       loop: true,
