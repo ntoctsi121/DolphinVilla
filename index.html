@@ -530,19 +530,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
   initLightbox();
 
-document.getElementById('menuLocation').addEventListener('click', function(e) {
-  e.preventDefault(); // Prevent default anchor behavior
-  const locationDetails = document.getElementById('locationDetails');
-  const toggleIcon = document.getElementById('toggleIcon');
-  
-  // Check if the details are already visible
-  if (locationDetails.classList.contains('hidden')) {
-    toggleLocationDetails(); // Call the function to show the details
-    document.location.href = '#location'; // Navigate to the Location section after toggling
-  } else {
-    // If already visible, just navigate to the section without toggling
-    document.location.href = '#location';
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to toggle location details
+  function toggleLocationDetails() {
+    var locationDetails = document.getElementById("locationDetails");
+    var toggleIcon = document.getElementById("toggleIcon");
+    if (locationDetails.classList.contains("hidden")) {
+      locationDetails.classList.remove("hidden");
+      toggleIcon.textContent = "-";
+    } else {
+      locationDetails.classList.add("hidden");
+      toggleIcon.textContent = "+";
+    }
   }
+
+  // Event listener for menu item click
+  document.getElementById('menuLocation').addEventListener('click', function(e) {
+    e.preventDefault(); // Prevent default anchor behavior
+    var locationSection = document.getElementById('location');
+    locationSection.scrollIntoView({behavior: "smooth"}); // Smooth scroll to section
+    
+    // Expand the section if it's not already expanded
+    var locationDetails = document.getElementById("locationDetails");
+    if (locationDetails.classList.contains("hidden")) {
+      toggleLocationDetails();
+    }
+  });
+
+  // Event listener for toggle container click
+  document.querySelector('#location .toggle-container').addEventListener('click', toggleLocationDetails);
 });
   
 document.getElementById('menuOwners').addEventListener('click', function(e) {
@@ -604,18 +620,7 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
     document.location.href = '#Reviews';
   }
 });
-        function toggleLocationDetails() {
-        var locationDetails = document.getElementById("locationDetails");
-        var toggleIcon = document.getElementById("toggleIcon");
-
-        if (locationDetails.classList.contains("hidden")) {
-          locationDetails.classList.remove("hidden");
-          toggleIcon.textContent = "-";
-        } else {
-          locationDetails.classList.add("hidden");
-          toggleIcon.textContent = "+";
-        }
-            }
+      
             function toggleOwnerDetails() {
         var ownerDetails = document.getElementById("OwnerDetails");
         var toggleIconOwners = document.getElementById("toggleIconOwners"); // Ensure unique ID for toggle icon
