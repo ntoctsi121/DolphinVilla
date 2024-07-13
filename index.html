@@ -577,14 +577,14 @@ function openSection(sectionId, iconId) {
 
         function toggleLocationDetails() {
         var locationDetails = document.getElementById("locationDetails");
-        var toggleIcon = document.getElementById("toggleIcon");
+        var toggleIconLocation = document.getElementById("toggleIconLocation");
 
         if (locationDetails.classList.contains("hidden")) {
           locationDetails.classList.remove("hidden");
-          toggleIcon.textContent = "-";
+          toggleIconLocation.textContent = "-";
         } else {
           locationDetails.classList.add("hidden");
-          toggleIcon.textContent = "+";
+          toggleIconLocation.textContent = "+";
         }
             }
             function toggleOwnerDetails() {
