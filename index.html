@@ -32,6 +32,38 @@
 .toggle-content.is-visible {
   max-height: 1000px; /* Adjust based on content */
 }
+
+      .nav-link {
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #3B82F6; /* Tailwind's blue-500 */
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link:hover {
+    color: #3B82F6; /* Tailwind's blue-500 */
+  }
+
+  .nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+    
   </style>
 </head>
 <body class="font-serif">
@@ -46,18 +78,18 @@
 <nav class="bg-white shadow-lg">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-center">
-      <div class="flex flex-wrap justify-center gap-2"> <!-- Updated classes for wrapping and spacing -->
+      <div class="flex flex-wrap justify-center gap-2">
         <!-- Menu Items -->
-        <a href="#gallery" class="hover:text-gray-800">| Gallery |</a>
-        <a href="#accommodations" class="hover:text-gray-800">| Accommodations |</a>
-        <a href="#amenities" class="hover:text-gray-800">| Amenities |</a>
-        <a href="#features" class="hover:text-gray-800">| Features |</a>
-        <a href="#location" id="menuLocation" class="hover:text-gray-800">| Location |</a>
-        <a href="#Owners" id="menuOwners" class="hover:text-gray-800">| Owners |</a>
-        <a href="#Calendar" id="menuCalendar" class="hover:text-gray-800">| Calendar |</a>
-        <a href="#Rates" id="menuRates" class="hover:text-gray-800">| Rates |</a>
-        <a href="#Reviews" id="menuReviews" class="hover:text-gray-800">| Reviews |</a>
-        <a href="#contact" class="hover:text-gray-800">| Book/Contact Us |</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#accommodations" class="nav-link">Accommodations</a>
+        <a href="#amenities" class="nav-link">Amenities</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#location" id="menuLocation" class="nav-link">Location</a>
+        <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
+        <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
+        <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
+        <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Book/Contact Us</a>
       </div>
     </div>
   </div>
@@ -489,10 +521,21 @@ document.getElementById('menuOwners').addEventListener('click', function(e) {
         }
     }
 
-  function toggleContent(OwnerDetails) {
-  const content = document.getElementById(OwnerDetails);
-  content.classList.toggle('is-visible');
-}
+ function animateNavLinks() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach((link, index) => {
+      link.style.opacity = '0';
+      link.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        link.style.opacity = '1';
+        link.style.transform = 'translateY(0)';
+      }, 100 * index); // Stagger the animation
+    });
+  }
+
+  // Call the function when the page loads
+  window.addEventListener('load', animateNavLinks);
         </script>
     </body>
     </html>
