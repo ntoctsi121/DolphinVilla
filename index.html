@@ -197,12 +197,12 @@
     <div class="swiper accommodationsSwiper mt-8">
         <div class="swiper-wrapper">
             <!-- Swiper slides with images for accommodations -->
-            <div class="swiper-slide"><img src="images/8.jpg" alt="Dolphin Villa"class="gallery-image"></div>
-            <div class="swiper-slide"><img src="images/6.jpg" alt="Dolphia Villa"class="gallery-image"></div>
-            <div class="swiper-slide"><img src="images/13.jpg" alt="Dolphin Villa"class="gallery-image"></div>
-            <div class="swiper-slide"><img src="images/25.jpg" alt="Dolphin Villa Roatan"class="gallery-image"></div>
-            <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"class="gallery-image"></div>
-            <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"class="gallery-image"></div>
+            <div class="swiper-slide"><img src="images/8.jpg" alt="Dolphin Villa" class="gallery2-image"></div>
+            <div class="swiper-slide"><img src="images/6.jpg" alt="Dolphia Villa" class="gallery2-image"></div>
+            <div class="swiper-slide"><img src="images/13.jpg" alt="Dolphin Villa" class="gallery2-image"></div>
+            <div class="swiper-slide"><img src="images/25.jpg" alt="Dolphin Villa Roatan" class="gallery2-image"></div>
+            <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands" class="gallery2-image"></div>
+            <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa" class="gallery2-image"></div>
             <!-- Additional swiper slides as needed -->
         </div>
         <!-- Unique Pagination for this Swiper -->
@@ -398,6 +398,18 @@ We love Roatan and think that it is such a special place, and we can’t wait to
   function initLightbox() {
     let currentIndex = 0;
     const images = document.querySelectorAll('.gallery-image');
+
+    images.forEach((image, index) => {
+      image.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showLightbox();
+      });
+    });
+
+    function initLightbox() {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.gallery2-image');
 
     images.forEach((image, index) => {
       image.addEventListener('click', (e) => {
