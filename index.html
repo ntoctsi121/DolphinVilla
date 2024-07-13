@@ -20,7 +20,7 @@
     .features-background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('images/Dolphin.png'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.2; z-index: -1; }
     .features-content { position: relative; z-index: 1; }
     .toggle-container { display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%; }
-    #toggleIcon, #toggleIconOwners, #toggleIconCal, #toggleIconRate, #toggleIconReviews { font-weight: bold; font-size: 24px; margin-right: 8px; }
+    #toggleIcon, #toggleIconOwners, #toggleIconCal, #toggleIconRate, #toggleIconReviews, #toggleIconLocation { font-weight: bold; font-size: 24px; margin-right: 8px; }
     .hidden { display: none; }
     .accommodations-list, .amenities-list { list-style-type: none; padding: 0; }
     .icon { width: 1em; height: 1em; vertical-align: middle; }
@@ -286,7 +286,7 @@
    <section id="location" class="py-8">
   <div class="container mx-auto px-4">
     <div class="toggle-container" onclick="toggleLocationDetails()">
-      <div id="toggleIcon">+</div>
+      <div id="toggleIconLocation">+</div>
       <h2 class="text-2xl font-bold">Location</h2>
     </div>
     <div id="locationDetails" class="hidden text-center">
@@ -416,13 +416,13 @@ We love Roatan and think that it is such a special place, and we can’t wait to
 <script>
 function toggleLocationDetails() {
     var locationDetails = document.getElementById("locationDetails");
-    var toggleIcon = document.getElementById("toggleIcon");
+    var toggleIconLocation = document.getElementById("toggleIconLocation");
     if (locationDetails.classList.contains("hidden")) {
         locationDetails.classList.remove("hidden");
-        toggleIcon.textContent = "-";
+        toggleIconLocation.textContent = "-";
     } else {
         locationDetails.classList.add("hidden");
-        toggleIcon.textContent = "+";
+        toggleIconLocation.textContent = "+";
     }
 }
              function toggleOwnerDetails() {
@@ -565,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Event listener for menu item click
   document.getElementById('menuLocation').addEventListener('click', function(e) {
     e.preventDefault(); // Prevent default anchor behavior
-    var locationSection = document.getElementById('location');
+    var locationSection = document.getElementById('locationDetails');
     locationSection.scrollIntoView({behavior: "smooth"}); // Smooth scroll to section
     
     // Expand the section if it's not already expanded
