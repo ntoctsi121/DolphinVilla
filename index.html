@@ -563,17 +563,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 // Event listener for menu item click
+
+
   document.getElementById('menuLocation').addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default anchor behavior
-    var locationSection = document.getElementById('locationDetails');
-    locationSection.scrollIntoView({behavior: "smooth"}); // Smooth scroll to section
+  e.preventDefault(); // Prevent default anchor behavior
+  const locationDetails = document.getElementById('locationDetails');
+  const toggleIconLocation = document.getElementById('toggleIconLocation');
+  // Check if the details are already visible
+  if (locationDetails.classList.contains('hidden')) {
+    toggleLocationDetails(); // Call the function to show the details
+    document.location.href = '#Location'; // Navigate to the Location section after toggling
+  } else {
+    // If already visible, just navigate to the section without toggling
+    document.location.href = '#Location';
+  }
+});
     
-    // Expand the section if it's not already expanded
-    var locationDetails = document.getElementById("locationDetails");
-    if (locationDetails.classList.contains("hidden")) {
-      toggleLocationDetails();
-    }
-  });
 document.getElementById('menuOwners').addEventListener('click', function(e) {
   e.preventDefault(); // Prevent default anchor behavior
   const ownerDetails = document.getElementById('OwnerDetails');
