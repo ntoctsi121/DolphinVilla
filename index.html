@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beach Villa in Roatan</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
   <style>
-    /* General Swiper Styles */
-    .swiper-container, .swiper {
-      width: 100%;
-      height: 100%;
-    }
+    /* 
+      GLOBAL SWIPER SETTINGS 
+      (We’ll apply partial slides + fade for main sliders,
+       and smaller thumbnails for the thumbs sliders)
+    */
+
+    /* Main slider: show partial slides + fade out prev/next slides */
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
+      background: #fff;
     }
     .swiper-slide img {
-      display: block;
-      width: auto;
-      max-height: 80vh;
-      max-width: 100%;
-      margin: auto;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-height: 80vh; /* Adjust if you want a different max height */
     }
-    /* Gallery Thumbs Styles */
-    .gallery-thumbs .swiper-slide {
-      height: 80px; /* Adjust thumbnail height as needed */
-      opacity: 0.4;
+
+    /* Fade out next/prev slides in main slider */
+    .swiper-slide-prev,
+    .swiper-slide-next {
+      opacity: 0.5;
+      transform: scale(0.9);
+    }
+
+    /* Thumbnails slider: ensure we see the full picture */
+    .gallery-thumbs .swiper-slide,
+    .accommodations-thumbs .swiper-slide {
+      width: 100px;  /* Thumbnail width */
+      height: 80px;  /* Thumbnail height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
+      opacity: 0.4;
     }
-    .gallery-thumbs .swiper-slide-thumb-active {
+    .gallery-thumbs .swiper-slide img,
+    .accommodations-thumbs .swiper-slide img {
+      width: auto;
+      height: 100%;
+      object-fit: contain; /* Show entire image within the thumbnail */
+      background-color: #f5f5f5; /* Optional - helps fill background */
+    }
+    .gallery-thumbs .swiper-slide-thumb-active,
+    .accommodations-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
+
     /* Hero Section */
     .hero-background::before {
       content: '';
@@ -54,6 +75,7 @@
       position: relative;
       z-index: 1;
     }
+
     /* Features Section */
     .features-background {
       position: relative;
@@ -77,6 +99,7 @@
       position: relative;
       z-index: 1;
     }
+
     /* Toggle and Nav Link Styles */
     .toggle-container {
       display: flex;
@@ -85,14 +108,28 @@
       cursor: pointer;
       width: 100%;
     }
-    #toggleIcon, #toggleIconOwners, #toggleIconCal, #toggleIconRate, #toggleIconReviews, #toggleIconLocation {
+    #toggleIconLocation,
+    #toggleIconOwners,
+    #toggleIconCal,
+    #toggleIconRate,
+    #toggleIconReviews {
       font-weight: bold;
       font-size: 24px;
       margin-right: 8px;
     }
-    .hidden { display: none; }
-    .accommodations-list, .amenities-list { list-style-type: none; padding: 0; }
-    .icon { width: 1em; height: 1em; vertical-align: middle; }
+    .hidden {
+      display: none;
+    }
+    .accommodations-list,
+    .amenities-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+    }
     .toggle-content {
       max-height: 0;
       overflow: hidden;
@@ -101,6 +138,7 @@
     .toggle-content.is-visible {
       max-height: 1000px;
     }
+
     .nav-link {
       position: relative;
       color: #333;
@@ -127,6 +165,7 @@
       visibility: visible;
       transform: scaleX(1);
     }
+
     /* Lightbox Styles */
     .lightbox {
       position: fixed;
@@ -169,14 +208,19 @@
       border-radius: 4px;
       z-index: 1010;
     }
-    .lightbox .nav-button.prev { left: 15px; }
-    .lightbox .nav-button.next { right: 15px; }
+    .lightbox .nav-button.prev {
+      left: 15px;
+    }
+    .lightbox .nav-button.next {
+      right: 15px;
+    }
     .lightbox .nav-button:hover {
       background-color: rgba(255, 255, 255, 0.8);
     }
   </style>
 </head>
 <body class="font-serif">
+
   <!-- Hero Section -->
   <section id="hero" class="hero-background text-black bg-cover bg-center relative">
     <div class="hero-content container mx-auto p-4 text-center">
@@ -190,6 +234,7 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
         <div class="flex flex-wrap justify-center gap-1">
+          <!-- Menu Items -->
           <a href="#gallery" class="nav-link">Gallery</a>
           <a href="#accommodations" class="nav-link">Accommodations</a>
           <a href="#amenities" class="nav-link">Amenities</a>
@@ -205,21 +250,21 @@
     </div>
   </nav>
 
-  <!-- Gallery Section with Main Slider and Thumbs -->
+  <!-- GALLERY SECTION -->
   <section id="gallery" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-8">Ocean One Dolphin Villa</h2>
     <!-- Main Gallery Slider -->
     <div class="swiper gallery-top">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>  
-        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>  
-        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>  
+        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise"></div>
         <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
         <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
-        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>  
-        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>  
-        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa!"></div>
+        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>
+        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>
+        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/4.jpg" alt="Dolphin Villa"></div>
@@ -236,21 +281,23 @@
         <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
       </div>
+      <!-- Navigation arrows -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
+
     <!-- Thumbnails Slider -->
     <div class="swiper gallery-thumbs mt-4">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>  
-        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>  
-        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>  
+        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise"></div>
         <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
         <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
-        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>  
-        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>  
-        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa!"></div>
+        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>
+        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>
+        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/4.jpg" alt="Dolphin Villa"></div>
@@ -270,9 +317,11 @@
     </div>
   </section>
 
-  <!-- Accommodations Section -->
+  <!-- ACCOMMODATIONS SECTION -->
   <section id="accommodations" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
+
+    <!-- Accommodations List -->
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
       <div class="accommodations">
         <ul class="accommodations-list">
@@ -284,23 +333,36 @@
         </ul>
       </div>
     </div>
-    <!-- Accommodations Swiper -->
-    <div class="swiper accommodationsSwiper mt-8">
+
+    <!-- Main Accommodations Slider -->
+    <div class="swiper accommodations-top mt-8">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="images/8.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/6.jpg" alt="Dolphia Villa"></div>
+        <div class="swiper-slide"><img src="images/6.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/13.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/25.jpg" alt="Dolphin Villa Roatan"></div>
         <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"></div>
         <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"></div>
       </div>
-      <div class="swiper-pagination swiper-paginationAcc"></div>
-      <div class="swiper-button-next swiper-button-nextAcc"></div>
+      <!-- Navigation arrows -->
       <div class="swiper-button-prev swiper-button-prevAcc"></div>
+      <div class="swiper-button-next swiper-button-nextAcc"></div>
+    </div>
+
+    <!-- Thumbnails Slider for Accommodations -->
+    <div class="swiper accommodations-thumbs mt-4">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/8.jpg" alt="Dolphin Villa"></div>
+        <div class="swiper-slide"><img src="images/6.jpg" alt="Dolphin Villa"></div>
+        <div class="swiper-slide"><img src="images/13.jpg" alt="Dolphin Villa"></div>
+        <div class="swiper-slide"><img src="images/25.jpg" alt="Dolphin Villa Roatan"></div>
+        <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"></div>
+        <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"></div>
+      </div>
     </div>
   </section>
 
-  <!-- Amenities Section -->
+  <!-- AMENITIES SECTION -->
   <section id="amenities" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-8">Amenities</h2>
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
@@ -326,17 +388,17 @@
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- FEATURES SECTION -->
   <section id="features" class="container mx-auto p-4 features-background mt-8">
     <h2 class="text-2xl font-bold text-center mb-8">Features</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 features-content">
       <div class="feature-item">
         <h3 class="text-xl font-semibold mb-2">Beachfront Access</h3>
-        <p>Steps away from West Bay Beach, the premiere beach in Roatan. Access through Paradise Beach Resort to beach loungers with towel service, cushions, umbrellas, and security guards provided at no additional charge.</p>
+        <p>Steps away from West Bay Beach, the premiere beach in Roatan. Access through Paradise Beach Resort to beach loungers with towel service, cushions, umbrellas, and security guards at no additional charge.</p>
       </div>
       <div class="feature-item">
         <h3 class="text-xl font-semibold mb-2">Modern Pool</h3>
-        <p>A stunning modern pool just steps from back porch with a sunbathing area, exclusive only to the 10 villas of the Ocean One Property.</p>
+        <p>A stunning modern pool just steps from the back porch with a sunbathing area, exclusive only to the 10 villas of the Ocean One Property.</p>
       </div>
       <div class="feature-item">
         <h3 class="text-xl font-semibold mb-2">Rooftop Terrace</h3>
@@ -361,7 +423,7 @@
     </div>
   </section>
 
-  <!-- Location Section -->
+  <!-- LOCATION SECTION -->
   <section id="location" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleLocationDetails()">
@@ -380,7 +442,7 @@
     </div>
   </section>
 
-  <!-- Owners Section -->
+  <!-- OWNERS SECTION -->
   <section id="Owners" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleOwnerDetails()">
@@ -400,7 +462,7 @@
     </div>
   </section>
 
-  <!-- Calendar Section -->
+  <!-- CALENDAR SECTION -->
   <section id="Calendar" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleCalDetails()">
@@ -414,7 +476,7 @@
     </div>
   </section>
 
-  <!-- Rates Section -->
+  <!-- RATES SECTION -->
   <section id="Rates" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleRateDetails()">
@@ -427,7 +489,7 @@
     </div>
   </section>
 
-  <!-- Reviews Section -->
+  <!-- REVIEWS SECTION -->
   <section id="Reviews" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleReviewsDetails()">
@@ -444,7 +506,7 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- CONTACT SECTION -->
   <section id="contact" class="bg-gray-100 py-8">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
@@ -452,8 +514,10 @@
         <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
         <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
           <a href="https://oceanoneroatan.guestybookings.com/properties/65f893ab29762200118d91f4" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16l5.447 2.724A1 1 0 0015 20.382V11.618a1 1 0 00-.553-.894L9 8m0 12V4m0 0l6-3 6 3m-6 3v16"></path>
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16l5.447 2.724A1 1 0 0015 20.382V11.618a1 1 0 00-.553-.894L9 8m0 12V4m0 0l6-3 6 3m-6 3v16"/>
             </svg>
             Please Click Here to Book our Villa on Ocean One Website
           </a>
@@ -463,20 +527,26 @@
       <p class="text-lg text-center mb-6">Please contact us with any questions you may have!</p>
       <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-8">
         <a href="mailto:DolphinVillaRoatan@gmail.com" class="flex items-center text-blue-500 hover:text-blue-700">
-          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a7.5 7.5 0 01-15 0V12m15-4v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"></path>
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a7.5 7.5 0 01-15 0V12m15-4v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"/>
           </svg>
           DolphinVillaRoatan@gmail.com
         </a>
         <a href="https://www.facebook.com/profile.php?id=61557083972658" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 5.936 4.325 10.861 10 11.85V15.386h-3v-3.313h3V9.5c0-3 1.792-4.668 4.533-4.668 1.312 0 2.686.237 2.686.237v2.961h-1.513c-1.494 0-1.954.93-1.954 1.886v2.28h3.286l-.525 3.313h-2.761v8.537c5.675-.989 10-5.914 10-11.85z"/>
+          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 5.936 4.325 10.861 10 11.85V15.386h-3v-3.313h3V9.5c0-3 1.792-4.668 4.533-4.668 1.312 0 2.686.237 2.686.237v2.961h-1.513c-1.494 0-1.954.93-1.954 1.886v2.28h3.286l-.525 3.313h-2.761v8.537c5.675-.989 10-5.914 10-11.85z"/>
           </svg>
           Message us on Facebook
         </a>
         <a href="https://www.instagram.com/dolphinvillaroatan/" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
-          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-10-67.7-24.1-94.6-16.5-31.8-40.9-56.2-72.7-72.7-27-14.1-58.7-22.4-94.6-24.1C273.5 0 271 0 268.4 0h-88.8c-2.6 0-5.1.1-7.6.2-35.9 1.7-67.7 10-94.6 24.1-31.8 16.5-56.2 40.9-72.7 72.7-14.1 27-22.4 58.7-24.1 94.6-.1 2.5-.2 5-.2 7.6v88.8c0 2.6.1 5.1.2 7.6 1.7 35.9 10 67.7 24.1 94.6 16.5 31.8 40.9 56.2 72.7 72.7 27 14.1 58.7 22.4 94.6 24.1 2.5.1 5 .2 7.6.2h88.8c2.6 0 5.1-.1 7.6-.2 35.9-1.7 67.7-10 94.6-24.1 31.8-16.5 56.2-40.9 72.7-72.7 14.1-27 22.4-58.7 24.1-94.6.1-2.5.2-5 .2-7.6v-88.8c0-2.6-.1-5.1-.2-7.6zM224.1 338c-45.4 0-82.1-36.7-82.1-82.1s36.7-82.1 82.1-82.1 82.1 36.7 82.1 82.1-36.7 82.1-82.1 82.1zm124.6-82.1c0-16.6 13.5-30.1 30.1-30.1s30.1 13.5 30.1 30.1-13.5 30.1-30.1 30.1-30.1-13.5-30.1-30.1zm47.6 124.6c0 25.9-21 46.9-46.9 46.9H99.6c-25.9 0-46.9-21-46.9-46.9V192.3c0-25.9 21-46.9 46.9-46.9h249.2c25.9 0 46.9 21 46.9 46.9v187.2z"/>
+          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 448 512"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-10-67.7-24.1-94.6-16.5-31.8-40.9-56.2-72.7-72.7-27-14.1-58.7-22.4-94.6-24.1C273.5 0 271 0 268.4 0h-88.8c-2.6 0-5.1.1-7.6.2-35.9 1.7-67.7 10-94.6 24.1-31.8 16.5-56.2 40.9-72.7 72.7-14.1 27-22.4 58.7-24.1 94.6-.1 2.5-.2 5-.2 7.6v88.8c0 2.6.1 5.1.2 7.6 1.7 35.9 10 67.7 24.1 94.6 16.5 31.8 40.9 56.2 72.7 72.7 27 14.1 58.7 22.4 94.6 24.1 2.5.1 5 .2 7.6.2h88.8c2.6 0 5.1-.1 7.6-.2 35.9-1.7 67.7-10 94.6-24.1 31.8-16.5 56.2-40.9 72.7-72.7 14.1-27 22.4-58.7 24.1-94.6.1-2.5.2-5 .2-7.6v-88.8c0-2.6-.1-5.1-.2-7.6zM224.1 338c-45.4 0-82.1-36.7-82.1-82.1s36.7-82.1 82.1-82.1 82.1 36.7 82.1 82.1-36.7 82.1-82.1 82.1zm124.6-82.1c0-16.6 13.5-30.1 30.1-30.1s30.1 13.5 30.1 30.1-13.5 30.1-30.1 30.1-30.1-13.5-30.1-30.1zm47.6 124.6c0 25.9-21 46.9-46.9 46.9H99.6c-25.9 0-46.9-21-46.9-46.9V192.3c0-25.9 21-46.9 46.9-46.9h249.2c25.9 0 46.9 21 46.9 46.9v187.2z"/>
           </svg>
           Follow us on Instagram
         </a>
@@ -484,7 +554,7 @@
     </div>
   </section>
 
-  <!-- Gallery Lightbox (Retained as before) -->
+  <!-- Lightbox for Gallery -->
   <div id="galleryLightbox" class="lightbox">
     <div class="lightbox-content">
       <img src="" alt="" id="galleryLightboxImage">
@@ -493,7 +563,7 @@
     </div>
   </div>
 
-  <!-- Accommodations Lightbox (Retained as before) -->
+  <!-- Lightbox for Accommodations -->
   <div id="accommodationsLightbox" class="lightbox">
     <div class="lightbox-content">
       <img src="" alt="" id="accommodationsLightboxImage">
@@ -502,7 +572,7 @@
     </div>
   </div>
 
-  <!-- Swiper and Custom Scripts -->
+  <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     function toggleLocationDetails() {
@@ -560,6 +630,7 @@
         toggleIconReviews.textContent = "+";
       }
     }
+
     function animateNavLinks() {
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach((link, index) => {
@@ -572,51 +643,66 @@
         }, 100 * index);
       });
     }
+
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Gallery with Thumbs
+      /* ----- MAIN GALLERY ----- */
       var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
         slidesPerView: 5,
         freeMode: true,
         watchSlidesVisibility: true,
-        watchSlidesProgress: true,
+        watchSlidesProgress: true
       });
       var galleryTop = new Swiper('.gallery-top', {
         spaceBetween: 10,
         loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.2, /* partially show prev/next */
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-prev'
         },
         thumbs: {
-          swiper: galleryThumbs,
+          swiper: galleryThumbs
         },
-      });
-
-      // Accommodations Swiper (remains unchanged)
-      var accommodationsSwiper = new Swiper('.accommodationsSwiper', {
-        loop: true,
-        spaceBetween: 30,
-        centeredSlides: true,
         autoplay: {
           delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-paginationAcc',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-nextAcc',
-          prevEl: '.swiper-button-prevAcc',
-        },
+          disableOnInteraction: false
+        }
       });
 
-      // Lightbox functionality for Gallery
+      /* ----- ACCOMMODATIONS GALLERY ----- */
+      var accommodationsThumbs = new Swiper('.accommodations-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true
+      });
+      var accommodationsTop = new Swiper('.accommodations-top', {
+        spaceBetween: 10,
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.2, /* partially show prev/next */
+        navigation: {
+          nextEl: '.swiper-button-nextAcc',
+          prevEl: '.swiper-button-prevAcc'
+        },
+        thumbs: {
+          swiper: accommodationsThumbs
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        }
+      });
+
+      /* ----- LIGHTBOX FUNCTIONALITY FOR MAIN GALLERY ----- */
       const galleryLightbox = document.getElementById('galleryLightbox');
       const galleryLightboxImage = document.getElementById('galleryLightboxImage');
-      const galleryImages = document.querySelectorAll('#gallery .gallery-top img');
+      const galleryImages = document.querySelectorAll('#gallery .gallery-top .swiper-slide img');
       let galleryCurrentIndex = 0;
+
       function openLightbox(lightbox, lightboxImage, images, index) {
         lightboxImage.src = images[index].src;
         lightbox.style.display = 'flex';
@@ -631,12 +717,14 @@
         lightboxImage.src = images[currentIndex].src;
         return currentIndex;
       }
+
       galleryImages.forEach((img, index) => {
         img.addEventListener('click', () => {
           galleryCurrentIndex = index;
           openLightbox(galleryLightbox, galleryLightboxImage, galleryImages, galleryCurrentIndex);
         });
       });
+
       document.getElementById('galleryPrevButton').addEventListener('click', (e) => {
         e.preventDefault();
         galleryCurrentIndex = navigateLightbox(-1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
@@ -645,11 +733,16 @@
         e.preventDefault();
         galleryCurrentIndex = navigateLightbox(1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
       });
-      // Lightbox functionality for Accommodations
+      galleryLightbox.addEventListener('click', (e) => {
+        if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
+      });
+
+      /* ----- LIGHTBOX FUNCTIONALITY FOR ACCOMMODATIONS GALLERY ----- */
       const accommodationsLightbox = document.getElementById('accommodationsLightbox');
       const accommodationsLightboxImage = document.getElementById('accommodationsLightboxImage');
-      const accommodationsImages = document.querySelectorAll('#accommodations .gallery-image');
+      const accommodationsImages = document.querySelectorAll('#accommodations .accommodations-top .swiper-slide img');
       let accommodationsCurrentIndex = 0;
+
       accommodationsImages.forEach((img, index) => {
         img.addEventListener('click', () => {
           accommodationsCurrentIndex = index;
@@ -664,14 +757,11 @@
         e.preventDefault();
         accommodationsCurrentIndex = navigateLightbox(1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
       });
-      // Close lightboxes when clicking outside the image
-      galleryLightbox.addEventListener('click', (e) => {
-        if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
-      });
       accommodationsLightbox.addEventListener('click', (e) => {
         if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
       });
-      // Navigation Menu click events for toggling sections
+
+      /* ----- NAV MENU BEHAVIOR FOR TOGGLING SECTIONS ----- */
       document.getElementById('menuLocation').addEventListener('click', function(e) {
         e.preventDefault();
         const locationDetails = document.getElementById('locationDetails');
@@ -722,6 +812,8 @@
           document.location.href = '#Reviews';
         }
       });
+
+      /* Animate nav links on load */
       animateNavLinks();
     });
   </script>
