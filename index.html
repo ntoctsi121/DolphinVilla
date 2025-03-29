@@ -9,38 +9,42 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
   <style>
-    /* 
-      GLOBAL SWIPER SETTINGS 
-      (We’ll apply partial slides + fade for main sliders,
-       and smaller thumbnails for the thumbs sliders)
-    */
-
-    /* Main slider: show partial slides + fade out prev/next slides */
+    /* =========================
+       GLOBAL SWIPER STYLES
+    ========================= */
+    /* Main slider container fixed to 80vh so that all slides (including partials) share the same height */
+    .gallery-top,
+    .accommodations-top {
+      height: 80vh;
+    }
+    /* Force images in the main sliders to fill the container */
+    .gallery-top .swiper-slide img,
+    .accommodations-top .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Main slider slides default styling */
     .swiper-slide {
       display: flex;
       justify-content: center;
       align-items: center;
       background: #fff;
     }
-    .swiper-slide img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      max-height: 80vh; /* Adjust if you want a different max height */
-    }
-
-    /* Fade out next/prev slides in main slider */
+    /* Fade & scale effect on partial slides */
     .swiper-slide-prev,
     .swiper-slide-next {
       opacity: 0.5;
       transform: scale(0.9);
     }
-
-    /* Thumbnails slider: ensure we see the full picture */
+    /* =========================
+       THUMBNAILS STYLES
+    ========================= */
+    /* Thumbs for both galleries – set fixed size so up to 10 show neatly */
     .gallery-thumbs .swiper-slide,
     .accommodations-thumbs .swiper-slide {
-      width: 100px;  /* Thumbnail width */
-      height: 80px;  /* Thumbnail height */
+      width: 80px;
+      height: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -51,22 +55,20 @@
     .accommodations-thumbs .swiper-slide img {
       width: auto;
       height: 100%;
-      object-fit: contain; /* Show entire image within the thumbnail */
-      background-color: #f5f5f5; /* Optional - helps fill background */
+      object-fit: contain;
+      background-color: #f5f5f5;
     }
     .gallery-thumbs .swiper-slide-thumb-active,
     .accommodations-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
-
-    /* Hero Section */
+    /* =========================
+       HERO & FEATURES SECTIONS
+    ========================= */
     .hero-background::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: url('images/pano.jpg') center center / cover no-repeat;
       opacity: 0.5;
       z-index: -1;
@@ -75,8 +77,6 @@
       position: relative;
       z-index: 1;
     }
-
-    /* Features Section */
     .features-background {
       position: relative;
       z-index: 0;
@@ -84,10 +84,7 @@
     .features-background::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background-image: url('images/Dolphin.png');
       background-size: cover;
       background-position: center;
@@ -99,8 +96,9 @@
       position: relative;
       z-index: 1;
     }
-
-    /* Toggle and Nav Link Styles */
+    /* =========================
+       NAVIGATION & TOGGLES
+    ========================= */
     .toggle-container {
       display: flex;
       justify-content: center;
@@ -138,7 +136,6 @@
     .toggle-content.is-visible {
       max-height: 1000px;
     }
-
     .nav-link {
       position: relative;
       color: #333;
@@ -165,8 +162,9 @@
       visibility: visible;
       transform: scaleX(1);
     }
-
-    /* Lightbox Styles */
+    /* =========================
+       LIGHTBOX STYLES
+    ========================= */
     .lightbox {
       position: fixed;
       z-index: 1000;
@@ -221,7 +219,7 @@
 </head>
 <body class="font-serif">
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section id="hero" class="hero-background text-black bg-cover bg-center relative">
     <div class="hero-content container mx-auto p-4 text-center">
       <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
@@ -229,12 +227,11 @@
     </div>
   </section>
 
-  <!-- Navigation Menu -->
+  <!-- NAVIGATION MENU -->
   <nav class="bg-white shadow-lg">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
         <div class="flex flex-wrap justify-center gap-1">
-          <!-- Menu Items -->
           <a href="#gallery" class="nav-link">Gallery</a>
           <a href="#accommodations" class="nav-link">Accommodations</a>
           <a href="#amenities" class="nav-link">Amenities</a>
@@ -281,11 +278,10 @@
         <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
       </div>
-      <!-- Navigation arrows -->
+      <!-- Navigation Arrows -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
-
     <!-- Thumbnails Slider -->
     <div class="swiper gallery-thumbs mt-4">
       <div class="swiper-wrapper">
@@ -320,7 +316,6 @@
   <!-- ACCOMMODATIONS SECTION -->
   <section id="accommodations" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-8">Accommodations</h2>
-
     <!-- Accommodations List -->
     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
       <div class="accommodations">
@@ -333,7 +328,6 @@
         </ul>
       </div>
     </div>
-
     <!-- Main Accommodations Slider -->
     <div class="swiper accommodations-top mt-8">
       <div class="swiper-wrapper">
@@ -344,11 +338,10 @@
         <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"></div>
         <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"></div>
       </div>
-      <!-- Navigation arrows -->
+      <!-- Navigation Arrows for Accommodations -->
       <div class="swiper-button-prev swiper-button-prevAcc"></div>
       <div class="swiper-button-next swiper-button-nextAcc"></div>
     </div>
-
     <!-- Thumbnails Slider for Accommodations -->
     <div class="swiper accommodations-thumbs mt-4">
       <div class="swiper-wrapper">
@@ -554,7 +547,7 @@
     </div>
   </section>
 
-  <!-- Lightbox for Gallery -->
+  <!-- LIGHTBOX FOR GALLERY -->
   <div id="galleryLightbox" class="lightbox">
     <div class="lightbox-content">
       <img src="" alt="" id="galleryLightboxImage">
@@ -563,7 +556,7 @@
     </div>
   </div>
 
-  <!-- Lightbox for Accommodations -->
+  <!-- LIGHTBOX FOR ACCOMMODATIONS -->
   <div id="accommodationsLightbox" class="lightbox">
     <div class="lightbox-content">
       <img src="" alt="" id="accommodationsLightboxImage">
@@ -572,9 +565,10 @@
     </div>
   </div>
 
-  <!-- Swiper JS -->
+  <!-- SWIPER & CUSTOM SCRIPTS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
+    // Toggle functions for various sections
     function toggleLocationDetails() {
       var locationDetails = document.getElementById("locationDetails");
       var toggleIconLocation = document.getElementById("toggleIconLocation");
@@ -630,7 +624,6 @@
         toggleIconReviews.textContent = "+";
       }
     }
-
     function animateNavLinks() {
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach((link, index) => {
@@ -645,19 +638,20 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      /* ----- MAIN GALLERY ----- */
+      /* ----- GALLERY THUMBS (up to 10 thumbnails) ----- */
       var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
-        slidesPerView: 5,
+        slidesPerView: 10,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
+      /* ----- MAIN GALLERY SLIDER ----- */
       var galleryTop = new Swiper('.gallery-top', {
-        spaceBetween: 10,
+        spaceBetween: 3,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.2, /* partially show prev/next */
+        slidesPerView: 1.2,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -671,19 +665,20 @@
         }
       });
 
-      /* ----- ACCOMMODATIONS GALLERY ----- */
+      /* ----- ACCOMMODATIONS THUMBS (up to 10 thumbnails) ----- */
       var accommodationsThumbs = new Swiper('.accommodations-thumbs', {
         spaceBetween: 10,
-        slidesPerView: 5,
+        slidesPerView: 10,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
+      /* ----- MAIN ACCOMMODATIONS SLIDER ----- */
       var accommodationsTop = new Swiper('.accommodations-top', {
-        spaceBetween: 10,
+        spaceBetween: 3,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.2, /* partially show prev/next */
+        slidesPerView: 1.2,
         navigation: {
           nextEl: '.swiper-button-nextAcc',
           prevEl: '.swiper-button-prevAcc'
@@ -697,12 +692,11 @@
         }
       });
 
-      /* ----- LIGHTBOX FUNCTIONALITY FOR MAIN GALLERY ----- */
+      /* ----- LIGHTBOX FUNCTIONALITY FOR GALLERY ----- */
       const galleryLightbox = document.getElementById('galleryLightbox');
       const galleryLightboxImage = document.getElementById('galleryLightboxImage');
       const galleryImages = document.querySelectorAll('#gallery .gallery-top .swiper-slide img');
       let galleryCurrentIndex = 0;
-
       function openLightbox(lightbox, lightboxImage, images, index) {
         lightboxImage.src = images[index].src;
         lightbox.style.display = 'flex';
@@ -717,14 +711,12 @@
         lightboxImage.src = images[currentIndex].src;
         return currentIndex;
       }
-
       galleryImages.forEach((img, index) => {
         img.addEventListener('click', () => {
           galleryCurrentIndex = index;
           openLightbox(galleryLightbox, galleryLightboxImage, galleryImages, galleryCurrentIndex);
         });
       });
-
       document.getElementById('galleryPrevButton').addEventListener('click', (e) => {
         e.preventDefault();
         galleryCurrentIndex = navigateLightbox(-1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
@@ -737,12 +729,11 @@
         if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
       });
 
-      /* ----- LIGHTBOX FUNCTIONALITY FOR ACCOMMODATIONS GALLERY ----- */
+      /* ----- LIGHTBOX FUNCTIONALITY FOR ACCOMMODATIONS ----- */
       const accommodationsLightbox = document.getElementById('accommodationsLightbox');
       const accommodationsLightboxImage = document.getElementById('accommodationsLightboxImage');
       const accommodationsImages = document.querySelectorAll('#accommodations .accommodations-top .swiper-slide img');
       let accommodationsCurrentIndex = 0;
-
       accommodationsImages.forEach((img, index) => {
         img.addEventListener('click', () => {
           accommodationsCurrentIndex = index;
@@ -761,7 +752,7 @@
         if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
       });
 
-      /* ----- NAV MENU BEHAVIOR FOR TOGGLING SECTIONS ----- */
+      /* ----- NAV MENU TOGGLE EVENTS ----- */
       document.getElementById('menuLocation').addEventListener('click', function(e) {
         e.preventDefault();
         const locationDetails = document.getElementById('locationDetails');
@@ -813,7 +804,7 @@
         }
       });
 
-      /* Animate nav links on load */
+      /* Animate navigation links */
       animateNavLinks();
     });
   </script>
