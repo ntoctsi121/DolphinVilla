@@ -31,38 +31,39 @@
       align-items: center;
       background: #fff;
     }
-    /* Fade & scale effect on partial slides */
+    /* Fade effect on partial slides – you can adjust the scale if needed */
     .swiper-slide-prev,
     .swiper-slide-next {
       opacity: 0.5;
-      transform: scale(1);
+      transform: scale(1); /* or change to scale(1.05) if desired */
     }
     /* =========================
        THUMBNAILS STYLES
     ========================= */
-     /* Remove any fixed width for thumbnail slides so that 'auto' can take effect */
-  .gallery-thumbs .swiper-slide,
-  .accommodations-thumbs .swiper-slide {
-    width: auto;   /* let Swiper manage sizing */
-    height: auto;  /* let Swiper manage sizing */
-    opacity: 0.4;  /* keep your "inactive" styling if desired */
-  }
-
-     .gallery-thumbs .swiper-slide img, .accommodations-thumbs .swiper-slide img {
-       max-height: 80px;  // or whatever you prefer
-       object-fit: contain;
-     }
-  
-
-  /* Negative margins so the first/last thumbnails line up with the partial main slides */
-  .gallery-thumbs,
-  .accommodations-thumbs {
-    margin-left: -10%;
-    margin-right: -10%;
-  }
+    /* Fixed dimensions so that each thumbnail is square */
+    .gallery-thumbs .swiper-slide,
+    .accommodations-thumbs .swiper-slide {
+      width: 80px;
+      height: 80px;
+      opacity: 0.4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .gallery-thumbs .swiper-slide img,
+    .accommodations-thumbs .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .gallery-thumbs .swiper-slide-thumb-active,
     .accommodations-thumbs .swiper-slide-thumb-active {
       opacity: 1;
+    }
+    /* Removed negative margins to ensure both main & thumbnails share the same width */
+    .gallery-thumbs,
+    .accommodations-thumbs {
+      margin: 0 auto;
     }
     /* =========================
        HERO & FEATURES SECTIONS
@@ -641,19 +642,19 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       /* ----- GALLERY THUMBS (up to 10 thumbnails) ----- */
-var galleryThumbs = new Swiper('.gallery-thumbs', {
-    slidesPerView: 'auto',    // auto-fit to screen
-    freeMode: true,           // allow free horizontal scrolling
-    spaceBetween: 2,          // minimal gap between thumbs
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true
-  });
+      var galleryThumbs = new Swiper('.gallery-thumbs', {
+        slidesPerView: 'auto',    // auto-fit to screen
+        freeMode: true,           // allow free horizontal scrolling
+        spaceBetween: 2,          // minimal gap between thumbs
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true
+      });
       /* ----- MAIN GALLERY SLIDER ----- */
       var galleryTop = new Swiper('.gallery-top', {
         spaceBetween: 1,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.2,
+        slidesPerView: 1.1,  // reduced from 1.2 for larger partial side images
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -669,18 +670,18 @@ var galleryThumbs = new Swiper('.gallery-thumbs', {
 
       /* ----- ACCOMMODATIONS THUMBS  ----- */
       var accommodationsThumbs = new Swiper('.accommodations-thumbs', {
-    slidesPerView: 'auto',
-    freeMode: true,
-    spaceBetween: 2,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true
-  });
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween: 2,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true
+      });
       /* ----- MAIN ACCOMMODATIONS SLIDER ----- */
       var accommodationsTop = new Swiper('.accommodations-top', {
         spaceBetween: 3,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.2,
+        slidesPerView: 1.1,
         navigation: {
           nextEl: '.swiper-button-nextAcc',
           prevEl: '.swiper-button-prevAcc'
