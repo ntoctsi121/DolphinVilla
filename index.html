@@ -40,24 +40,26 @@
     /* =========================
        THUMBNAILS STYLES
     ========================= */
-    /* Thumbs for both galleries – set fixed size so up to 10 show neatly */
-    .gallery-thumbs .swiper-slide,
-    .accommodations-thumbs .swiper-slide {
-      width: 80px;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      opacity: 0.4;
-    }
-    .gallery-thumbs .swiper-slide img,
-    .accommodations-thumbs .swiper-slide img {
-      width: auto;
-      height: 100%;
-      object-fit: contain;
-      background-color: #f5f5f5;
-    }
+     /* Remove any fixed width for thumbnail slides so that 'auto' can take effect */
+  .gallery-thumbs .swiper-slide,
+  .accommodations-thumbs .swiper-slide {
+    width: auto;   /* let Swiper manage sizing */
+    height: auto;  /* let Swiper manage sizing */
+    opacity: 0.4;  /* keep your "inactive" styling if desired */
+  }
+
+     .gallery-thumbs .swiper-slide img, .accommodations-thumbs .swiper-slide img {
+       max-height: 80px;  // or whatever you prefer
+       object-fit: contain;
+     }
+  
+
+  /* Negative margins so the first/last thumbnails line up with the partial main slides */
+  .gallery-thumbs,
+  .accommodations-thumbs {
+    margin-left: -10%;
+    margin-right: -10%;
+  }
     .gallery-thumbs .swiper-slide-thumb-active,
     .accommodations-thumbs .swiper-slide-thumb-active {
       opacity: 1;
@@ -639,13 +641,13 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       /* ----- GALLERY THUMBS (up to 10 thumbnails) ----- */
-      var galleryThumbs = new Swiper('.gallery-thumbs', {
-        spaceBetween: 10,
-        slidesPerView: 10,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true
-      });
+var galleryThumbs = new Swiper('.gallery-thumbs', {
+    slidesPerView: 'auto',    // auto-fit to screen
+    freeMode: true,           // allow free horizontal scrolling
+    spaceBetween: 2,          // minimal gap between thumbs
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true
+  });
       /* ----- MAIN GALLERY SLIDER ----- */
       var galleryTop = new Swiper('.gallery-top', {
         spaceBetween: 1,
@@ -665,14 +667,14 @@
         }
       });
 
-      /* ----- ACCOMMODATIONS THUMBS (up to 10 thumbnails) ----- */
+      /* ----- ACCOMMODATIONS THUMBS  ----- */
       var accommodationsThumbs = new Swiper('.accommodations-thumbs', {
-        spaceBetween: 10,
-        slidesPerView: 10,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true
-      });
+    slidesPerView: 'auto',
+    freeMode: true,
+    spaceBetween: 2,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true
+  });
       /* ----- MAIN ACCOMMODATIONS SLIDER ----- */
       var accommodationsTop = new Swiper('.accommodations-top', {
         spaceBetween: 3,
