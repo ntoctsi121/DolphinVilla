@@ -217,25 +217,34 @@
     </div>
   </section>
 
-  <!-- NAVIGATION MENU -->
+  <!-- FULL NAVIGATION MENU (Desktop and Mobile at top) -->
   <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex justify-center">
-      <div class="flex flex-wrap justify-center gap-1">
-        <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#accommodations" class="nav-link">Accommodations</a>
-        <a href="#amenities" class="nav-link">Amenities</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
-        <a href="#location" id="menuLocation" class="nav-link">Location</a>
-        <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
-        <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
-        <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-center">
+        <div class="flex flex-wrap justify-center gap-1">
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#accommodations" class="nav-link">Accommodations</a>
+          <a href="#amenities" class="nav-link">Amenities</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
+          <a href="#location" id="menuLocation" class="nav-link">Location</a>
+          <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
+          <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
+          <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
+          <a href="#contact" class="nav-link">Book/Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE STICKY NAV (Appears on small screens when scrolling) -->
+  <nav id="mobileStickyNav" class="fixed top-0 left-0 w-full bg-white shadow-lg lg:hidden hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-center">
         <a href="#contact" class="nav-link">Book/Contact Us</a>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- VIDEO SECTION -->
   <section id="promoVideoSection" class="container mx-auto p-4">
@@ -454,7 +463,7 @@
           Hi! We are Nick and Becky. We live in Charlotte, NC with our 2 kids, Jayden (5) and Juliette (2), and our 2 rescue dogs.
           Becky first discovered Roatan in 2007, when she spent a year there before starting medical school, volunteering in a clinic during the week and working as a dive master on weekends. She continued to visit the island frequently, returning for multiple rotations during medical school and residency. When she met Nick, he began to travel with her, volunteering his finance services wherever they could be used.
           Years later, in 2015, we got married on Roatan, and brought 80 of our closest friends and family to the island to celebrate. It’s one of our favorite memories of all time.
-          Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
+          Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. The rest is history.
           We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
         </p>
       </div>
@@ -765,6 +774,17 @@
       }, videoObserverOptions);
 
       videoObserver.observe(promoVideo);
+
+      // Toggle mobile sticky nav based on scroll position (only on small screens)
+      const mobileStickyNav = document.getElementById('mobileStickyNav');
+      window.addEventListener('scroll', function() {
+        // Adjust the threshold (150px) as needed
+        if (window.scrollY > 150) {
+          mobileStickyNav.classList.remove('hidden');
+        } else {
+          mobileStickyNav.classList.add('hidden');
+        }
+      });
     });
   </script>
 </body>
