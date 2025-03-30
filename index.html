@@ -161,6 +161,17 @@
       visibility: visible;
       transform: scaleX(1);
     }
+    /* =========================
+       Custom Flatpickr Styles
+       Disable day clicks and style occupied days
+    ========================= */
+    .flatpickr-day {
+      pointer-events: none; /* prevents date selection */
+    }
+    .flatpickr-day.occupied {
+      color: grey;
+      text-decoration: line-through;
+    }
   </style>
   <!-- Mobile-specific adjustments -->
   <style>
@@ -420,8 +431,8 @@
       </div>
       <div id="CalDetails" class="hidden text-center">
         <p class="text-lg mb-4">(*Open dates subject to change)</p>
-        <!-- Interactive Calendar -->
-        <input id="calendar" type="text" class="mx-auto my-4" placeholder="Select Date Range">
+        <!-- Interactive Calendar (read-only) -->
+        <input id="calendar" type="text" class="mx-auto my-4" placeholder="View Calendar">
       </div>
     </div>
   </section>
@@ -688,15 +699,21 @@
       /* Animate navigation links */
       animateNavLinks();
 
-      /* ----- Initialize Flatpickr for the interactive calendar ----- */
+      /* ----- Initialize Flatpickr for the read-only interactive calendar ----- */
       flatpickr("#calendar", {
-        mode: "range",
         inline: true,
         dateFormat: "Y-m-d",
-        disable: [
-          { from: "2025-04-02", to: "2025-04-05" },
-          { from: "2025-05-05", to: "2025-05-25" }
-        ]
+        // onDayCreate is used to mark occupied days with a custom class
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+          const date = dayElem.dateObj;
+          // Check if the date falls within either of the two occupied ranges
+          if (
+            (date >= new Date("2025-04-02") && date <= new Date("2025-04-05")) ||
+            (date >= new Date("2025-05-05") && date <= new Date("2025-05-25"))
+          ) {
+            dayElem.classList.add("occupied");
+          }
+        }
       });
     });
   </script>
