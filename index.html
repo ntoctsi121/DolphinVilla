@@ -14,12 +14,14 @@
     ========================= */
     /* Main slider container fixed to 80vh so that all slides (including partials) share the same height */
     .gallery-top,
-    .accommodations-top {
+    .accommodations-top,
+    .reviews-top {
       height: 80vh;
     }
     /* Force images in the main sliders to fill the container */
     .gallery-top .swiper-slide img,
-    .accommodations-top .swiper-slide img {
+    .accommodations-top .swiper-slide img,
+    .reviews-top .swiper-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -31,18 +33,19 @@
       align-items: center;
       background: #fff;
     }
-    /* Fade effect on partial slides – you can adjust the scale if needed */
+    /* Faded partial slides – adjust scale if needed */
     .swiper-slide-prev,
     .swiper-slide-next {
       opacity: 0.5;
-      transform: scale(1); /* or change to scale(1.05) if desired */
+      transform: scale(1);
     }
     /* =========================
        THUMBNAILS STYLES
     ========================= */
-    /* Fixed dimensions so that each thumbnail is square */
+    /* Fixed square thumbnails (80px x 80px) */
     .gallery-thumbs .swiper-slide,
-    .accommodations-thumbs .swiper-slide {
+    .accommodations-thumbs .swiper-slide,
+    .reviews-thumbs .swiper-slide {
       width: 80px;
       height: 80px;
       opacity: 0.4;
@@ -51,18 +54,21 @@
       align-items: center;
     }
     .gallery-thumbs .swiper-slide img,
-    .accommodations-thumbs .swiper-slide img {
+    .accommodations-thumbs .swiper-slide img,
+    .reviews-thumbs .swiper-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     .gallery-thumbs .swiper-slide-thumb-active,
-    .accommodations-thumbs .swiper-slide-thumb-active {
+    .accommodations-thumbs .swiper-slide-thumb-active,
+    .reviews-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
-    /* Removed negative margins to ensure both main & thumbnails share the same width */
+    /* Ensure the thumbnails container is the same width as the main gallery */
     .gallery-thumbs,
-    .accommodations-thumbs {
+    .accommodations-thumbs,
+    .reviews-thumbs {
       margin: 0 auto;
     }
     /* =========================
@@ -166,57 +172,14 @@
       transform: scaleX(1);
     }
     /* =========================
-       LIGHTBOX STYLES
+       MOBILE OVERRIDES FOR NAVIGATION ARROWS
     ========================= */
-    .lightbox {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.97);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox .lightbox-content {
-      position: relative;
-      max-width: calc(100% - 100px);
-      max-height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 90vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-    .lightbox .nav-button {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #000;
-      padding: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 4px;
-      z-index: 1010;
-    }
-    .lightbox .nav-button.prev {
-      left: 15px;
-    }
-    .lightbox .nav-button.next {
-      right: 15px;
-    }
-    .lightbox .nav-button:hover {
-      background-color: rgba(255, 255, 255, 0.8);
+    @media (max-width: 768px) {
+      .swiper-button-prev, .swiper-button-next,
+      .swiper-button-prevAcc, .swiper-button-nextAcc,
+      .swiper-button-prevReviews, .swiper-button-nextReviews {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -281,7 +244,7 @@
         <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
       </div>
-      <!-- Navigation Arrows -->
+      <!-- Navigation Arrows (visible on larger screens) -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -354,6 +317,34 @@
         <div class="swiper-slide"><img src="images/25.jpg" alt="Dolphin Villa Roatan"></div>
         <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"></div>
         <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION (New Swiper Section) -->
+  <section id="Reviews" class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center mb-8">Reviews</h2>
+    <!-- Main Reviews Slider -->
+    <div class="swiper reviews-top">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review 1"></div>
+        <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review 2"></div>
+        <div class="swiper-slide"><img src="images/Review3.png" alt="Review 3"></div>
+        <div class="swiper-slide"><img src="images/Review4.png" alt="Review 4"></div>
+        <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review 5"></div>
+      </div>
+      <!-- Navigation Arrows for Reviews -->
+      <div class="swiper-button-prev swiper-button-prevReviews"></div>
+      <div class="swiper-button-next swiper-button-nextReviews"></div>
+    </div>
+    <!-- Thumbnails Slider for Reviews -->
+    <div class="swiper reviews-thumbs mt-4">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review 1"></div>
+        <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review 2"></div>
+        <div class="swiper-slide"><img src="images/Review3.png" alt="Review 3"></div>
+        <div class="swiper-slide"><img src="images/Review4.png" alt="Review 4"></div>
+        <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review 5"></div>
       </div>
     </div>
   </section>
@@ -485,19 +476,157 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section id="Reviews" class="py-8">
-    <div class="container mx-auto px-4">
-      <div class="toggle-container" onclick="toggleReviewsDetails()">
-        <div id="toggleIconReviews">+</div>
-        <h2 class="text-2xl font-bold">Reviews</h2>
+  <!-- REVIEWS SECTION (New Swiper Section) -->
+  <section id="Reviews" class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center mb-8">Reviews</h2>
+    <!-- Main Reviews Slider -->
+    <div class="swiper reviews-top">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review 1"></div>
+        <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review 2"></div>
+        <div class="swiper-slide"><img src="images/Review3.png" alt="Review 3"></div>
+        <div class="swiper-slide"><img src="images/Review4.png" alt="Review 4"></div>
+        <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review 5"></div>
       </div>
-      <div id="ReviewsDetails" class="hidden text-center">
-        <img src="images/Review1.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review2.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review3.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review4.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review5.PNG" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
+      <!-- Navigation Arrows for Reviews -->
+      <div class="swiper-button-prev swiper-button-prevReviews"></div>
+      <div class="swiper-button-next swiper-button-nextReviews"></div>
+    </div>
+    <!-- Thumbnails Slider for Reviews -->
+    <div class="swiper reviews-thumbs mt-4">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review 1"></div>
+        <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review 2"></div>
+        <div class="swiper-slide"><img src="images/Review3.png" alt="Review 3"></div>
+        <div class="swiper-slide"><img src="images/Review4.png" alt="Review 4"></div>
+        <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review 5"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES SECTION -->
+  <section id="amenities" class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center mb-8">Amenities</h2>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 text-center">
+      <div class="Amenities">
+        <ul class="Amenties-list">
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Fully Equipped Kitchen with breakfast bar</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Coffee maker, microwave, pots and pans, cooking utensils, and more</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop Jacuzzi</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private rooftop propane grill with outdoor kitchen</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 24 hour security</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private parking space with secure gated entry</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Air conditioning</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Hot water</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Washer and Dryer in Villa</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Backup generator</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Private Wifi</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Desk / Workspace</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Cable TV/ Smart TV</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Beach towels included</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Large community pool</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="container mx-auto p-4 features-background mt-8">
+    <h2 class="text-2xl font-bold text-center mb-8">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 features-content">
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Beachfront Access</h3>
+        <p>Steps away from West Bay Beach, the premiere beach in Roatan. Access through Paradise Beach Resort to beach loungers with towel service, cushions, umbrellas, and security guards at no additional charge.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Modern Pool</h3>
+        <p>A stunning modern pool just steps from the back porch with a sunbathing area, exclusive only to the 10 villas of the Ocean One Property.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Rooftop Terrace</h3>
+        <p>Rooftop terrace equipped with jacuzzi, bathroom, shower, grill, and countertop.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Modern Unit</h3>
+        <p>Unit with modern decor and features, decorated exclusively with local paintings and artwork from Roatan.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Non-Smoking Unit</h3>
+        <p></p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Seamless Airport Transfer</h3>
+        <p>Roundtrip airport pickup and dropoff arranged through resort management.</p>
+      </div>
+      <div class="feature-item">
+        <h3 class="text-xl font-semibold mb-2">Access to Paradise Beach Hotel Amenities Included</h3>
+        <p>Full access to amenities at adjacent Paradise Beach Hotel including on-site restaurant and beach bar, dive shop, large shaded pool, rooftop pool, gym, and nightly entertainment (live music, Garifuna dancers, fire dancers). Option to purchase breakfast included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION SECTION -->
+  <section id="location" class="py-8">
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleLocationDetails()">
+        <div id="toggleIconLocation">+</div>
+        <h2 class="text-2xl font-bold">Location</h2>
+      </div>
+      <div id="locationDetails" class="hidden text-center">
+        <p class="text-lg mb-4">Discover the stunning location of our beach villa, nestled in the heart of West Bay Beach in Roatan, Honduras, offering direct beach access.</p>
+        <div>
+          <a href="https://www.google.com/maps?ll=16.273886476038758,-86.59786119821244&q=16.273886476038758,-86.59786119821244&hl=en&t=m&z=16" target="_blank" class="text-blue-500 hover:text-blue-700 text-lg">View Location on Google Maps</a>
+        </div>
+        <div class="mt-4">
+          <img src="images/loc1.png" alt="Location" class="mx-auto" style="max-width: 75%; height: auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNERS SECTION -->
+  <section id="Owners" class="py-8">
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleOwnerDetails()">
+        <div id="toggleIconOwners">+</div>
+        <h2 class="text-2xl font-bold">About the Owners</h2>
+      </div>
+      <div id="OwnerDetails" class="hidden text-center">
+        <img src="images/fam2.jpg" alt="The Family" class="mx-auto my-4" style="max-width: 43%; height: auto;">
+        <p class="text-lg mb-4">
+          Hi! We are Nick and Becky. We live in Charlotte, NC with our 2 kids, Jayden (5) and Juliette (2), and our 2 rescue dogs.
+          Becky first discovered Roatan in 2007, when she spent a year there before starting medical school, volunteering in a clinic during the week and working as a dive master on weekends. She continued to visit the island frequently, returning for multiple rotations during medical school and residency. When she met Nick, he began to travel with her, volunteering his finance services wherever they could be used.
+          Years later, in 2015, we got married on Roatan, and brought 80 of our closest friends and family to the island to celebrate. It’s one of our favorite memories of all time.
+          Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
+          We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR SECTION -->
+  <section id="Calendar" class="py-8">
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleCalDetails()">
+        <div id="toggleIconCal">+</div>
+        <h2 class="text-2xl font-bold">Villa Availability</h2>
+      </div>
+      <div id="CalDetails" class="hidden text-center">
+        <p class="text-lg mb-4">(*Open dates subject to change)</p>
+        <img src="images/cal.png" alt="Calendar 2024" class="mx-auto my-4" style="max-width: 75%; height: auto;">
+      </div>
+    </div>
+  </section>
+
+  <!-- RATES SECTION -->
+  <section id="Rates" class="py-8">
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleRateDetails()">
+        <div id="toggleIconRate">+</div>
+        <h2 class="text-2xl font-bold">Rates</h2>
+      </div>
+      <div id="RateDetails" class="hidden text-center">
+        <p class="text-lg mb-4">Base rates starting at $390 plus taxes & cleaning fees</p>
       </div>
     </div>
   </section>
@@ -550,28 +679,9 @@
     </div>
   </section>
 
-  <!-- LIGHTBOX FOR GALLERY -->
-  <div id="galleryLightbox" class="lightbox">
-    <div class="lightbox-content">
-      <img src="" alt="" id="galleryLightboxImage">
-      <a href="#" class="nav-button prev" id="galleryPrevButton">&lt;</a>
-      <a href="#" class="nav-button next" id="galleryNextButton">&gt;</a>
-    </div>
-  </div>
-
-  <!-- LIGHTBOX FOR ACCOMMODATIONS -->
-  <div id="accommodationsLightbox" class="lightbox">
-    <div class="lightbox-content">
-      <img src="" alt="" id="accommodationsLightboxImage">
-      <a href="#" class="nav-button prev" id="accommodationsPrevButton">&lt;</a>
-      <a href="#" class="nav-button next" id="accommodationsNextButton">&gt;</a>
-    </div>
-  </div>
-
-  <!-- SWIPER & CUSTOM SCRIPTS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
-    // Toggle functions for various sections
+    // Toggle functions for sections remain unchanged
     function toggleLocationDetails() {
       var locationDetails = document.getElementById("locationDetails");
       var toggleIconLocation = document.getElementById("toggleIconLocation");
@@ -616,17 +726,8 @@
         toggleIconRate.textContent = "+";
       }
     }
-    function toggleReviewsDetails() {
-      var ReviewsDetails = document.getElementById("ReviewsDetails");
-      var toggleIconReviews = document.getElementById("toggleIconReviews");
-      if (ReviewsDetails.classList.contains("hidden")) {
-        ReviewsDetails.classList.remove("hidden");
-        toggleIconReviews.textContent = "-";
-      } else {
-        ReviewsDetails.classList.add("hidden");
-        toggleIconReviews.textContent = "+";
-      }
-    }
+    // (Removed toggleReviewsDetails and lightbox functions)
+
     function animateNavLinks() {
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach((link, index) => {
@@ -641,11 +742,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      /* ----- GALLERY THUMBS (up to 10 thumbnails) ----- */
+      /* ----- GALLERY THUMBS ----- */
       var galleryThumbs = new Swiper('.gallery-thumbs', {
-        slidesPerView: 'auto',    // auto-fit to screen
-        freeMode: true,           // allow free horizontal scrolling
-        spaceBetween: 2,          // minimal gap between thumbs
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween: 2,
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
@@ -654,7 +755,7 @@
         spaceBetween: 1,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.3,  // reduced from 1.2 for larger partial side images
+        slidesPerView: 1.3,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -668,7 +769,7 @@
         }
       });
 
-      /* ----- ACCOMMODATIONS THUMBS  ----- */
+      /* ----- ACCOMMODATIONS THUMBS ----- */
       var accommodationsThumbs = new Swiper('.accommodations-thumbs', {
         slidesPerView: 'auto',
         freeMode: true,
@@ -695,64 +796,31 @@
         }
       });
 
-      /* ----- LIGHTBOX FUNCTIONALITY FOR GALLERY ----- */
-      const galleryLightbox = document.getElementById('galleryLightbox');
-      const galleryLightboxImage = document.getElementById('galleryLightboxImage');
-      const galleryImages = document.querySelectorAll('#gallery .gallery-top .swiper-slide img');
-      let galleryCurrentIndex = 0;
-      function openLightbox(lightbox, lightboxImage, images, index) {
-        lightboxImage.src = images[index].src;
-        lightbox.style.display = 'flex';
-      }
-      function closeLightbox(lightbox) {
-        lightbox.style.display = 'none';
-      }
-      function navigateLightbox(direction, currentIndex, images, lightboxImage) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = images.length - 1;
-        if (currentIndex >= images.length) currentIndex = 0;
-        lightboxImage.src = images[currentIndex].src;
-        return currentIndex;
-      }
-      galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-          galleryCurrentIndex = index;
-          openLightbox(galleryLightbox, galleryLightboxImage, galleryImages, galleryCurrentIndex);
-        });
+      /* ----- REVIEWS THUMBS ----- */
+      var reviewsThumbs = new Swiper('.reviews-thumbs', {
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween: 2,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true
       });
-      document.getElementById('galleryPrevButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        galleryCurrentIndex = navigateLightbox(-1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
-      });
-      document.getElementById('galleryNextButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        galleryCurrentIndex = navigateLightbox(1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
-      });
-      galleryLightbox.addEventListener('click', (e) => {
-        if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
-      });
-
-      /* ----- LIGHTBOX FUNCTIONALITY FOR ACCOMMODATIONS ----- */
-      const accommodationsLightbox = document.getElementById('accommodationsLightbox');
-      const accommodationsLightboxImage = document.getElementById('accommodationsLightboxImage');
-      const accommodationsImages = document.querySelectorAll('#accommodations .accommodations-top .swiper-slide img');
-      let accommodationsCurrentIndex = 0;
-      accommodationsImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-          accommodationsCurrentIndex = index;
-          openLightbox(accommodationsLightbox, accommodationsLightboxImage, accommodationsImages, accommodationsCurrentIndex);
-        });
-      });
-      document.getElementById('accommodationsPrevButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        accommodationsCurrentIndex = navigateLightbox(-1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
-      });
-      document.getElementById('accommodationsNextButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        accommodationsCurrentIndex = navigateLightbox(1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
-      });
-      accommodationsLightbox.addEventListener('click', (e) => {
-        if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
+      /* ----- MAIN REVIEWS SLIDER ----- */
+      var reviewsTop = new Swiper('.reviews-top', {
+        spaceBetween: 1,
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.3,
+        navigation: {
+          nextEl: '.swiper-button-nextReviews',
+          prevEl: '.swiper-button-prevReviews'
+        },
+        thumbs: {
+          swiper: reviewsThumbs
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        }
       });
 
       /* ----- NAV MENU TOGGLE EVENTS ----- */
@@ -798,16 +866,9 @@
       });
       document.getElementById('menuReviews').addEventListener('click', function(e) {
         e.preventDefault();
-        const ReviewsDetails = document.getElementById('ReviewsDetails');
-        if (ReviewsDetails.classList.contains('hidden')) {
-          toggleReviewsDetails();
-          document.location.href = '#Reviews';
-        } else {
-          document.location.href = '#Reviews';
-        }
+        document.location.href = '#Reviews';
       });
 
-      /* Animate navigation links */
       animateNavLinks();
     });
   </script>
