@@ -166,7 +166,7 @@
        Disable day clicks and style occupied days
     ========================= */
     .flatpickr-day {
-      pointer-events: none; /* prevents date selection */
+      pointer-events: none;
     }
     .flatpickr-day.occupied {
       color: grey;
@@ -175,13 +175,21 @@
     }
     .flatpickr-calendar {
       margin: 0 auto;
-      background-color: lightblue; /* sets a light blue fill */
-      border: 3px solid black;     /* adds a heavier black border */
-}
-.flatpickr-day:not(.occupied) {
-  font-weight: bold;
-}
-    
+      background-color: lightblue;
+      border: 3px solid black;
+    }
+    .flatpickr-day:not(.occupied) {
+      font-weight: bold;
+    }
+    /* =========================
+       Custom Navigation Arrow Colors
+    ========================= */
+    .swiper-button-prev, 
+    .swiper-button-next,
+    .swiper-button-prevAcc, 
+    .swiper-button-nextAcc {
+      color: grey !important;
+    }
   </style>
   <!-- Mobile-specific adjustments -->
   <style>
@@ -614,6 +622,7 @@
         loop: true,
         centeredSlides: true,
         slidesPerView: 1.3,
+        slideToClickedSlide: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -641,6 +650,7 @@
         loop: true,
         centeredSlides: true,
         slidesPerView: 1.3,
+        slideToClickedSlide: true,
         navigation: {
           nextEl: '.swiper-button-nextAcc',
           prevEl: '.swiper-button-prevAcc'
@@ -713,12 +723,9 @@
       flatpickr("#calendar", {
         inline: true,
         dateFormat: "Y-m-d",
-        // onDayCreate is used to mark occupied days with a custom class
         onDayCreate: function(dObj, dStr, fp, dayElem) {
           const date = dayElem.dateObj;
-          // Check if the date falls within either of the two occupied ranges
           if (
-            
             (date >= new Date("2024-03-01") && date <= new Date("2025-04-12")) ||
             (date >= new Date("2025-04-18") && date <= new Date("2025-04-21")) ||
             (date >= new Date("2025-04-23") && date <= new Date("2025-04-29")) ||
