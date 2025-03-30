@@ -716,8 +716,17 @@
           const date = dayElem.dateObj;
           // Check if the date falls within either of the two occupied ranges
           if (
-            (date >= new Date("2025-04-02") && date <= new Date("2025-04-05")) ||
-            (date >= new Date("2025-05-05") && date <= new Date("2025-05-25"))
+            
+            (date >= new Date("2024-03-01") && date <= new Date("2025-04-11")) ||
+            (date >= new Date("2025-04-18") && date <= new Date("2025-04-20")) ||
+            (date >= new Date("2025-04-23") && date <= new Date("2025-04-28")) ||
+            (date >= new Date("2025-05-20") && date <= new Date("2025-05-25")) ||
+            (date >= new Date("2025-06-03") && date <= new Date("2025-06-04")) ||
+            (date >= new Date("2025-06-18") && date <= new Date("2025-07-05")) ||
+            (date >= new Date("2025-12-30") && date <= new Date("2026-01-04")) ||
+            (date >= new Date("2026-01-15") && date <= new Date("2026-01-18")) ||
+            (date >= new Date("2026-04-05") && date <= new Date("2026-04-09")) ||
+            (date >= new Date("2026-04-18") && date <= new Date("2026-04-23"))
           ) {
             dayElem.classList.add("occupied");
           }
