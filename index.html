@@ -57,9 +57,10 @@
     .accommodations-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
+    /* Modified margin to add spacing between the main gallery and thumbnail swipers */
     .gallery-thumbs,
     .accommodations-thumbs {
-      margin: 0 auto;
+      margin: 20px auto 0 !important;
     }
     /* =========================
        HERO & FEATURES SECTIONS
@@ -182,7 +183,6 @@
       font-weight: bold;
     }
    
-
     /* =========================
        Custom Navigation Arrow Colors
     ========================= */
@@ -195,33 +195,25 @@
   </style>
   
   <!-- Mobile-specific adjustments -->
- <style>
-  @media (max-width: 768px) {
-  .gallery-top,
-  .accommodations-top {
-    height: 50vh;
-  }
-  .swiper-button-prev,
-  .swiper-button-next,
-  .swiper-button-prevAcc,
-  .swiper-button-nextAcc {
-    display: none;
-  }
-  /* Mobile-specific flatpickr styling (if needed) */
-  .flatpickr-calendar {
-    transform: scale(1); /* Default mobile size */
-    /* You can add more mobile-specific rules here if necessary */
-  }
-}
+  <style>
+    @media (max-width: 768px) {
+      .gallery-top,
+      .accommodations-top {
+        height: 50vh;
+      }
+      .swiper-button-prev,
+      .swiper-button-next,
+      .swiper-button-prevAcc,
+      .swiper-button-nextAcc {
+        display: none;
+      }
+      /* Mobile-specific flatpickr styling (if needed) */
+      .flatpickr-calendar {
+        transform: scale(1); /* Default mobile size */
+        /* You can add more mobile-specific rules here if necessary */
+      }
+    }
   </style>
- <style>
-  @media (min-width: 769px) {
-  .flatpickr-calendar {
-    transform: scale(1.5);
-    transform-origin: top center;
-  }
-}
-    </style>
 </head>
 <body class="font-serif">
 
@@ -254,7 +246,7 @@
   </nav>
 
   <!-- MOBILE STICKY NAV (Appears on small screens when scrolling) -->
-  <nav id="mobileStickyNav" class="fixed top-0 left-0 z-50 w-full bg-white shadow-lg lg:hidden hidden">
+  <nav id="mobileStickyNav" class="fixed top-0 left-0 lg:z-50 w-full bg-white shadow-lg lg:hidden hidden">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
         <a href="#contact" class="nav-link">How to Book/Contact Us</a>
@@ -521,7 +513,7 @@
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
       <div class="text-center mb-6">
-        <p class="text-lg">All bookings will be securely made on the official Ocean One Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
+        <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
         <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
           <a href="https://oceanoneroatan.guestybookings.com/properties/65f893ab29762200118d91f4" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
