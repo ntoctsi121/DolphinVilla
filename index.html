@@ -176,6 +176,10 @@
     .flatpickr-calendar {
   margin: 0 auto;
 }
+.flatpickr-day:not(.occupied) {
+  font-weight: bold;
+}
+    
   </style>
   <!-- Mobile-specific adjustments -->
   <style>
@@ -436,7 +440,7 @@
       <div id="CalDetails" class="hidden text-center">
         <p class="text-lg mb-4">(*Open dates subject to change)</p>
         <!-- Interactive Calendar (read-only) -->
-        <input id="calendar" type="text" class="mx-auto my-4" placeholder="View Calendar">
+        <input id="calendar" type="text" class="mx-auto my-4" placeholder="">
       </div>
     </div>
   </section>
