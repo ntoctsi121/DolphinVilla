@@ -751,7 +751,7 @@
       /* ----- Video Play on Full View using Intersection Observer ----- */
       const promoVideo = document.getElementById('promoVideo');
       const videoObserverOptions = {
-        threshold: 1.0 // require 100% of the video to be visible
+        threshold: 0.8 // require 80% of the video to be visible
       };
 
       const videoObserver = new IntersectionObserver((entries) => {
