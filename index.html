@@ -237,6 +237,11 @@
     </div>
   </nav>
 
+  <!-- VIDEO SECTION -->
+  <section id="promoVideoSection" class="container mx-auto p-4">
+    <video id="promoVideo" src="images/One Ocean Tour-480.mp4" controls muted playsinline style="width: 100%; height: auto;"></video>
+  </section>
+
   <!-- GALLERY SECTION -->
   <section id="gallery" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-8">Ocean One Dolphin Villa</h2>
@@ -741,6 +746,24 @@
           }
         }
       });
+
+      /* ----- Video Play on Full View using Intersection Observer ----- */
+      const promoVideo = document.getElementById('promoVideo');
+      const videoObserverOptions = {
+        threshold: 1.0 // require 100% of the video to be visible
+      };
+
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio === 1) {
+            promoVideo.play();
+          } else {
+            promoVideo.pause();
+          }
+        });
+      }, videoObserverOptions);
+
+      videoObserver.observe(promoVideo);
     });
   </script>
 </body>
