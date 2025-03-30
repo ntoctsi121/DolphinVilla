@@ -207,18 +207,9 @@
     }
   </style>
 </head>
-<body class="font-serif">
-
-  <!-- HERO SECTION -->
-  <section id="hero" class="hero-background text-black bg-cover bg-center relative">
-    <div class="hero-content container mx-auto p-4 text-center">
-      <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
-      <p class="mt-2 font-bold">A family friendly 3-bedroom villa just steps from West Bay Beach</p>
-    </div>
-  </section>
-
-  <!-- NAVIGATION MENU -->
-  <nav class="bg-white shadow-lg">
+<body class="font-serif pb-20">
+  <!-- DESKTOP NAVIGATION MENU (Sticky Top for md and up) -->
+  <nav id="desktopNav" class="bg-white shadow-lg sticky top-0 z-50 hidden md:block">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
         <div class="flex flex-wrap justify-center gap-1">
@@ -236,6 +227,23 @@
       </div>
     </div>
   </nav>
+
+  <!-- MOBILE NAVIGATION MENU (Fixed Bottom with Only "Book/Contact Us") -->
+  <nav id="mobileNav" class="bg-white shadow-lg fixed bottom-0 left-0 right-0 z-50 md:hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-center">
+        <a href="#contact" class="nav-link py-4 block text-center w-full">Book/Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-background text-black bg-cover bg-center relative">
+    <div class="hero-content container mx-auto p-4 text-center">
+      <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
+      <p class="mt-2 font-bold">A family friendly 3-bedroom villa just steps from West Bay Beach</p>
+    </div>
+  </section>
 
   <!-- GALLERY SECTION -->
   <section id="gallery" class="container mx-auto p-4">
@@ -311,7 +319,7 @@
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 3 Bedrooms</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 1 King Bed, 2 Queen Beds, 1 Full Bed</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> All Bedrooms have full en-suite bathrooms</li>
-          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 5 total bathrooms including rooftop bathroom & outdoor shower</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> 5 total bathrooms including rooftop bathroom &amp; outdoor shower</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Comfortably accommodates 7 adults</li>
         </ul>
       </div>
@@ -463,7 +471,7 @@
         <h2 class="text-2xl font-bold">Rates</h2>
       </div>
       <div id="RateDetails" class="hidden text-center">
-        <p class="text-lg mb-4">Base rates starting at $390 plus taxes & cleaning fees</p>
+        <p class="text-lg mb-4">Base rates starting at $390 plus taxes &amp; cleaning fees</p>
       </div>
     </div>
   </section>
