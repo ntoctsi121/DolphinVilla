@@ -35,7 +35,7 @@
     .swiper-slide-prev,
     .swiper-slide-next {
       opacity: 0.5;
-      transform: scale(1); /* or change to scale(1.05) if desired */
+      transform: scale(1);
     }
     /* =========================
        THUMBNAILS STYLES
@@ -166,57 +166,25 @@
       transform: scaleX(1);
     }
     /* =========================
-       LIGHTBOX STYLES
+       LIGHTBOX STYLES (Removed)
     ========================= */
-    .lightbox {
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.97);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox .lightbox-content {
-      position: relative;
-      max-width: calc(100% - 100px);
-      max-height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox img {
-      max-width: 100%;
-      max-height: 90vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-    .lightbox .nav-button {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #000;
-      padding: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 4px;
-      z-index: 1010;
-    }
-    .lightbox .nav-button.prev {
-      left: 15px;
-    }
-    .lightbox .nav-button.next {
-      right: 15px;
-    }
-    .lightbox .nav-button:hover {
-      background-color: rgba(255, 255, 255, 0.8);
+    /* The lightbox-related styles have been removed since the feature is no longer used */
+  </style>
+  <!-- Mobile-specific adjustments -->
+  <style>
+    @media (max-width: 768px) {
+      /* Adjust slider heights on mobile */
+      .gallery-top,
+      .accommodations-top {
+        height: 50vh;
+      }
+      /* Hide swiper navigation arrows on mobile */
+      .swiper-button-prev,
+      .swiper-button-next,
+      .swiper-button-prevAcc,
+      .swiper-button-nextAcc {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -281,7 +249,7 @@
         <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
         <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
       </div>
-      <!-- Navigation Arrows -->
+      <!-- Navigation Arrows (will be hidden on mobile) -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
@@ -341,7 +309,7 @@
         <div class="swiper-slide"><img src="images/16.jpg" alt="Dolphin Villa Bay Islands"></div>
         <div class="swiper-slide"><img src="images/17.jpg" alt="Dolphin Villa"></div>
       </div>
-      <!-- Navigation Arrows for Accommodations -->
+      <!-- Navigation Arrows for Accommodations (hidden on mobile) -->
       <div class="swiper-button-prev swiper-button-prevAcc"></div>
       <div class="swiper-button-next swiper-button-nextAcc"></div>
     </div>
@@ -550,24 +518,6 @@
     </div>
   </section>
 
-  <!-- LIGHTBOX FOR GALLERY -->
-  <div id="galleryLightbox" class="lightbox">
-    <div class="lightbox-content">
-      <img src="" alt="" id="galleryLightboxImage">
-      <a href="#" class="nav-button prev" id="galleryPrevButton">&lt;</a>
-      <a href="#" class="nav-button next" id="galleryNextButton">&gt;</a>
-    </div>
-  </div>
-
-  <!-- LIGHTBOX FOR ACCOMMODATIONS -->
-  <div id="accommodationsLightbox" class="lightbox">
-    <div class="lightbox-content">
-      <img src="" alt="" id="accommodationsLightboxImage">
-      <a href="#" class="nav-button prev" id="accommodationsPrevButton">&lt;</a>
-      <a href="#" class="nav-button next" id="accommodationsNextButton">&gt;</a>
-    </div>
-  </div>
-
   <!-- SWIPER & CUSTOM SCRIPTS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
@@ -641,11 +591,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      /* ----- GALLERY THUMBS (up to 10 thumbnails) ----- */
+      /* ----- GALLERY THUMBS ----- */
       var galleryThumbs = new Swiper('.gallery-thumbs', {
-        slidesPerView: 'auto',    // auto-fit to screen
-        freeMode: true,           // allow free horizontal scrolling
-        spaceBetween: 2,          // minimal gap between thumbs
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween: 2,
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
@@ -654,7 +604,7 @@
         spaceBetween: 1,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.3,  // reduced from 1.2 for larger partial side images
+        slidesPerView: 1.3,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
@@ -695,65 +645,7 @@
         }
       });
 
-      /* ----- LIGHTBOX FUNCTIONALITY FOR GALLERY ----- */
-      const galleryLightbox = document.getElementById('galleryLightbox');
-      const galleryLightboxImage = document.getElementById('galleryLightboxImage');
-      const galleryImages = document.querySelectorAll('#gallery .gallery-top .swiper-slide img');
-      let galleryCurrentIndex = 0;
-      function openLightbox(lightbox, lightboxImage, images, index) {
-        lightboxImage.src = images[index].src;
-        lightbox.style.display = 'flex';
-      }
-      function closeLightbox(lightbox) {
-        lightbox.style.display = 'none';
-      }
-      function navigateLightbox(direction, currentIndex, images, lightboxImage) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = images.length - 1;
-        if (currentIndex >= images.length) currentIndex = 0;
-        lightboxImage.src = images[currentIndex].src;
-        return currentIndex;
-      }
-      galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-          galleryCurrentIndex = index;
-          openLightbox(galleryLightbox, galleryLightboxImage, galleryImages, galleryCurrentIndex);
-        });
-      });
-      document.getElementById('galleryPrevButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        galleryCurrentIndex = navigateLightbox(-1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
-      });
-      document.getElementById('galleryNextButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        galleryCurrentIndex = navigateLightbox(1, galleryCurrentIndex, galleryImages, galleryLightboxImage);
-      });
-      galleryLightbox.addEventListener('click', (e) => {
-        if (e.target === galleryLightbox) closeLightbox(galleryLightbox);
-      });
-
-      /* ----- LIGHTBOX FUNCTIONALITY FOR ACCOMMODATIONS ----- */
-      const accommodationsLightbox = document.getElementById('accommodationsLightbox');
-      const accommodationsLightboxImage = document.getElementById('accommodationsLightboxImage');
-      const accommodationsImages = document.querySelectorAll('#accommodations .accommodations-top .swiper-slide img');
-      let accommodationsCurrentIndex = 0;
-      accommodationsImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-          accommodationsCurrentIndex = index;
-          openLightbox(accommodationsLightbox, accommodationsLightboxImage, accommodationsImages, accommodationsCurrentIndex);
-        });
-      });
-      document.getElementById('accommodationsPrevButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        accommodationsCurrentIndex = navigateLightbox(-1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
-      });
-      document.getElementById('accommodationsNextButton').addEventListener('click', (e) => {
-        e.preventDefault();
-        accommodationsCurrentIndex = navigateLightbox(1, accommodationsCurrentIndex, accommodationsImages, accommodationsLightboxImage);
-      });
-      accommodationsLightbox.addEventListener('click', (e) => {
-        if (e.target === accommodationsLightbox) closeLightbox(accommodationsLightbox);
-      });
+      /* Lightbox functionality removed */
 
       /* ----- NAV MENU TOGGLE EVENTS ----- */
       document.getElementById('menuLocation').addEventListener('click', function(e) {
