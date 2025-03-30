@@ -218,7 +218,7 @@
   </section>
 
   <!-- NAVIGATION MENU -->
-  <nav class="bg-white shadow-lg lg:sticky lg:top-0">
+  <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-center">
       <div class="flex flex-wrap justify-center gap-1">
@@ -751,7 +751,7 @@
       /* ----- Video Play on Full View using Intersection Observer ----- */
       const promoVideo = document.getElementById('promoVideo');
       const videoObserverOptions = {
-        threshold: 0.8 // require 80% of the video to be visible
+        threshold: 1 // require 100% of the video to be visible
       };
 
       const videoObserver = new IntersectionObserver((entries) => {
