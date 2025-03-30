@@ -182,10 +182,7 @@
       font-weight: bold;
     }
    
-    @media (min-width: 769px) {
-  .flatpickr-calendar {
-    transform: scale(1.5);
-    transform-origin: top center;
+  
   }
 }
     /* =========================
@@ -199,19 +196,23 @@
     }
   </style>
   <!-- Mobile-specific adjustments -->
-  <style>
-    @media (max-width: 768px) {
-      .gallery-top,
-      .accommodations-top {
-        height: 50vh;
-      }
-      .swiper-button-prev,
-      .swiper-button-next,
-      .swiper-button-prevAcc,
-      .swiper-button-nextAcc {
-        display: none;
-      }
-    }
+  @media (max-width: 768px) {
+  .gallery-top,
+  .accommodations-top {
+    height: 50vh;
+  }
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-button-prevAcc,
+  .swiper-button-nextAcc {
+    display: none;
+  }
+  /* Mobile-specific flatpickr styling (if needed) */
+  .flatpickr-calendar {
+    transform: scale(1); /* Default mobile size */
+    /* You can add more mobile-specific rules here if necessary */
+  }
+}
   </style>
 </head>
 <body class="font-serif">
