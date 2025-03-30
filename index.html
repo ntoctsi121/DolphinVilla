@@ -226,9 +226,9 @@
           <a href="#accommodations" class="nav-link">Accommodations</a>
           <a href="#amenities" class="nav-link">Amenities</a>
           <a href="#features" class="nav-link">Features</a>
+          <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
           <a href="#location" id="menuLocation" class="nav-link">Location</a>
           <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
-          <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
           <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
           <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
           <a href="#contact" class="nav-link">Book/Contact Us</a>
@@ -237,11 +237,11 @@
     </div>
   </nav>
 
-<!-- VIDEO SECTION -->
-<section id="promoVideoSection" class="container mx-auto p-4">
-  <h2 class="text-2xl font-bold text-center mb-4">Ocean One Tour</h2>
-  <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 88%; height: auto;" class="mx-auto"></video>
-</section>
+  <!-- VIDEO SECTION -->
+  <section id="promoVideoSection" class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold text-center mb-4">Ocean One Tour</h2>
+    <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 88%; height: auto;" class="mx-auto"></video>
+  </section>
 
   <!-- GALLERY SECTION -->
   <section id="gallery" class="container mx-auto p-4">
@@ -407,6 +407,21 @@
     </div>
   </section>
 
+  <!-- CALENDAR SECTION (Moved up between Features and Location) -->
+  <section id="Calendar" class="py-8">
+    <div class="container mx-auto px-4">
+      <div class="toggle-container" onclick="toggleCalDetails()">
+        <div id="toggleIconCal">+</div>
+        <h2 class="text-2xl font-bold">Villa Caldendar</h2>
+      </div>
+      <div id="CalDetails" class="hidden text-center">
+        <p class="text-lg mb-3">(*Open dates subject to change)</p>
+        <!-- Interactive Calendar (read-only) -->
+        <input id="calendar" type="text" class="mx-auto" placeholder="">
+      </div>
+    </div>
+  </section>
+
   <!-- LOCATION SECTION -->
   <section id="location" class="py-8">
     <div class="container mx-auto px-4">
@@ -442,21 +457,6 @@
           Then life happened, and kids happened, and Covid happened, and we didn’t make it back to the island until 2023, when we brought our (then) 1 year old and 4 year old. We were so thrilled to see that Roatan was just as beautiful and charming as we had remembered it, and we absolutely loved getting to share our special island with our kids. During this trip, we realized that there was nowhere else that we would rather travel, so we decided to invest in a property of our own. We started looking during our visit, and a day after we got back to the US, we put in an offer, and the rest is history.
           We love Roatan and think that it is such a special place, and we can’t wait to share it with you.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALENDAR SECTION -->
-  <section id="Calendar" class="py-8">
-    <div class="container mx-auto px-4">
-      <div class="toggle-container" onclick="toggleCalDetails()">
-        <div id="toggleIconCal">+</div>
-        <h2 class="text-2xl font-bold">Villa Availability</h2>
-      </div>
-      <div id="CalDetails" class="hidden text-center">
-        <p class="text-lg mb-3">(*Open dates subject to change)</p>
-        <!-- Interactive Calendar (read-only) -->
-        <input id="calendar" type="text" class="mx-auto" placeholder="">
       </div>
     </div>
   </section>
