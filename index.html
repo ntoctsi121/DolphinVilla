@@ -94,6 +94,16 @@
       opacity: 0.5;
       transform: scale(1.0);
     }
+
+    /* Override for Reviews Section Images */
+#Reviews .reviews-top .swiper-slide img {
+  width: auto;
+  height: auto;
+  max-height: 80vh; /* Adjust as needed */
+  object-fit: contain;
+}
+
+    
     /* =========================
        THUMBNAILS STYLES
     ========================= */
@@ -281,14 +291,14 @@
     }
   </style>
   <style>
-    <!-- PC-specific adjustments -->
-    @media (min-width: 769px) {
-      .flatpickr-calendar {
-        transform: scale(2.5);
-        transform-origin: top center;
-      }
+  /* PC-specific adjustments */
+  @media (min-width: 769px) {
+    .flatpickr-calendar {
+      transform: scale(2.5);
+      transform-origin: top center;
     }
-  </style>
+  }
+</style>
 </head>
 <body class="font-serif">
 
