@@ -530,20 +530,31 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section id="Reviews" class="py-8">
+ <!-- REVIEWS SECTION -->
+<section id="Reviews" class="py-8">
   <div class="container mx-auto px-4">
     <div class="toggle-container" onclick="toggleReviewsDetails()">
       <div id="toggleIconReviews">+</div>
       <h2 class="text-2xl font-bold">Reviews</h2>
     </div>
-    <!-- Updated container: grid layout for larger screens -->
+    <!-- Grid layout: one column by default; two columns on large screens -->
     <div id="ReviewsDetails" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <img src="images/Review1.jpg" alt="Review" class="w-full h-64 object-cover">
-      <img src="images/Review2.jpg" alt="Review" class="w-full h-64 object-cover">
-      <img src="images/Review3.png" alt="Review" class="w-full h-64 object-cover">
-      <img src="images/Review4.png" alt="Review" class="w-full h-64 object-cover">
-      <img src="images/Review5.PNG" alt="Review" class="w-full h-64 object-cover">
+      <!-- Each review image is wrapped in a container that enforces uniform size -->
+      <div class="w-full h-64 border border-blue-200 flex items-center justify-center">
+        <img src="images/Review1.jpg" alt="Review" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="w-full h-64 border border-blue-200 flex items-center justify-center">
+        <img src="images/Review2.jpg" alt="Review" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="w-full h-64 border border-blue-200 flex items-center justify-center">
+        <img src="images/Review3.png" alt="Review" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="w-full h-64 border border-blue-200 flex items-center justify-center">
+        <img src="images/Review4.png" alt="Review" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="w-full h-64 border border-blue-200 flex items-center justify-center">
+        <img src="images/Review5.PNG" alt="Review" class="max-h-full max-w-full object-contain">
+      </div>
     </div>
   </div>
 </section>
