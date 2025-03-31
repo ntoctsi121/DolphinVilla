@@ -532,20 +532,21 @@
 
   <!-- REVIEWS SECTION -->
   <section id="Reviews" class="py-8">
-    <div class="container mx-auto px-4">
-      <div class="toggle-container" onclick="toggleReviewsDetails()">
-        <div id="toggleIconReviews">+</div>
-        <h2 class="text-2xl font-bold">Reviews</h2>
-      </div>
-      <div id="ReviewsDetails" class="hidden text-center">
-        <img src="images/Review1.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review2.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review3.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review4.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review5.PNG" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-      </div>
+  <div class="container mx-auto px-4">
+    <div class="toggle-container" onclick="toggleReviewsDetails()">
+      <div id="toggleIconReviews">+</div>
+      <h2 class="text-2xl font-bold">Reviews</h2>
     </div>
-  </section>
+    <!-- Updated container: grid layout for larger screens -->
+    <div id="ReviewsDetails" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <img src="images/Review1.jpg" alt="Review" class="w-full h-64 object-cover">
+      <img src="images/Review2.jpg" alt="Review" class="w-full h-64 object-cover">
+      <img src="images/Review3.png" alt="Review" class="w-full h-64 object-cover">
+      <img src="images/Review4.png" alt="Review" class="w-full h-64 object-cover">
+      <img src="images/Review5.PNG" alt="Review" class="w-full h-64 object-cover">
+    </div>
+  </div>
+</section>
 
   <!-- ROATAN FUN SECTION -->
   <section id="roatan-fun" class="container mx-auto p-4">
