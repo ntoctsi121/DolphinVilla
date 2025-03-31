@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beach Villa in Roatan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.js" as="script">
   <!-- Flatpickr CSS for the interactive calendar -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- Favicon -->
@@ -233,25 +234,26 @@
   </section>
 
   <!-- FULL NAVIGATION MENU (Desktop and Mobile at top) -->
-  <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-center">
-        <div class="flex flex-wrap justify-center gap-1">
-          <a href="#gallery" class="nav-link">Gallery</a>
-          <a href="#accommodations" class="nav-link">Accommodations</a>
-          <a href="#amenities" class="nav-link">Amenities</a>
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
-          <a href="#location" id="menuLocation" class="nav-link">Location</a>
-          <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
-          <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
-          <a href="#roatan-fun" id="menuRoatanFun" class="nav-link">Roatan Fun</a>
-          <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
-          <a href="#contact" class="nav-link">Book/Contact Us</a>
-        </div>
+ <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-center">
+      <!-- Use flex-wrap on small screens, but disable wrapping on large screens -->
+      <div class="flex flex-wrap lg:flex-nowrap justify-center gap-1">
+        <a href="#gallery" class="nav-link lg:text-sm">Gallery</a>
+        <a href="#accommodations" class="nav-link lg:text-sm">Accommodations</a>
+        <a href="#amenities" class="nav-link lg:text-sm">Amenities</a>
+        <a href="#features" class="nav-link lg:text-sm">Features</a>
+        <a href="#Calendar" id="menuCalendar" class="nav-link lg:text-sm">Calendar</a>
+        <a href="#location" id="menuLocation" class="nav-link lg:text-sm">Location</a>
+        <a href="#Rates" id="menuRates" class="nav-link lg:text-sm">Rates</a>
+        <a href="#Reviews" id="menuReviews" class="nav-link lg:text-sm">Reviews</a>
+        <a href="#roatan-fun" id="menuRoatanFun" class="nav-link lg:text-sm">Roatan Fun</a>
+        <a href="#Owners" id="menuOwners" class="nav-link lg:text-sm">Owners</a>
+        <a href="#contact" class="nav-link lg:text-sm">Book/Contact Us</a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- MOBILE STICKY NAV (Appears on small screens when scrolling) -->
   <nav id="mobileStickyNav" class="fixed top-0 left-0 z-50 w-full bg-white shadow-lg lg:hidden hidden">
