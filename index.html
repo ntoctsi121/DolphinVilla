@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beach Villa in Roatan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.js" as="script">
+  <!-- Swiper CSS loaded normally -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <!-- Flatpickr CSS for the interactive calendar -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- Favicon -->
@@ -91,18 +91,17 @@
     }
     .swiper-slide-prev,
     .swiper-slide-next {
-      opacity: 0.5;
+      opacity: 0.4;
       transform: scale(1.0);
     }
 
     /* Override for Reviews Section Images */
-#Reviews .reviews-top .swiper-slide img {
-  width: auto;
-  height: auto;
-  max-height: 80vh; /* Adjust as needed */
-  object-fit: contain;
-}
-
+    #Reviews .reviews-top .swiper-slide img {
+      width: auto;
+      height: auto;
+      max-height: 80vh; /* Adjust as needed */
+      object-fit: contain;
+    }
     
     /* =========================
        THUMBNAILS STYLES
@@ -298,7 +297,7 @@
       transform-origin: top center;
     }
   }
-</style>
+  </style>
 </head>
 <body class="font-serif">
 
@@ -344,7 +343,7 @@
   <!-- VIDEO SECTION -->
   <section id="promoVideoSection" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-4">A Tour of Ocean One</h2>
-    <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 88%; height: auto;" class="mx-auto"></video>
+    <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 92%; height: auto;" class="mx-auto"></video>
   </section>
 
   <!-- GALLERY SECTION -->
@@ -671,7 +670,7 @@
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
       <div class="text-center mb-6">
-        <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
+        <p class="text-lg">All bookings will be securely made on the official Ocean One Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
         <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
           <a href="https://oceanoneroatan.guestybookings.com/properties/65f893ab29762200118d91f4" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -715,6 +714,7 @@
   </section>
 
   <!-- SWIPER & CUSTOM SCRIPTS -->
+  <!-- Swiper JS loaded normally -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Flatpickr JS for the interactive calendar -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -770,6 +770,8 @@
       if (ReviewsDetails.classList.contains("hidden")) {
         ReviewsDetails.classList.remove("hidden");
         toggleIconReviews.textContent = "-";
+        // Update the swiper instance after making it visible:
+        reviewsTop.update();
       } else {
         ReviewsDetails.classList.add("hidden");
         toggleIconReviews.textContent = "+";
