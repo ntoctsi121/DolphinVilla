@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +6,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beach Villa in Roatan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <!-- Swiper CSS loaded normally -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <!-- Flatpickr CSS for the interactive calendar -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
+  <!-- Preload Gallery Images -->
+  <link rel="preload" as="image" href="images/Top01.jpg">
+  <link rel="preload" as="image" href="images/Top02.jpeg">
+  <link rel="preload" as="image" href="images/Top03.jpg">
+  <link rel="preload" as="image" href="images/Top04.jpg">
+  <link rel="preload" as="image" href="images/Top05.jpg">
+  <link rel="preload" as="image" href="images/Top06.jpg">
+  <link rel="preload" as="image" href="images/Top07.jpg">
+  <link rel="preload" as="image" href="images/Top08.jpg">
+  <link rel="preload" as="image" href="images/Top09.jpg">
+  <link rel="preload" as="image" href="images/Top10.jpg">
+  <link rel="preload" as="image" href="images/Top11.jpg">
+  <link rel="preload" as="image" href="images/Top11a.png">
+  <link rel="preload" as="image" href="images/Top12.jpg">
+  <link rel="preload" as="image" href="images/Top13.jpg">
+  <link rel="preload" as="image" href="images/Top14.jpg">
+  <link rel="preload" as="image" href="images/Top15.jpg">
+  <link rel="preload" as="image" href="images/Top16.jpg">
+  <link rel="preload" as="image" href="images/Top17.jpg">
+  <link rel="preload" as="image" href="images/Top18.jpg">
+  <link rel="preload" as="image" href="images/Top19.jpg">
+  <link rel="preload" as="image" href="images/Top20.jpg">
+  <link rel="preload" as="image" href="images/Top21.jpg">
+  <link rel="preload" as="image" href="images/Top22.jpg">
+  <link rel="preload" as="image" href="images/Top23.jpg">
+  <link rel="preload" as="image" href="images/Top24.jpg">
+  <link rel="preload" as="image" href="images/Top25.jpg">
+  <link rel="preload" as="image" href="images/Top26.jpg">
+  <link rel="preload" as="image" href="images/Top27.jpg">
+  <link rel="preload" as="image" href="images/Top28.jpg">
+  <link rel="preload" as="image" href="images/Top29.jpg">
+  <link rel="preload" as="image" href="images/Top30.jpg">
+  <!-- Preload Fun Thumbnails -->
+  <link rel="preload" as="image" href="images/Bot01.jpg">
+  <link rel="preload" as="image" href="images/Bot02.jpg">
+  <link rel="preload" as="image" href="images/Bot03.jpg">
+  <link rel="preload" as="image" href="images/Bot04.jpg">
+  <link rel="preload" as="image" href="images/Bot05.jpg">
+  <link rel="preload" as="image" href="images/Bot06.jpg">
+  <link rel="preload" as="image" href="images/Bot07.jpg">
+  <link rel="preload" as="image" href="images/Bot08.jpg">
+  <link rel="preload" as="image" href="images/Bot09.jpg">
+  <link rel="preload" as="image" href="images/Bot10.jpg">
+  <link rel="preload" as="image" href="images/Bot11.jpg">
+  <link rel="preload" as="image" href="images/Bot12.jpg">
+  <link rel="preload" as="image" href="images/Bot13.jpg">
+  <link rel="preload" as="image" href="images/Bot14.jpg">
+  <link rel="preload" as="image" href="images/Bot15.jpg">
+  <link rel="preload" as="image" href="images/Bot16.jpg">
+  <link rel="preload" as="image" href="images/Bot17.jpg">
+  <link rel="preload" as="image" href="images/Bot18.jpg">
+  <link rel="preload" as="image" href="images/Bot19.jpg">
+  <link rel="preload" as="image" href="images/Bot20.jpg">
+  <link rel="preload" as="image" href="images/Bot21.jpg">
+  <link rel="preload" as="image" href="images/Bot22.jpg">
+  
   <style>
     /* =========================
        GLOBAL SWIPER STYLES
     ========================= */
     .gallery-top,
-    .fun-top {
+    .fun-top,
+    .reviews-top {
       height: 80vh;
     }
     .gallery-top .swiper-slide img,
-    .fun-top .swiper-slide img {
+    .fun-top .swiper-slide img,
+    .reviews-top .swiper-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -32,14 +92,33 @@
     }
     .swiper-slide-prev,
     .swiper-slide-next {
-      opacity: 0.5;
-      transform: scale(1);
+      opacity: 0.4;
+      transform: scale(1.0);
     }
+
+    /* Override for Reviews Section Images */
+    #Reviews .reviews-top .swiper-slide img {
+      width: auto;
+      height: auto;
+      max-height: 80vh; /* Adjust as needed */
+      object-fit: contain;
+    }
+/* Override for Fun Section Images 
+    #roatan-fun .fun-top .swiper-slide img {
+  width: auto;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+}
+    */
+    
+    
     /* =========================
        THUMBNAILS STYLES
     ========================= */
     .gallery-thumbs .swiper-slide,
-    .fun-thumbs .swiper-slide {
+    .fun-thumbs .swiper-slide,
+    .reviews-thumbs .swiper-slide {
       width: 80px;
       height: 80px;
       opacity: 0.6;
@@ -48,19 +127,22 @@
       align-items: center;
     }
     .gallery-thumbs .swiper-slide img,
-    .fun-thumbs .swiper-slide img {
+    .fun-thumbs .swiper-slide img,
+    .reviews-thumbs .swiper-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     .gallery-thumbs .swiper-slide-thumb-active,
-    .fun-thumbs .swiper-slide-thumb-active {
+    .fun-thumbs .swiper-slide-thumb-active,
+    .reviews-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
     /* Modified margin to add spacing between the main gallery and thumbnail swipers */
     .gallery-thumbs,
-    .fun-thumbs {
-      margin: 10px auto 0 !important;
+    .fun-thumbs,
+    .reviews-thumbs {
+      margin: 5px auto 0 !important;
     }
     /* =========================
        HERO & FEATURES SECTIONS
@@ -188,7 +270,9 @@
     .swiper-button-prev, 
     .swiper-button-next,
     .swiper-button-prevFun, 
-    .swiper-button-nextFun {
+    .swiper-button-nextFun,
+    .swiper-button-prevReviews,
+    .swiper-button-nextReviews {
       color: grey !important;
     }
   </style>
@@ -197,13 +281,16 @@
   <style>
     @media (max-width: 768px) {
       .gallery-top,
-      .fun-top {
-        height: 50vh;
+      .fun-top,
+      .reviews-top {
+        height: 60vh;
       }
       .swiper-button-prev,
       .swiper-button-next,
       .swiper-button-prevFun,
-      .swiper-button-nextFun {
+      .swiper-button-nextFun,
+      .swiper-button-prevReviews,
+      .swiper-button-nextReviews {
         display: none;
       }
       /* Mobile-specific flatpickr styling (if needed) */
@@ -213,14 +300,21 @@
     }
   </style>
   <style>
-    <!-- PC-specific adjustments -->
+  /* PC-specific adjustments */
   @media (min-width: 769px) {
-  .flatpickr-calendar {
-    transform: scale(1.8);
-    transform-origin: top center;
+    .flatpickr-calendar {
+      transform: scale(1.5);
+      transform-origin: top center;
+    }
   }
-}
-   </style>
+  </style>
+ <style>
+  @media screen and (orientation: landscape) and (max-width: 900px) { /* Target landscape phones/small tablets */
+    #roatan-fun .fun-top .swiper-slide img {
+      object-fit: contain
+    }
+    </style>
+      
 </head>
 <body class="font-serif">
 
@@ -236,18 +330,19 @@
   <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
-        <div class="flex flex-wrap justify-center gap-1">
-          <a href="#gallery" class="nav-link">Gallery</a>
-          <a href="#accommodations" class="nav-link">Accommodations</a>
-          <a href="#amenities" class="nav-link">Amenities</a>
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#Calendar" id="menuCalendar" class="nav-link">Calendar</a>
-          <a href="#location" id="menuLocation" class="nav-link">Location</a>
-          <a href="#Rates" id="menuRates" class="nav-link">Rates</a>
-          <a href="#Reviews" id="menuReviews" class="nav-link">Reviews</a>
-          <a href="#roatan-fun" id="menuRoatanFun" class="nav-link">Roatan Fun</a>
-          <a href="#Owners" id="menuOwners" class="nav-link">Owners</a>
-          <a href="#contact" class="nav-link">Book/Contact Us</a>
+        <!-- Use flex-wrap on small screens, but disable wrapping on large screens -->
+        <div class="flex flex-wrap lg:flex-nowrap justify-center gap-1">
+          <a href="#gallery" class="nav-link lg:text-sm">Gallery</a>
+          <a href="#accommodations" class="nav-link lg:text-sm">Accommodations</a>
+          <a href="#amenities" class="nav-link lg:text-sm">Amenities</a>
+          <a href="#features" class="nav-link lg:text-sm">Features</a>
+          <a href="#Calendar" id="menuCalendar" class="nav-link lg:text-sm">Calendar</a>
+          <a href="#location" id="menuLocation" class="nav-link lg:text-sm">Location</a>
+          <a href="#Rates" id="menuRates" class="nav-link lg:text-sm">Rates</a>
+          <a href="#Reviews" id="menuReviews" class="nav-link lg:text-sm">Reviews</a>
+          <a href="#roatan-fun" id="menuRoatanFun" class="nav-link lg:text-sm">Roatan Fun</a>
+          <a href="#Owners" id="menuOwners" class="nav-link lg:text-sm">Owners</a>
+          <a href="#contact" class="nav-link lg:text-sm">Book/Contact Us</a>
         </div>
       </div>
     </div>
@@ -265,7 +360,7 @@
   <!-- VIDEO SECTION -->
   <section id="promoVideoSection" class="container mx-auto p-4">
     <h2 class="text-2xl font-bold text-center mb-4">A Tour of Ocean One</h2>
-    <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 88%; height: auto;" class="mx-auto"></video>
+    <video id="promoVideo" src="images/Ocean One Tour-480.mp4" controls muted playsinline style="width: 92%; height: auto;" class="mx-auto"></video>
   </section>
 
   <!-- GALLERY SECTION -->
@@ -274,30 +369,37 @@
     <!-- Main Gallery Slider -->
     <div class="swiper gallery-top">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise"></div>
-        <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
-        <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
-        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>
-        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>
-        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/4.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
+        <div class="swiper-slide"><img src="images/Top01.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top02.jpeg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top03.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top04.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top05.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top06.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top07.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top08.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top09.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top10.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top11.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top11a.png" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top12.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top13.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top14.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top15.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top16.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top17.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top18.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top19.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top20.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top21.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top22.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top23.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top24.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top25.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top26.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top27.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top28.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top29.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top30.jpg" alt="Ocean One complex"></div>
       </div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
@@ -305,30 +407,37 @@
     <!-- Thumbnails Slider -->
     <div class="swiper gallery-thumbs mt-4">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/333.jpeg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/pic1.jpg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/05.jpg" alt="Ocean One complex"></div>
-        <div class="swiper-slide"><img src="images/Beach out front of OC.png" alt="West bay Beach at Paradise"></div>
-        <div class="swiper-slide"><img src="images/WB1.png" alt="West bay Beach"></div>
-        <div class="swiper-slide"><img src="images/OC1.png" alt="Ocean One"></div>
-        <div class="swiper-slide"><img src="images/29.jpg" alt="Dolphin Villa Living Room"></div>
-        <div class="swiper-slide"><img src="images/34.jpg" alt="Dolphin Villa Living Room"></div>
-        <div class="swiper-slide"><img src="images/1.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/2.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/3.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/4.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/5.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/9.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/10.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/11.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/12.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/14.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/15.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/20.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/21.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/22.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/23.jpg" alt="Dolphin Villa"></div>
-        <div class="swiper-slide"><img src="images/28.jpg" alt="Dolphin Villa"></div>
+        <div class="swiper-slide"><img src="images/Top01.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top02.jpeg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top03.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top04.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top05.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top06.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top07.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top08.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top09.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top10.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top11.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top11a.png" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top12.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top13.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top14.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top15.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top16.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top17.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top18.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top19.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top20.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top21.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top22.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top23.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top24.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top25.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top26.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top27.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top28.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top29.jpg" alt="Ocean One complex"></div>
+        <div class="swiper-slide"><img src="images/Top30.jpg" alt="Ocean One complex"></div>
       </div>
     </div>
   </section>
@@ -466,27 +575,60 @@
         <h2 class="text-2xl font-bold">Reviews</h2>
       </div>
       <div id="ReviewsDetails" class="hidden text-center">
-        <img src="images/Review1.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review2.jpg" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review3.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review4.png" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
-        <img src="images/Review5.PNG" alt="Review" class="mx-auto my-4" style="max-width: 75%; height: auto;">
+        <!-- Main Reviews Slider -->
+        <div class="swiper reviews-top">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review3.png" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review4.png" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review"></div>
+          </div>
+          <div class="swiper-button-prev swiper-button-prevReviews"></div>
+          <div class="swiper-button-next swiper-button-nextReviews"></div>
+        </div>
+        <!-- Thumbnails Reviews Slider -->
+        <div class="swiper reviews-thumbs mt-4">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review3.png" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review4.png" alt="Review"></div>
+            <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ROATAN FUN SECTION -->
-  <section id="roatan-fun" class="container mx-auto p-4">
+  <section id="roatan-fun" class="container mx-auto px-4 lg:px-60 py-4">
     <h2 class="text-2xl font-bold text-center mb-8">Roatan Fun</h2>
     <!-- Main Fun Slider (moved from Accommodations and renamed) -->
     <div class="swiper fun-top mt-8">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/8.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/6.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/13.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/25.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/16.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/17.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot01.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot02.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot03.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot04.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot05.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot06.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot07.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot08.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot09.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot10.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot11.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot12.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot13.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot14.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot15.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot16.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot17.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot18.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot19.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot20.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot21.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot22.jpg" alt="Fun"></div>
       </div>
       <div class="swiper-button-prev swiper-button-prevFun"></div>
       <div class="swiper-button-next swiper-button-nextFun"></div>
@@ -494,12 +636,28 @@
     <!-- Thumbnails Fun Slider -->
     <div class="swiper fun-thumbs mt-4">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/8.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/6.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/13.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/25.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/16.jpg" alt="Fun"></div>
-        <div class="swiper-slide"><img src="images/17.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot01.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot02.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot03.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot04.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot05.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot06.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot07.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot08.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot09.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot10.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot11.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot12.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot13.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot14.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot15.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot16.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot17.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot18.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot19.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot20.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot21.jpg" alt="Fun"></div>
+        <div class="swiper-slide"><img src="images/Bot22.jpg" alt="Fun"></div>
       </div>
     </div>
   </section>
@@ -529,7 +687,7 @@
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold text-center mb-6">How to Book</h2>
       <div class="text-center mb-6">
-        <p class="text-lg">All bookings will be securely made on the official OceanOne Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
+        <p class="text-lg">All bookings will be securely made on the official Ocean One Resort website (Link below), <strong>but contact us prior to booking</strong>.</p>
         <div class="flex flex-col items-center justify-center space-y-4 mt-6 md:flex-row md:space-y-0 md:space-x-8">
           <a href="https://oceanoneroatan.guestybookings.com/properties/65f893ab29762200118d91f4" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -573,6 +731,7 @@
   </section>
 
   <!-- SWIPER & CUSTOM SCRIPTS -->
+  <!-- Swiper JS loaded normally -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Flatpickr JS for the interactive calendar -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -628,6 +787,8 @@
       if (ReviewsDetails.classList.contains("hidden")) {
         ReviewsDetails.classList.remove("hidden");
         toggleIconReviews.textContent = "-";
+        // Update the swiper instance after making it visible:
+        reviewsTop.update();
       } else {
         ReviewsDetails.classList.add("hidden");
         toggleIconReviews.textContent = "+";
@@ -660,7 +821,7 @@
         spaceBetween: 1,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.3,
+        slidesPerView: 1.4,
         slideToClickedSlide: true,
         navigation: {
           nextEl: '.swiper-button-next',
@@ -671,7 +832,7 @@
         },
         autoplay: {
           delay: 5000,
-          disableOnInteraction: false
+          disableOnInteraction: true
         }
       });
 
@@ -685,10 +846,10 @@
       });
       /* ----- MAIN FUN SLIDER ----- */
       var funTop = new Swiper('.fun-top', {
-        spaceBetween: 3,
+        spaceBetween: 2,
         loop: true,
         centeredSlides: true,
-        slidesPerView: 1.3,
+        slidesPerView: 1.6,
         slideToClickedSlide: true,
         navigation: {
           nextEl: '.swiper-button-nextFun',
@@ -699,7 +860,35 @@
         },
         autoplay: {
           delay: 5000,
-          disableOnInteraction: false
+          disableOnInteraction: true
+        }
+      });
+
+      /* ----- REVIEWS THUMBS  ----- */
+      var reviewsThumbs = new Swiper('.reviews-thumbs', {
+        slidesPerView: 'auto',
+        freeMode: true,
+        spaceBetween: 2,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true
+      });
+      /* ----- MAIN REVIEWS SLIDER ----- */
+      var reviewsTop = new Swiper('.reviews-top', {
+        spaceBetween: 1,
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.4,
+        slideToClickedSlide: true,
+        navigation: {
+          nextEl: '.swiper-button-nextReviews',
+          prevEl: '.swiper-button-prevReviews'
+        },
+        thumbs: {
+          swiper: reviewsThumbs
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: true
         }
       });
 
