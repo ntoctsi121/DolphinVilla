@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,19 +99,9 @@
     #Reviews .reviews-top .swiper-slide img {
       width: auto;
       height: auto;
-      max-height: 80vh; /* Adjust as needed */
+      max-height: 80vh;
       object-fit: contain;
     }
-/* Override for Fun Section Images 
-    #roatan-fun .fun-top .swiper-slide img {
-  width: auto;
-  height: auto;
-  max-height: 80vh;
-  object-fit: contain;
-}
-    */
-    
-    
     /* =========================
        THUMBNAILS STYLES
     ========================= */
@@ -138,7 +127,6 @@
     .reviews-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
-    /* Modified margin to add spacing between the main gallery and thumbnail swipers */
     .gallery-thumbs,
     .fun-thumbs,
     .reviews-thumbs {
@@ -293,9 +281,8 @@
       .swiper-button-nextReviews {
         display: none;
       }
-      /* Mobile-specific flatpickr styling (if needed) */
       .flatpickr-calendar {
-        transform: scale(1); /* Default mobile size */
+        transform: scale(1);
       }
     }
   </style>
@@ -308,12 +295,12 @@
     }
   }
   </style>
- <style>
-  @media screen and (orientation: landscape) and (max-width: 900px) { /* Target landscape phones/small tablets */
+  <style>
+  @media screen and (orientation: landscape) and (max-width: 900px) {
     #roatan-fun .fun-top .swiper-slide img {
-      object-fit: contain
+      object-fit: contain;
     }
-    </style>
+  </style>
       
 </head>
 <body class="font-serif">
@@ -330,7 +317,6 @@
   <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
-        <!-- Use flex-wrap on small screens, but disable wrapping on large screens -->
         <div class="flex flex-wrap lg:flex-nowrap justify-center gap-1">
           <a href="#gallery" class="nav-link lg:text-sm">Gallery</a>
           <a href="#accommodations" class="nav-link lg:text-sm">Accommodations</a>
@@ -456,7 +442,6 @@
         </ul>
       </div>
     </div>
-    <!-- The accommodations swiper has been moved to the new Roatan Fun section -->
   </section>
 
   <!-- AMENITIES SECTION -->
@@ -520,7 +505,7 @@
     </div>
   </section>
 
-  <!-- CALENDAR SECTION (Moved up between Features and Location) -->
+  <!-- CALENDAR SECTION -->
   <section id="Calendar" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleCalDetails()">
@@ -529,7 +514,6 @@
       </div>
       <div id="CalDetails" class="hidden text-center">
         <p class="text-lg mb-3">(*Open dates subject to change)</p>
-        <!-- Interactive Calendar (read-only) -->
         <input id="calendar" type="text" class="mx-auto" placeholder="">
       </div>
     </div>
@@ -575,7 +559,6 @@
         <h2 class="text-2xl font-bold">Reviews</h2>
       </div>
       <div id="ReviewsDetails" class="hidden text-center">
-        <!-- Main Reviews Slider -->
         <div class="swiper reviews-top">
           <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
@@ -587,7 +570,6 @@
           <div class="swiper-button-prev swiper-button-prevReviews"></div>
           <div class="swiper-button-next swiper-button-nextReviews"></div>
         </div>
-        <!-- Thumbnails Reviews Slider -->
         <div class="swiper reviews-thumbs mt-4">
           <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
@@ -604,7 +586,6 @@
   <!-- ROATAN FUN SECTION -->
   <section id="roatan-fun" class="container mx-auto px-4 lg:px-60 py-4">
     <h2 class="text-2xl font-bold text-center mb-8">Roatan Fun</h2>
-    <!-- Main Fun Slider (moved from Accommodations and renamed) -->
     <div class="swiper fun-top mt-8">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="images/Bot01.jpg" alt="Fun"></div>
@@ -633,7 +614,6 @@
       <div class="swiper-button-prev swiper-button-prevFun"></div>
       <div class="swiper-button-next swiper-button-nextFun"></div>
     </div>
-    <!-- Thumbnails Fun Slider -->
     <div class="swiper fun-thumbs mt-4">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="images/Bot01.jpg" alt="Fun"></div>
@@ -662,7 +642,7 @@
     </div>
   </section>
 
-  <!-- OWNERS SECTION (Moved after Reviews and Roatan Fun) -->
+  <!-- OWNERS SECTION -->
   <section id="Owners" class="py-8">
     <div class="container mx-auto px-4">
       <div class="toggle-container" onclick="toggleOwnerDetails()">
@@ -736,7 +716,7 @@
   <!-- Flatpickr JS for the interactive calendar -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>
-    // Toggle functions for various sections
+    /* Toggle functions for various sections */
     function toggleLocationDetails() {
       var locationDetails = document.getElementById("locationDetails");
       var toggleIconLocation = document.getElementById("toggleIconLocation");
@@ -787,8 +767,6 @@
       if (ReviewsDetails.classList.contains("hidden")) {
         ReviewsDetails.classList.remove("hidden");
         toggleIconReviews.textContent = "-";
-        // Update the swiper instance after making it visible:
-        reviewsTop.update();
       } else {
         ReviewsDetails.classList.add("hidden");
         toggleIconReviews.textContent = "+";
@@ -807,8 +785,9 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      /* ----- GALLERY THUMBS ----- */
+    /* Initialize all Swiper instances and other scripts after all resources are loaded */
+    window.onload = function() {
+      // ----- GALLERY THUMBS -----
       var galleryThumbs = new Swiper('.gallery-thumbs', {
         slidesPerView: 'auto',
         freeMode: true,
@@ -816,7 +795,7 @@
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
-      /* ----- MAIN GALLERY SLIDER ----- */
+      // ----- MAIN GALLERY SLIDER -----
       var galleryTop = new Swiper('.gallery-top', {
         spaceBetween: 1,
         loop: true,
@@ -835,8 +814,7 @@
           disableOnInteraction: true
         }
       });
-
-      /* ----- FUN THUMBS  ----- */
+      // ----- FUN THUMBS -----
       var funThumbs = new Swiper('.fun-thumbs', {
         slidesPerView: 'auto',
         freeMode: true,
@@ -844,7 +822,7 @@
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
-      /* ----- MAIN FUN SLIDER ----- */
+      // ----- MAIN FUN SLIDER -----
       var funTop = new Swiper('.fun-top', {
         spaceBetween: 2,
         loop: true,
@@ -863,8 +841,7 @@
           disableOnInteraction: true
         }
       });
-
-      /* ----- REVIEWS THUMBS  ----- */
+      // ----- REVIEWS THUMBS -----
       var reviewsThumbs = new Swiper('.reviews-thumbs', {
         slidesPerView: 'auto',
         freeMode: true,
@@ -872,7 +849,7 @@
         watchSlidesVisibility: true,
         watchSlidesProgress: true
       });
-      /* ----- MAIN REVIEWS SLIDER ----- */
+      // ----- MAIN REVIEWS SLIDER -----
       var reviewsTop = new Swiper('.reviews-top', {
         spaceBetween: 1,
         loop: true,
@@ -892,7 +869,7 @@
         }
       });
 
-      /* ----- NAV MENU TOGGLE EVENTS ----- */
+      // NAV MENU TOGGLE EVENTS
       document.getElementById('menuLocation').addEventListener('click', function(e) {
         e.preventDefault();
         const locationDetails = document.getElementById('locationDetails');
@@ -948,10 +925,10 @@
         document.location.href = '#roatan-fun';
       });
 
-      /* Animate navigation links */
+      // Animate navigation links
       animateNavLinks();
 
-      /* ----- Initialize Flatpickr for the read-only interactive calendar ----- */
+      // Initialize Flatpickr for the interactive calendar
       flatpickr("#calendar", {
         inline: true,
         dateFormat: "Y-m-d",
@@ -974,12 +951,11 @@
         }
       });
 
-      /* ----- Video Play on Full View using Intersection Observer ----- */
+      // Video play on full view using Intersection Observer
       const promoVideo = document.getElementById('promoVideo');
       const videoObserverOptions = {
-        threshold: 1 // require 100% of the video to be visible
+        threshold: 1
       };
-
       const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting && entry.intersectionRatio === 1) {
@@ -989,10 +965,9 @@
           }
         });
       }, videoObserverOptions);
-
       videoObserver.observe(promoVideo);
 
-      // Toggle mobile sticky nav based on scroll position (only on small screens)
+      // Toggle mobile sticky nav based on scroll position
       const mobileStickyNav = document.getElementById('mobileStickyNav');
       window.addEventListener('scroll', function() {
         if (window.scrollY > 150) {
@@ -1001,7 +976,7 @@
           mobileStickyNav.classList.add('hidden');
         }
       });
-    });
+    };
   </script>
 </body>
 </html>
