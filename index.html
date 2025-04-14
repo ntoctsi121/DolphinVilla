@@ -67,14 +67,14 @@
   <link rel="preload" as="image" href="images/Bot21.jpg">
   <link rel="preload" as="image" href="images/Bot22.jpg">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N0CJ658K4X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0CJ658K4X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-N0CJ658K4X');
-</script>
+    gtag('config', 'G-N0CJ658K4X');
+  </script>
   <style>
     /* =========================
        GLOBAL SWIPER STYLES
@@ -102,7 +102,6 @@
       opacity: 0.4;
       transform: scale(1.0);
     }
-
     /* Override for Reviews Section Images */
     #Reviews .reviews-top .swiper-slide img {
       width: auto;
@@ -473,7 +472,7 @@
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Cable TV/ Smart TV</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Beach towels included</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Large community pool</li>
-           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Carbon Monoxide Detector</li>
+          <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Carbon Monoxide Detector</li>
           <li><img src="images/icon.JPG" alt="" class="icon inline-block"> Room Service from Cayuco Beach Bar</li>
         </ul>
       </div>
@@ -978,6 +977,13 @@
         });
       }, videoObserverOptions);
       videoObserver.observe(promoVideo);
+
+      // Listen for the "ended" event on the first video and autoplay the second video
+      promoVideo.addEventListener('ended', function() {
+        promoVideo.src = "images/OceanOne2.MP4";
+        promoVideo.load();
+        promoVideo.play();
+      });
 
       // Toggle mobile sticky nav based on scroll position
       const mobileStickyNav = document.getElementById('mobileStickyNav');
