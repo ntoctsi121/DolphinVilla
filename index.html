@@ -549,16 +549,48 @@
 
   <!-- RATES SECTION -->
   <section id="Rates" class="py-8">
-    <div class="container mx-auto px-4">
-      <div class="toggle-container" onclick="toggleRateDetails()">
-        <div id="toggleIconRate">+</div>
-        <h2 class="text-2xl font-bold">Rates</h2>
-      </div>
-      <div id="RateDetails" class="hidden text-center">
-        <p class="text-lg mb-4">Base rates starting at $390 plus taxes & cleaning fees.  For more details - click on the booking link at the bottom of the page and enter check-in and check-out dates to receive full pricing.</p>
+  <div class="container mx-auto px-4">
+    <!-- toggle header -->
+    <div class="toggle-container" onclick="toggleRateDetails()">
+      <div id="toggleIconRate">+</div>
+      <h2 class="text-2xl font-bold">Rates</h2>
+    </div>
+
+    <!-- collapsible details -->
+    <div id="RateDetails" class="hidden text-center">
+      <p class="text-lg mb-4">
+        Base rates starting at $390 plus taxes &amp; cleaning fees.&nbsp;
+        For more details, click the booking link below and enter your check-in
+        and check-out dates to receive full pricing.
+      </p>
+
+      <!-- booking link (matches Contact section styling) -->
+      <div class="flex items-center justify-center">
+        <a
+          href="https://oceanoneroatan.guestybookings.com/properties/65f893ab29762200118d91f4"
+          target="_blank"
+          class="flex items-center text-blue-500 hover:text-blue-700"
+        >
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 20l-5.447-2.724A1 1 0 013 16.382V7.618a1 1 0 01.553-.894L9 4m0 16l5.447 2.724A1 1 0 0015 20.382V11.618a1 1 0 00-.553-.894L9 8m0 12V4m0 0l6-3 6 3m-6 3v16"
+            />
+          </svg>
+          Click Here to View Live Rates &amp; Book on Ocean&nbsp;One
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- REVIEWS SECTION -->
   <section id="Reviews" class="py-8">
