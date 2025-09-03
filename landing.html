@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<span class="chip">Resort pool & dining</span>
+</div>
+<div class="select-row">
+<button class="select-btn" type="button" aria-pressed="false">Select</button>
+<a href="#beachfront-url" title="View details for Beachfront 1BR">View details</a>
+</div>
+</div>
+</article>
+</section>
+</div>
+
+
+<!-- Sticky continue bar -->
+<div class="continue" aria-live="polite">
+<div class="bar">
+<span class="pill"><span id="count">0</span> selected</span>
+<button class="go" id="continueBtn" disabled>Continue</button>
+</div>
+</div>
+
+
+<footer id="contact" class="wrap" style="padding-top:24px">
+<hr style="border-color:rgba(148,163,184,.18); border-top:none; border-bottom:1px solid rgba(148,163,184,.18); margin:0 0 22px"/>
+<p style="color:var(--muted); font-size:14px">Questions? Email <a href="mailto:stay@roatandestinations.com">stay@roatandestinations.com</a></p>
+</footer>
+
+
+<script>
+// --- Configuration: replace with your real URLs ---
+const PROPERTY_URLS = {
+'family-villa': 'https://example.com/family-villa',
+'beachfront-1br': 'https://example.com/beachfront-1br',
+// If both are selected, send to a compare/summary page (or keep as null to show an alert)
+both: 'https://example.com/compare'
+};
+
+
+// Helpers
+const cards = [...document.querySelectorAll('.card')];
+const countEl = document.getElementById('count');
+const continueBtn = document.getElementById('continueBtn');
+
+
+function updateUI(){
+const selected = cards.filter(c => c.classList.contains('selected')).map(c => c.dataset.key);
+countEl.textContent = selected.length;
+continueBtn.disabled = selected.length === 0;
+continueBtn.dataset.selection = JSON.stringify(selected);
+}
+
+
+function toggleCard(card){
+const isSelected = card.classList.toggle('selected');
+card.setAttribute('aria-pressed', String(isSelected));
+const btn = card.querySelector('.select-btn');
+if(btn){ btn.setAttribute('aria-pressed', String(isSelected)); btn.textContent = isSelected ? 'Selected' : 'Select'; }
+updateUI();
+}
+
+
+// Click/keyboard to toggle
+cards.forEach(card => {
+card.addEventListener('click', (e) => {
+// Avoid toggling when clicking links inside
+if(e.target.closest('a')) return;
+toggleCard(card);
+});
+card.addEventListener('keydown', (e) => {
+if(e.key === 'Enter' || e.key === ' '){
+e.preventDefault(); toggleCard(card);
+}
+});
+card.querySelector('.select-btn')?.addEventListener('click', (e) => {
+e.stopPropagation(); toggleCard(card);
+});
+});
+
+
+// Continue behavior
+continueBtn.addEventListener('click', () => {
+const selected = JSON.parse(continueBtn.dataset.selection || '[]');
+if(selected.length === 1){
+window.location.href = PROPERTY_URLS[selected[0]] || '#';
+} else if(selected.length === 2){
+if(PROPERTY_URLS.both){
+const params = new URLSearchParams({ properties: selected.join(',') });
+window.location.href = PROPERTY_URLS.both + '?' + params.toString();
+} else {
+alert('You selected both properties. Replace PROPERTY_URLS.both with a comparison or booking page.');
+}
+}
+});
+
+
+updateUI();
+</script>
+</body>
+</html>
