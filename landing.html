@@ -45,10 +45,10 @@
             color: var(--primary-color);
         }
 
-        /* Make the first header paragraph (“Your island Escape”) stand out */
+        /* Make the first header paragraph stand out */
         .header p:first-of-type {
-            font-size: 1.6rem;       /* bigger than normal text */
-            font-weight: 700;        /* bold for emphasis */
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--primary-color);
             letter-spacing: 0.3px;
             margin: 0.25rem auto 0.75rem;
@@ -77,6 +77,10 @@
             overflow: hidden;
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            /* Make button sit at the bottom consistently */
+            display: flex;
+            flex-direction: column;
         }
 
         .property-tile:hover {
@@ -87,18 +91,32 @@
         .property-tile img {
             width: 100%;
             height: 250px;
-            object-fit: cover; /* Ensures the image covers the area without distortion */
+            object-fit: cover;
         }
 
         .property-content {
             padding: 1.5rem;
+
+            /* Stretch content so CTA can stick to bottom */
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .property-content h2 {
             margin-top: 0;
             font-size: 1.8rem;
             color: var(--text-color);
-            text-align: center; /* Center the titles within the tiles */
+            text-align: center;
+        }
+
+        /* Keep linked title styled like the heading */
+        .property-content h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .property-content h2 a:hover {
+            text-decoration: underline;
         }
 
         .property-content p {
@@ -108,9 +126,9 @@
 
         /* --- Call to Action Button --- */
         .cta-button {
-            display: block;            /* changed from inline-block */
-            width: fit-content;        /* shrink to content */
-            margin: 0.5rem auto 0;     /* center horizontally */
+            display: inline-block;
+            align-self: center;   /* center horizontally */
+            margin-top: auto;     /* push to the bottom of the tile */
             background-color: var(--primary-color);
             color: var(--secondary-color);
             padding: 12px 25px;
@@ -121,7 +139,7 @@
         }
 
         .cta-button:hover {
-            background-color: #005f8e; /* Darker shade on hover */
+            background-color: #005f8e;
         }
         
         /* --- Footer --- */
@@ -135,7 +153,6 @@
         /* --- Responsive Design for Desktops --- */
         @media (min-width: 768px) {
             .properties-grid {
-                /* Two columns for tablets and larger screens */
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -144,7 +161,7 @@
             }
 
             .header p:first-of-type {
-                font-size: 1.8rem; /* scale up subline a bit on larger screens */
+                font-size: 1.8rem;
             }
         }
 
@@ -168,7 +185,7 @@
             <div class="property-tile" data-link="https://dolphinvillaroatan.com">
                 <img src="images/Top01.jpg" alt="Fun" alt="A beautiful modern villa with a pool in a tropical setting">
                 <div class="property-content">
-                    <h2>The Dolphin Villa at Ocean One Roatan</h2>
+                    <h2><a href="https://dolphinvillaroatan.com">The Dolphin Villa at Ocean One Roatan</a></h2>
                     <p>Perfect for families or larger groups, this spacious 3 bedroom, 5 bathroom villa surrounds a beautiful pool, is a two minute walk to the center of West Bay Beach, and features a private rooftop jacuzzi.  It has all of the modern amenities you need for a luxurious and comfortable stay.</p>
                     <a href="https://dolphinvillaroatan.com" class="cta-button">View Villa Details</a>
                 </div>
