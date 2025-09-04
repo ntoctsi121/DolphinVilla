@@ -108,7 +108,9 @@
 
         /* --- Call to Action Button --- */
         .cta-button {
-            display: inline-block;
+            display: block;            /* changed from inline-block */
+            width: fit-content;        /* shrink to content */
+            margin: 0.5rem auto 0;     /* center horizontally */
             background-color: var(--primary-color);
             color: var(--secondary-color);
             padding: 12px 25px;
@@ -145,6 +147,9 @@
                 font-size: 1.8rem; /* scale up subline a bit on larger screens */
             }
         }
+
+        /* Make entire tile clickable when a data-link is present */
+        .property-tile[data-link] { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -159,7 +164,8 @@
 
         <main class="properties-grid">
 
-            <div class="property-tile">
+            <!-- Ocean One / Dolphin Villa tile -->
+            <div class="property-tile" data-link="https://dolphinvillaroatan.com">
                 <img src="images/Top01.jpg" alt="Fun" alt="A beautiful modern villa with a pool in a tropical setting">
                 <div class="property-content">
                     <h2>The Dolphin Villa at Ocean One Roatan</h2>
@@ -172,7 +178,7 @@
                 <img src="images/IB01.jpg" alt="A 1 bedroom beachfront condo at Infinity Bay">
                 <div class="property-content">
                     <h2>Oceanfront Infinity Bay Condo Unit #1003</h2>
-                    <p>Ideal for couples or small families, this one-bedroom, 1.5 bathroom condo with full kitchen and private patio is just steps from the sand.  Enjoy ocean views right from your private patio.</p>
+                    <p>Ideal for couples or small families, this one-bedroom, 1.5 bathroom condo with kitchen and private patio is just steps from the sand.  Enjoy a full ocean view right from your private patio.</p>
                     <a href="#book-bungalow" class="cta-button">View Condo Details</a>
                 </div>
             </div>
@@ -184,6 +190,17 @@
         </footer>
 
     </div>
+
+    <script>
+      // Make any tile with data-link navigate on click (but keep inner links working)
+      document.querySelectorAll('.property-tile[data-link]').forEach(tile => {
+        tile.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return; // allow normal link clicks inside
+          const url = tile.getAttribute('data-link');
+          if (url) window.location.href = url;
+        });
+      });
+    </script>
 
 </body>
 </html>
