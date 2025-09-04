@@ -1,174 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J&J's Island in the Sun Roatan Vacation Rentals....Your Island Escape</title>
-    <style>
-        /* --- Global Styles & Fonts --- */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J&J's Island in the Sun – Vacation Rentals | Your Island Escape</title>
 
-        :root {
-            --primary-color: #0077b6; /* A nice ocean blue */
-            --secondary-color: #ffffff;
-            --text-color: #333333;
-            --light-gray: #f4f4f4;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-gray);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+  <style>
+    :root {
+      --bg: #0f172a;          /* slate-900 */
+      --card: #111827;        /* gray-900 */
+      --text: #ffffff;
+      --muted: #cbd5e1;       /* slate-300 */
+      --accent: #22d3ee;      /* cyan-400 */
+      --ring: rgba(34, 211, 238, 0.6);
+    }
 
-        /* --- Page Structure --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 20% 10%, #0b1025 0%, var(--bg) 60%, #0b1025 100%);
+    }
 
-        /* --- Header --- */
-        .header {
-            padding: 2rem 0;
-        }
+    /* ===== Header / Title ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
 
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
+    .hero {
+      text-align: center;
+      margin: 10px 0 30px;
+    }
 
-        .header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .hero-title {
+      font-weight: 700;
+      line-height: 1.1;
+      font-size: clamp(28px, 4vw, 44px);
+      margin: 0 0 8px;
+      letter-spacing: 0.2px;
+    }
+    /* Put the second line on its own line */
+    .hero-title .subline {
+      display: block;           /* forces new line */
+      font-weight: 600;
+      color: var(--accent);
+      text-shadow: 0 1px 10px rgba(34, 211, 238, 0.15);
+    }
 
-        /* --- Property Selection Grid --- */
-        .properties-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Default to one column for mobile */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    .hero-tag {
+      color: var(--muted);
+      margin: 8px 0 0;
+      font-size: clamp(14px, 1.6vw, 16px);
+    }
 
-        /* --- Property Tile / Card --- */
-        .property-tile {
-            background-color: var(--secondary-color);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* ===== Tiles ===== */
+    .tiles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 820px) {
+      .tiles { grid-template-columns: 1fr 1fr; }
+    }
 
-        .property-tile:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    .property-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card);
+      aspect-ratio: 16 / 10;                 /* keeps a nice shape */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: transform .25s ease, box-shadow .25s ease;
+      outline: 1px solid rgba(255,255,255,0.05);
+    }
+    .property-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
 
-        .property-tile img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-        }
+    .property-link {
+      position: absolute;
+      inset: 0;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .property-content {
-            padding: 1.5rem;
-        }
+    .property-image {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      filter: saturate(1.05);
+      transform: scale(1.02);
+    }
 
-        .property-content h2 {
-            margin-top: 0;
-            font-size: 1.8rem;
-            color: var(--text-color);
-        }
+    /* subtle top-to-bottom gradient so text stays readable */
+    .property-sheen {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.25) 40%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
 
-        .property-content p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    /* ===== Title overlay: centered horizontally ===== */
+    .property-title {
+      position: absolute;
+      left: 0; right: 0;        /* allow horizontal centering with text-align */
+      bottom: 16px;
+      padding: 10px 14px;
+      text-align: center;       /* <-- centers horizontally */
+      font-weight: 700;
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+    }
 
-        /* --- Call to Action Button --- */
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
+    /* Focus ring for accessibility */
+    .property-card:has(.property-link:focus-visible) {
+      box-shadow: 0 0 0 4px var(--ring), 0 10px 30px rgba(0,0,0,0.35);
+      transform: translateY(-1px);
+    }
 
-        .cta-button:hover {
-            background-color: #005f8e; /* Darker shade on hover */
-        }
-        
-        /* --- Footer --- */
-        .footer {
-            margin-top: 4rem;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* --- Responsive Design for Desktops --- */
-        @media (min-width: 768px) {
-            .properties-grid {
-                /* Two columns for tablets and larger screens */
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .header h1 {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+    /* Small “chip” top-left for quick labels (optional) */
+    .chip {
+      position: absolute;
+      top: 12px; left: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      font-size: 12px;
+      color: #e5feff;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <!-- Title section -->
+    <header class="hero">
+      <h1 class="hero-title">
+        Vacation rentals
+        <span class="subline">Your island escape</span>
+      </h1>
+      <p class="hero-tag">Choose a property to view details, photos, and availability.</p>
+    </header>
 
-    <div class="container">
+    <!-- Property tiles -->
+    <section class="tiles">
+      <!-- Dolphin Villa -->
+      <article class="property-card">
+        <a class="property-link" href="https://JJsIslandintheSunRentals.com/dolphinvilla" aria-label="Open The Dolphin Villa at Ocean One Roatan"></a>
+        <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1508964942454-1a56651d54ac?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="property-sheen"></div>
+        <span class="chip">Sleeps 8+</span>
+        <!-- Horizontally centered title inside the tile -->
+        <h2 class="property-title">The Dolphin Villa at Ocean One Roatan</h2>
+      </article>
 
-        <header class="header">
-            <h1>Your Roatán Escape</h1>
-            <p>Discover paradise in the heart of the Caribbean. Choose your perfect stay and start planning your unforgettable tropical adventure.</p>
-        </header>
-
-        <main class="properties-grid">
-
-            <div class="property-tile">
-                <img src="images/Top01.jpg" alt="Fun" alt="A beautiful modern villa with a pool in a tropical setting">
-                <div class="property-content">
-                    <h2>The Dolphin Villa at Ocean One Roatan</h2>
-                    <p>Perfect for families or larger groups, this spacious 3 bedroom, 5 bathroom villa surrounds a beautiful pool, is a two minute walk to the center of West Bay Beach, and features a private rooftop jacuzzi.  It has all of the modern amenities you need for a luxurious and comfortable stay.</p>
-                    <a href="#book-villa" class="cta-button">View Villa Details</a>
-                </div>
-            </div>
-
-            <div class="property-tile">
-                <img src="images/IB01.jpg" alt="A 1 bedroom beachfront condo at Infinity Bay">
-                <div class="property-content">
-                    <h2>Oceanfront Infinity Bay Condo unit #1003</h2>
-                    <p>Ideal for couples or small families, this one-bedroom, 1.5 bathroom condo with full kitchen and private patio is just steps from the sand.  Enjoy ocean views right from your private patio.</p>
-                    <a href="#book-bungalow" class="cta-button">View Condo Details</a>
-                </div>
-            </div>
-
-        </main>
-        
-        <footer class="footer">
-            <p>&copy; 2025 J&J's Island in the Sun, S.A. All Rights Reserved.</p>
-        </footer>
-
-    </div>
-
+      <!-- Infinity Bay Condo -->
+      <article class="property-card">
+        <a class="property-link" href="https://JJsIslandintheSunRentals.com/infinitybay-1003" aria-label="Open Oceanfront Infinity Bay Condo Unit 1003"></a>
+        <div class="property-image" style="background-image:url('https://images.unsplash.com/photo-1501117716987-c8e3f9a1a3f5?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="property-sheen"></div>
+        <span class="chip">Beachfront 1 BR</span>
+        <!-- Horizontally centered title inside the tile -->
+        <h2 class="property-title">Oceanfront Infinity Bay Condo Unit #1003</h2>
+      </article>
+    </section>
+  </div>
 </body>
 </html>
