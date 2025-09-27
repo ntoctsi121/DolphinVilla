@@ -1060,6 +1060,31 @@
       });
     };
   </script>
+    <script type="text/javascript">
+  window.$bnbFormsBookingWidget || (
+      function(d,s){
+          window.$bnbBookingWidgetConfig = {
+              uid:"3241",
+              src:"https://bnbforms.com/103241",
+              lang:"en_US",
+              button:{
+                  bgColor:"#1F4ACE",
+                  text:"Book Now",
+                  position:"top-right", /* top-right | top-left | bottom-right | bottom-left */
+                  tOffset:"100px"       /* distance from top if top-*; use bOffset for bottom-* */
+              }
+          };
+          var src = "https://cdn.bnbforms.com/v1/main.js";
+          var $=d.createElement(s),
+          e=d.getElementsByTagName(s)[0];
+          $.async=true;
+          $.setAttribute("charset","utf-8");
+          $.src=src;
+          $.type="text/javascript";
+          e.parentNode.insertBefore($,e)
+      }
+  )(document,"script");
+  </script>
 </body>
 </html>
 
