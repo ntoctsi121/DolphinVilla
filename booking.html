@@ -4,9 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Beach Villa in Roatan</title>
+
+  <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+
+  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="images/icon.JPG">
+
+  <!-- Preload Gallery Images -->
+  <link rel="preload" as="image" href="images/Top01.jpg">
+  <link rel="preload" as="image" href="images/Top02.jpg">
+  <link rel="preload" as="image" href="images/Top03.jpg">
+  <link rel="preload" as="image" href="images/Top04.jpg">
+  <link rel="preload" as="image" href="images/Top05.jpg">
+  <link rel="preload" as="image" href="images/Top06.jpg">
+  <link rel="preload" as="image" href="images/Top07.jpg">
+  <link rel="preload" as="image" href="images/Top08.jpg">
+  <link rel="preload" as="image" href="images/Top09.jpg">
+  <link rel="preload" as="image" href="images/Top10.jpg">
+  <link rel="preload" as="image" href="images/Top11.jpg">
+  <link rel="preload" as="image" href="images/Top11a.png">
+  <link rel="preload" as="image" href="images/Top12.jpg">
+  <link rel="preload" as="image" href="images/Top13.jpg">
+  <link rel="preload" as="image" href="images/Top14.jpg">
+  <link rel="preload" as="image" href="images/Top15.jpg">
+  <link rel="preload" as="image" href="images/Top16.jpg">
+  <link rel="preload" as="image" href="images/Top17.jpg">
+  <link rel="preload" as="image" href="images/Top18.jpg">
+  <link rel="preload" as="image" href="images/Top19.jpg">
+  <link rel="preload" as="image" href="images/Top20.jpg">
+  <link rel="preload" as="image" href="images/Top21.jpg">
+  <link rel="preload" as="image" href="images/Top22.jpg">
+  <link rel="preload" as="image" href="images/Top23.jpg">
+  <link rel="preload" as="image" href="images/Top24.jpg">
+  <link rel="preload" as="image" href="images/Top25.jpg">
+  <link rel="preload" as="image" href="images/Top26.jpg">
+  <link rel="preload" as="image" href="images/Top27.jpg">
+  <link rel="preload" as="image" href="images/Top28.jpg">
+  <link rel="preload" as="image" href="images/Top29.jpg">
+  <link rel="preload" as="image" href="images/Top30.jpg">
+
+  <!-- Preload Fun Thumbnails -->
+  <link rel="preload" as="image" href="images/Bot01.jpg">
+  <link rel="preload" as="image" href="images/Bot02.jpg">
+  <link rel="preload" as="image" href="images/Bot03.jpg">
+  <link rel="preload" as="image" href="images/Bot04.jpg">
+  <link rel="preload" as="image" href="images/Bot05.jpg">
+  <link rel="preload" as="image" href="images/Bot06.jpg">
+  <link rel="preload" as="image" href="images/Bot07.jpg">
+  <link rel="preload" as="image" href="images/Bot08.jpg">
+  <link rel="preload" as="image" href="images/Bot09.jpg">
+  <link rel="preload" as="image" href="images/Bot10.jpg">
+  <link rel="preload" as="image" href="images/Bot11.jpg">
+  <link rel="preload" as="image" href="images/Bot12.jpg">
+  <link rel="preload" as="image" href="images/Bot13.jpg">
+  <link rel="preload" as="image" href="images/Bot14.jpg">
+  <link rel="preload" as="image" href="images/Bot15.jpg">
+  <link rel="preload" as="image" href="images/Bot16.jpg">
+  <link rel="preload" as="image" href="images/Bot17.jpg">
+  <link rel="preload" as="image" href="images/Bot18.jpg">
+  <link rel="preload" as="image" href="images/Bot19.jpg">
+  <link rel="preload" as="image" href="images/Bot20.jpg">
+  <link rel="preload" as="image" href="images/Bot21.jpg">
+  <link rel="preload" as="image" href="images/Bot22.jpg">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0CJ658K4X"></script>
@@ -18,23 +81,26 @@
   </script>
 
   <style>
-    .gallery-top, .fun-top, .reviews-top {
-      height: 80vh;
-    }
+    /* =========================
+       GLOBAL SWIPER STYLES
+    ========================= */
+    .gallery-top, .fun-top, .reviews-top { height: 80vh; }
     .gallery-top .swiper-slide img,
     .fun-top .swiper-slide img,
     .reviews-top .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
     }
     .swiper-slide { display: flex; justify-content: center; align-items: center; background: #fff; }
     .swiper-slide-prev, .swiper-slide-next { opacity: 0.4; transform: scale(1.0); }
 
+    /* Reviews image override */
     #Reviews .reviews-top .swiper-slide img {
       width: auto; height: auto; max-height: 80vh; object-fit: contain;
     }
 
+    /* =========================
+       THUMBNAILS STYLES
+    ========================= */
     .gallery-thumbs .swiper-slide,
     .fun-thumbs .swiper-slide,
     .reviews-thumbs .swiper-slide {
@@ -43,36 +109,42 @@
     }
     .gallery-thumbs .swiper-slide img,
     .fun-thumbs .swiper-slide img,
-    .reviews-thumbs .swiper-slide img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
+    .reviews-thumbs .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
     .gallery-thumbs .swiper-slide-thumb-active,
     .fun-thumbs .swiper-slide-thumb-active,
     .reviews-thumbs .swiper-slide-thumb-active { opacity: 1; }
-
     .gallery-thumbs, .fun-thumbs, .reviews-thumbs { margin: 5px auto 0 !important; }
 
+    /* =========================
+       HERO & FEATURES SECTIONS
+    ========================= */
     .hero-background::before {
-      content: ''; position: absolute; top:0; left:0; right:0; bottom:0;
+      content: ''; position: absolute; inset: 0;
       background: url('images/pano.jpg') center center / cover no-repeat;
       opacity: 0.5; z-index: -1;
     }
     .hero-content { position: relative; z-index: 1; }
-
     .features-background { position: relative; z-index: 0; }
     .features-background::before {
-      content: ''; position: absolute; top:0; left:0; right:0; bottom:0;
+      content: ''; position: absolute; inset: 0;
       background-image: url('images/Dolphin.png'); background-size: cover;
       background-position: center; background-repeat: no-repeat;
       opacity: 0.2; z-index: -1;
     }
     .features-content { position: relative; z-index: 1; }
 
+    /* =========================
+       NAVIGATION & TOGGLES
+    ========================= */
     .toggle-container { display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%; }
     #toggleIconLocation, #toggleIconOwners, #toggleIconReviews { font-weight: bold; font-size: 24px; margin-right: 8px; }
     .hidden { display: none; }
+    .icon { width: 1em; height: 1em; vertical-align: middle; }
 
-    .nav-link { position: relative; color: #333; text-decoration: none; padding: 0.5rem 1rem; transition: color 0.3s ease; }
+    .nav-link {
+      position: relative; color: #333; text-decoration: none;
+      padding: 0.5rem 1rem; transition: color 0.3s ease;
+    }
     .nav-link::before {
       content: ''; position: absolute; width: 100%; height: 2px; bottom: 0; left: 0;
       background-color: #3B82F6; visibility: hidden; transform: scaleX(0);
@@ -81,12 +153,14 @@
     .nav-link:hover { color: #3B82F6; }
     .nav-link:hover::before { visibility: visible; transform: scaleX(1); }
 
+    /* Swiper arrow color */
     .swiper-button-prev, .swiper-button-next,
     .swiper-button-prevFun, .swiper-button-nextFun,
     .swiper-button-prevReviews, .swiper-button-nextReviews {
       color: grey !important;
     }
 
+    /* Mobile tweaks */
     @media (max-width: 768px) {
       .gallery-top, .fun-top, .reviews-top { height: 60vh; }
       .swiper-button-prev, .swiper-button-next,
@@ -94,17 +168,24 @@
       .swiper-button-prevReviews, .swiper-button-nextReviews { display: none; }
     }
 
-    /* Floating Book Now button */
+    /* Landscape phones: contain fun images */
+    @media screen and (orientation: landscape) and (max-width: 900px) {
+      #roatan-fun .fun-top .swiper-slide img { object-fit: contain; }
+    }
+
+    /* =========================
+       Floating Book Now button
+    ========================= */
     .floating-book-now {
       position: fixed;
       right: 20px;
-      top: 100px;
+      top: 100px;          /* similar to your old tOffset */
       z-index: 1000;
       background: #1F4ACE;
       color: #fff;
       font-weight: 600;
       padding: 12px 16px;
-      border-radius: 9999px;
+      border-radius: 9999px; /* pill */
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
       text-decoration: none;
       transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
@@ -121,7 +202,7 @@
 </head>
 <body class="font-serif">
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section id="hero" class="hero-background text-black bg-cover bg-center relative">
     <div class="hero-content container mx-auto p-4 text-center">
       <h1 class="text-4xl font-bold">A Luxury Villa in Paradise</h1>
@@ -129,7 +210,7 @@
     </div>
   </section>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (no Calendar/Rates and no Book Now link here) -->
   <nav class="bg-white shadow-lg lg:sticky lg:top-0 lg:z-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-center">
@@ -147,7 +228,7 @@
       </div>
     </div>
   </nav>
-  
+
   <!-- MOBILE STICKY NAV -->
   <nav id="mobileStickyNav" class="fixed top-0 left-0 z-50 w-full bg-white shadow-lg lg:hidden hidden">
     <div class="max-w-6xl mx-auto px-4">
@@ -169,7 +250,6 @@
     <!-- Main Gallery Slider -->
     <div class="swiper gallery-top">
       <div class="swiper-wrapper">
-        <!-- ... your Top01–Top30 slides remain unchanged ... -->
         <div class="swiper-slide"><img src="images/Top01.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Top02.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Top03.jpg" alt="Ocean One complex"></div>
@@ -209,7 +289,6 @@
     <!-- Thumbnails Slider -->
     <div class="swiper gallery-thumbs mt-4">
       <div class="swiper-wrapper">
-        <!-- ... matching thumbnails ... -->
         <div class="swiper-slide"><img src="images/Top01.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Top02.jpg" alt="Ocean One complex"></div>
         <div class="swiper-slide"><img src="images/Top03.jpg" alt="Ocean One complex"></div>
@@ -529,13 +608,14 @@
     href="https://bnbforms.com/103241/accommodation/dolphinvilla/"
     target="_blank"
     rel="noopener"
-  >
-    Book Now
-  </a>
+    aria-label="Book Now (opens in a new tab)"
+  >Book Now</a>
 
   <!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
   <script>
+    /* Toggle helpers */
     function toggleLocationDetails() {
       var el = document.getElementById("locationDetails");
       var icon = document.getElementById("toggleIconLocation");
@@ -554,14 +634,92 @@
       el.classList.toggle("hidden");
       icon.textContent = el.classList.contains("hidden") ? "+" : "-";
     }
+    function animateNavLinks() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach((link, index) => {
+        link.style.opacity = '0';
+        link.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          link.style.opacity = '1';
+          link.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    }
 
+    /* Init Swipers and UI */
     window.onload = function() {
-      var galleryThumbs = new Swiper('.gallery-thumbs',{slidesPerView:'auto',freeMode:true,spaceBetween:2,watchSlidesVisibility:true,watchSlidesProgress:true});
-      var galleryTop = new Swiper('.gallery-top',{spaceBetween:1,loop:true,centeredSlides:true,slidesPerView:1.4,slideToClickedSlide:true,navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},thumbs:{swiper:galleryThumbs},autoplay:{delay:5000,disableOnInteraction:true}});
-      var funThumbs = new Swiper('.fun-thumbs',{slidesPerView:'auto',freeMode:true,spaceBetween:2,watchSlidesVisibility:true,watchSlidesProgress:true});
-      var funTop = new Swiper('.fun-top',{spaceBetween:2,loop:true,centeredSlides:true,slidesPerView:1.6,slideToClickedSlide:true,navigation:{nextEl:'.swiper-button-nextFun',prevEl:'.swiper-button-prevFun'},thumbs:{swiper:funThumbs},autoplay:{delay:5000,disableOnInteraction:true}});
-      var reviewsThumbs = new Swiper('.reviews-thumbs',{slidesPerView:'auto',freeMode:true,spaceBetween:2,watchSlidesVisibility:true,watchSlidesProgress:true});
-      var reviewsTop = new Swiper('.reviews-top',{spaceBetween:1,loop:true,centeredSlides:true,slidesPerView:1.4,slideToClickedSlide:true,navigation:{nextEl:'.swiper-button-nextReviews',prevEl:'.swiper-button-prevReviews'},thumbs:{swiper:reviewsThumbs},autoplay:{delay:5000,disableOnInteraction:true}});
+      // Gallery
+      var galleryThumbs = new Swiper('.gallery-thumbs', {
+        slidesPerView: 'auto', freeMode: true, spaceBetween: 2,
+        watchSlidesVisibility: true, watchSlidesProgress: true
+      });
+      var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 1, loop: true, centeredSlides: true, slidesPerView: 1.4,
+        slideToClickedSlide: true,
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        thumbs: { swiper: galleryThumbs },
+        autoplay: { delay: 5000, disableOnInteraction: true }
+      });
+
+      // Roatan Fun
+      var funThumbs = new Swiper('.fun-thumbs', {
+        slidesPerView: 'auto', freeMode: true, spaceBetween: 2,
+        watchSlidesVisibility: true, watchSlidesProgress: true
+      });
+      var funTop = new Swiper('.fun-top', {
+        spaceBetween: 2, loop: true, centeredSlides: true, slidesPerView: 1.6,
+        slideToClickedSlide: true,
+        navigation: { nextEl: '.swiper-button-nextFun', prevEl: '.swiper-button-prevFun' },
+        thumbs: { swiper: funThumbs },
+        autoplay: { delay: 5000, disableOnInteraction: true }
+      });
+
+      // Reviews
+      var reviewsThumbs = new Swiper('.reviews-thumbs', {
+        slidesPerView: 'auto', freeMode: true, spaceBetween: 2,
+        watchSlidesVisibility: true, watchSlidesProgress: true
+      });
+      var reviewsTop = new Swiper('.reviews-top', {
+        spaceBetween: 1, loop: true, centeredSlides: true, slidesPerView: 1.4,
+        slideToClickedSlide: true,
+        navigation: { nextEl: '.swiper-button-nextReviews', prevEl: '.swiper-button-prevReviews' },
+        thumbs: { swiper: reviewsThumbs },
+        autoplay: { delay: 5000, disableOnInteraction: true }
+      });
+
+      // Nav link animation
+      animateNavLinks();
+
+      // Video plays only when fully in view
+      const promoVideo = document.getElementById('promoVideo');
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio === 1) {
+            promoVideo.play();
+          } else {
+            promoVideo.pause();
+          }
+        });
+      }, { threshold: 1 });
+      videoObserver.observe(promoVideo);
+
+      // After first video ends, play the second one
+      promoVideo.addEventListener('ended', function() {
+        promoVideo.src = "images/OceanOne2.MP4";
+        promoVideo.load();
+        promoVideo.play();
+      });
+
+      // Mobile sticky nav show/hide on scroll
+      const mobileStickyNav = document.getElementById('mobileStickyNav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 150) {
+          mobileStickyNav.classList.remove('hidden');
+        } else {
+          mobileStickyNav.classList.add('hidden');
+        }
+      });
     };
   </script>
 </body>
