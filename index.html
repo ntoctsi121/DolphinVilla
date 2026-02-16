@@ -160,6 +160,42 @@
       color: grey !important;
     }
 
+
+    /* =========================
+       GUEST REVIEWS SYSTEM
+    ========================= */
+    .review-stars{display:inline-flex;gap:4px;cursor:pointer}
+    .review-stars .star{width:28px;height:28px;fill:#d1d5db;transition:fill 0.15s ease,transform 0.15s ease}
+    .review-stars .star.active,.review-stars .star.hover{fill:#f59e0b}
+    .review-stars .star:hover{transform:scale(1.15)}
+    .review-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.2s ease}
+    .review-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+    .review-card .stars-display{display:inline-flex;gap:2px}
+    .review-card .stars-display .star-sm{width:18px;height:18px;fill:#f59e0b}
+    .review-card .stars-display .star-sm.empty{fill:#d1d5db}
+    .avg-stars .star-lg{width:24px;height:24px;fill:#f59e0b}
+    .avg-stars .star-lg.empty{fill:#d1d5db}
+    .avg-stars .star-lg.half{fill:url(#halfGrad)}
+    #reviewForm textarea,#reviewForm input[type="text"]{font-family:inherit;border:1px solid #d1d5db;border-radius:8px;padding:10px 14px;width:100%;transition:border-color 0.2s ease,box-shadow 0.2s ease}
+    #reviewForm textarea:focus,#reviewForm input[type="text"]:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15)}
+    #reviewForm button[type="submit"]{background:#1F4ACE;color:#fff;font-weight:600;padding:12px 32px;border:none;border-radius:9999px;cursor:pointer;transition:background 0.2s ease,transform 0.1s ease}
+    #reviewForm button[type="submit"]:hover{background:#1a3fb3;transform:translateY(-1px)}
+    #reviewForm button[type="submit"]:active{transform:translateY(0)}
+    #reviewForm button[type="submit"]:disabled{background:#93a3c0;cursor:not-allowed;transform:none}
+    .review-success{background:#ecfdf5;border:1px solid #6ee7b7;color:#065f46;border-radius:8px;padding:14px 20px;text-align:center;font-weight:600;animation:fadeInUp 0.3s ease}
+    .review-error-banner{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b;border-radius:8px;padding:14px 20px;text-align:center;font-weight:500}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .reviews-loading{text-align:center;color:#6b7280;padding:24px}
+    .guest-reviews-swiper{overflow:hidden;padding-bottom:40px;position:relative}
+    .guest-reviews-swiper .swiper-slide{height:auto}
+    .guest-reviews-swiper .review-card{height:100%;display:flex;flex-direction:column}
+    .guest-reviews-swiper .review-card p.text-gray-700{flex:1}
+    .guest-reviews-swiper .swiper-pagination{bottom:0!important}
+    .guest-reviews-swiper .swiper-pagination-bullet{background:#94a3b8;opacity:0.5;width:10px;height:10px}
+    .guest-reviews-swiper .swiper-pagination-bullet-active{background:#1F4ACE;opacity:1}
+    .guest-reviews-swiper .swiper-button-prev,.guest-reviews-swiper .swiper-button-next{color:#94a3b8!important;top:45%}
+    .guest-reviews-swiper .swiper-button-prev:hover,.guest-reviews-swiper .swiper-button-next:hover{color:#1F4ACE!important}
+    @media(max-width:768px){.guest-reviews-swiper .swiper-button-prev,.guest-reviews-swiper .swiper-button-next{display:none}}
     /* Mobile tweaks */
     @media (max-width: 768px) {
       .gallery-top, .fun-top, .reviews-top { height: 60vh; }
@@ -201,6 +237,10 @@
   </style>
 </head>
 <body class="font-serif">
+
+  <!-- SVG defs for half-star gradient -->
+  <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="halfGrad"><stop offset="50%" stop-color="#f59e0b"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs></svg>
+
 
   <!-- HERO SECTION -->
   <section id="hero" class="hero-background text-black bg-cover bg-center relative">
@@ -422,33 +462,69 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section id="Reviews" class="py-8">
-    <div class="container mx-auto px-4">
-      <div class="toggle-container" onclick="toggleReviewsDetails()">
-        <div id="toggleIconReviews">+</div>
-        <h2 class="text-2xl font-bold">Reviews</h2>
-      </div>
-      <div id="ReviewsDetails" class="hidden text-center">
-        <div class="swiper reviews-top">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review3.png" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review4.png" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review"></div>
-          </div>
-          <div class="swiper-button-prev swiper-button-prevReviews"></div>
-          <div class="swiper-button-next swiper-button-nextReviews"></div>
+  <!-- GUEST REVIEWS -->
+  <section id="Reviews" class="bg-gray-50 py-12">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-2xl font-bold text-center mb-2">Guest Reviews</h2>
+
+      <div id="reviewsSummary" class="text-center mb-8" style="display:none;">
+        <div class="flex items-center justify-center gap-2 mb-1">
+          <span id="avgRatingNum" class="text-3xl font-bold"></span>
+          <span id="avgStarsContainer" class="avg-stars flex items-center"></span>
         </div>
-        <div class="swiper reviews-thumbs mt-4">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/Review1.jpg" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review2.jpg" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review3.png" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review4.png" alt="Review"></div>
-            <div class="swiper-slide"><img src="images/Review5.PNG" alt="Review"></div>
+        <p id="reviewCount" class="text-gray-500 text-sm"></p>
+      </div>
+
+      <div id="reviewsLoading" class="reviews-loading">Loading reviews&hellip;</div>
+      <div id="reviewsError" class="review-error-banner" style="display:none;"></div>
+
+      <div class="guest-reviews-swiper swiper mb-10" id="guestReviewsSwiperContainer" style="display:none;">
+        <div class="swiper-wrapper" id="reviewsList"></div>
+        <div class="swiper-pagination guest-reviews-pagination"></div>
+        <div class="swiper-button-prev guest-reviews-prev"></div>
+        <div class="swiper-button-next guest-reviews-next"></div>
+      </div>
+
+      <div class="review-card max-w-xl mx-auto">
+        <h3 class="text-xl font-bold text-center mb-6">Share Your Experience</h3>
+        <div id="reviewFormContainer">
+          <div id="reviewForm">
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-1">Your Name</label>
+              <input type="text" id="reviewName" placeholder="First name or initials" maxlength="50">
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-1">Home State / Province</label>
+              <input type="text" id="reviewHomeLocation" placeholder="e.g. North Carolina, USA" maxlength="60">
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-1">When did you stay?</label>
+              <input type="text" id="reviewStayDate" placeholder="e.g. January 2026" maxlength="40">
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-semibold mb-2">Rating</label>
+              <div class="review-stars" id="starPicker" role="radiogroup" aria-label="Star rating">
+                <svg class="star" data-value="1" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                <svg class="star" data-value="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                <svg class="star" data-value="3" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                <svg class="star" data-value="4" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                <svg class="star" data-value="5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+              </div>
+              <input type="hidden" id="reviewRating" value="0">
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-semibold mb-1">Your Review</label>
+              <textarea id="reviewText" rows="4" placeholder="Tell future guests about your stay&hellip;" maxlength="1000"></textarea>
+              <p class="text-xs text-gray-400 mt-1"><span id="charCount">0</span>/1000</p>
+            </div>
+            <div class="text-center">
+              <button type="submit" id="submitReviewBtn" onclick="submitReview()">Submit Review</button>
+            </div>
+            <p id="formError" class="text-red-500 text-sm text-center mt-3" style="display:none;"></p>
           </div>
+        </div>
+        <div id="reviewSuccess" class="review-success" style="display:none;">
+          Thank you for your review! It's now visible to future guests.
         </div>
       </div>
     </div>
@@ -581,13 +657,13 @@
     <p class="text-lg text-center mb-6">Please contact us with any questions you may have!</p>
 
     <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-8">
-      <a href="mailto:DolphinVillaRoatan@gmail.com" class="flex items-center text-blue-500 hover:text-blue-700">
+      <a href="/cdn-cgi/l/email-protection#793d1615091110172f101515182b16180d1817391e14181015571a1614" class="flex items-center text-blue-500 hover:text-blue-700">
         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a7.5 7.5 0 01-15 0V12m15-4v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2z"/>
         </svg>
-        DolphinVillaRoatan@gmail.com
+        <span class="__cf_email__" data-cfemail="0642696a766e6f68506f6a6a6754696772676846616b676f6a2865696b">[email&#160;protected]</span>
       </a>
 
       <a href="https://www.facebook.com/profile.php?id=61557083972658" target="_blank" rel="noopener"
@@ -641,7 +717,7 @@
   >See Availability Calendar / Book Now</a>
 
   <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <script>
     /* Toggle helpers */
@@ -704,19 +780,6 @@
         autoplay: { delay: 5000, disableOnInteraction: true }
       });
 
-      // Reviews
-      var reviewsThumbs = new Swiper('.reviews-thumbs', {
-        slidesPerView: 'auto', freeMode: true, spaceBetween: 2,
-        watchSlidesVisibility: true, watchSlidesProgress: true
-      });
-      var reviewsTop = new Swiper('.reviews-top', {
-        spaceBetween: 1, loop: true, centeredSlides: true, slidesPerView: 1.4,
-        slideToClickedSlide: true,
-        navigation: { nextEl: '.swiper-button-nextReviews', prevEl: '.swiper-button-prevReviews' },
-        thumbs: { swiper: reviewsThumbs },
-        autoplay: { delay: 5000, disableOnInteraction: true }
-      });
-
       // Nav link animation
       animateNavLinks();
 
@@ -749,12 +812,223 @@
           mobileStickyNav.classList.add('hidden');
         }
       });
+
+      // Nav menu click behaviors
+      document.getElementById('menuLocation').addEventListener('click', function(e) {
+        e.preventDefault();
+        var el = document.getElementById('locationDetails');
+        if (el.classList.contains('hidden')) toggleLocationDetails();
+        document.location.href = '#location';
+      });
+      document.getElementById('menuOwners').addEventListener('click', function(e) {
+        e.preventDefault();
+        var el = document.getElementById('OwnerDetails');
+        if (el.classList.contains('hidden')) toggleOwnerDetails();
+        document.location.href = '#Owners';
+      });
+      document.getElementById('menuReviews').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.location.href = '#Reviews';
+      });
+
+      // Load reviews from Google Sheets
+      loadReviews();
     };
+
+    /* =========================================
+       REVIEWS SYSTEM — Google Sheets Backend
+    ========================================= */
+    // IMPORTANT: Replace this URL with your own Google Apps Script web app URL
+    var REVIEWS_API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    var allReviews = [];
+
+    async function loadReviews() {
+      var loadingEl = document.getElementById('reviewsLoading');
+      var errorEl = document.getElementById('reviewsError');
+      try {
+        var response = await fetch(REVIEWS_API_URL);
+        var data = await response.json();
+        if (data.success) {
+          allReviews = data.reviews || [];
+        } else {
+          throw new Error(data.error || 'Failed to load reviews');
+        }
+        loadingEl.style.display = 'none';
+        errorEl.style.display = 'none';
+        renderReviews();
+      } catch (err) {
+        console.error('Error loading reviews:', err);
+        loadingEl.style.display = 'none';
+        errorEl.textContent = 'Reviews are temporarily unavailable. Please check back later.';
+        errorEl.style.display = '';
+      }
+    }
+
+    function starSVG(filled, cls) {
+      var fillClass = filled ? '' : ' empty';
+      return '<svg class="' + cls + fillClass + '" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>';
+    }
+    function halfStarSVG(cls) {
+      return '<svg class="' + cls + ' half" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>';
+    }
+
+    function formatStayDate(raw) {
+      if (!raw) return '';
+      var str = String(raw).trim();
+      if (/^\d{4}-\d{2}/.test(str) || str.indexOf('T') !== -1) {
+        var d = new Date(str);
+        if (!isNaN(d.getTime())) {
+          return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+        }
+      }
+      return str;
+    }
+
+    var guestReviewsSwiper = null;
+
+    function renderReviews() {
+      var list = document.getElementById('reviewsList');
+      var summary = document.getElementById('reviewsSummary');
+      var swiperContainer = document.getElementById('guestReviewsSwiperContainer');
+
+      if (allReviews.length === 0) {
+        list.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">No reviews yet. Be the first to share your experience!</p></div>';
+        summary.style.display = 'none';
+        swiperContainer.style.display = '';
+        return;
+      }
+
+      var sorted = allReviews.slice().sort(function(a, b) { return b.timestamp - a.timestamp; });
+      var avg = sorted.reduce(function(s, r) { return s + r.rating; }, 0) / sorted.length;
+
+      document.getElementById('avgRatingNum').textContent = avg.toFixed(1);
+      document.getElementById('reviewCount').textContent = sorted.length + ' review' + (sorted.length !== 1 ? 's' : '');
+
+      var avgStarsHTML = '';
+      for (var i = 1; i <= 5; i++) {
+        if (avg >= i) avgStarsHTML += starSVG(true, 'star-lg');
+        else if (avg >= i - 0.5) avgStarsHTML += halfStarSVG('star-lg');
+        else avgStarsHTML += starSVG(false, 'star-lg');
+      }
+      document.getElementById('avgStarsContainer').innerHTML = avgStarsHTML;
+      summary.style.display = '';
+
+      list.innerHTML = sorted.map(function(r) {
+        var starsHTML = '';
+        for (var j = 1; j <= 5; j++) starsHTML += starSVG(j <= r.rating, 'star-sm');
+        var safeText = String(r.text).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var safeName = String(r.name).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var safeHome = String(r.homeLocation || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var safeStay = String(formatStayDate(r.stayDate) || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var posted = new Date(r.timestamp).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+        return '<div class="swiper-slide"><div class="review-card">' +
+          '<div class="flex items-center justify-between mb-2 flex-wrap gap-2"><div>' +
+          '<span class="font-bold text-lg">' + safeName + '</span>' +
+          (safeHome ? '<span class="text-gray-400 text-sm ml-2">&middot; ' + safeHome + '</span>' : '') +
+          (safeStay ? '<span class="text-gray-400 text-sm ml-2">&middot; Stayed ' + safeStay + '</span>' : '') +
+          '</div><div class="stars-display">' + starsHTML + '</div></div>' +
+          '<p class="text-gray-700 leading-relaxed">' + safeText + '</p>' +
+          '<p class="text-xs text-gray-400 mt-3">Posted ' + posted + '</p></div></div>';
+      }).join('');
+
+      swiperContainer.style.display = '';
+
+      if (guestReviewsSwiper) {
+        guestReviewsSwiper.destroy(true, true);
+        guestReviewsSwiper = null;
+      }
+
+      guestReviewsSwiper = new Swiper('#guestReviewsSwiperContainer', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: sorted.length > 1,
+        autoplay: { delay: 6000, disableOnInteraction: true },
+        pagination: { el: '.guest-reviews-pagination', clickable: true },
+        navigation: { nextEl: '.guest-reviews-next', prevEl: '.guest-reviews-prev' },
+        breakpoints: {
+          640: { slidesPerView: 1, spaceBetween: 16 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 }
+        }
+      });
+    }
+
+    // Star picker
+    (function() {
+      var picker = document.getElementById('starPicker');
+      var stars = picker.querySelectorAll('.star');
+      stars.forEach(function(star) {
+        star.addEventListener('mouseenter', function() {
+          var val = parseInt(this.dataset.value);
+          stars.forEach(function(s) { s.classList.toggle('hover', parseInt(s.dataset.value) <= val); });
+        });
+        star.addEventListener('click', function() {
+          var sel = parseInt(this.dataset.value);
+          document.getElementById('reviewRating').value = sel;
+          stars.forEach(function(s) { s.classList.toggle('active', parseInt(s.dataset.value) <= sel); });
+        });
+      });
+      picker.addEventListener('mouseleave', function() {
+        stars.forEach(function(s) { s.classList.remove('hover'); });
+      });
+    })();
+
+    document.getElementById('reviewText').addEventListener('input', function() {
+      document.getElementById('charCount').textContent = this.value.length;
+    });
+
+    async function submitReview() {
+      var name = document.getElementById('reviewName').value.trim();
+      var homeLocation = document.getElementById('reviewHomeLocation').value.trim();
+      var stayDate = document.getElementById('reviewStayDate').value.trim();
+      var rating = parseInt(document.getElementById('reviewRating').value);
+      var text = document.getElementById('reviewText').value.trim();
+      var errorEl = document.getElementById('formError');
+
+      if (!name) { errorEl.textContent = 'Please enter your name.'; errorEl.style.display = ''; return; }
+      if (rating < 1) { errorEl.textContent = 'Please select a star rating.'; errorEl.style.display = ''; return; }
+      if (!text) { errorEl.textContent = 'Please write a review.'; errorEl.style.display = ''; return; }
+      errorEl.style.display = 'none';
+
+      var btn = document.getElementById('submitReviewBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting\u2026';
+
+      try {
+        var resp = await fetch(REVIEWS_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({ name: name, homeLocation: homeLocation, stayDate: stayDate, rating: rating, text: text })
+        });
+        var data = await resp.json();
+        if (!data.success) throw new Error(data.error || 'Failed');
+
+        allReviews.push(data.review);
+        document.getElementById('reviewFormContainer').style.display = 'none';
+        document.getElementById('reviewSuccess').style.display = '';
+        renderReviews();
+
+        setTimeout(function() {
+          document.getElementById('reviewFormContainer').style.display = '';
+          document.getElementById('reviewSuccess').style.display = 'none';
+          document.getElementById('reviewName').value = '';
+          document.getElementById('reviewHomeLocation').value = '';
+          document.getElementById('reviewStayDate').value = '';
+          document.getElementById('reviewText').value = '';
+          document.getElementById('reviewRating').value = '0';
+          document.getElementById('charCount').textContent = '0';
+          document.querySelectorAll('#starPicker .star').forEach(function(s) { s.classList.remove('active'); });
+          btn.disabled = false;
+          btn.textContent = 'Submit Review';
+        }, 5000);
+      } catch (err) {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.style.display = '';
+        btn.disabled = false;
+        btn.textContent = 'Submit Review';
+      }
+    }
   </script>
 </body>
 </html>
-
-
-
-
-
