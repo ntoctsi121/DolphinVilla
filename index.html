@@ -247,8 +247,27 @@
     .swiper-button-prev, .swiper-button-next,
     .swiper-button-prevFun, .swiper-button-nextFun,
     .swiper-button-prevReviews, .swiper-button-nextReviews {
-      color: rgba(255,255,255,0.85) !important;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+      color: #94a3b8 !important;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 50%;
+      width: 44px !important;
+      height: 44px !important;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .swiper-button-prev::after, .swiper-button-next::after,
+    .swiper-button-prevFun::after, .swiper-button-nextFun::after,
+    .swiper-button-prevReviews::after, .swiper-button-nextReviews::after {
+      font-size: 18px !important;
+    }
+    .swiper-button-prev:hover, .swiper-button-next:hover,
+    .swiper-button-prevFun:hover, .swiper-button-nextFun:hover,
+    .swiper-button-prevReviews:hover, .swiper-button-nextReviews:hover {
+      color: var(--primary) !important;
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.7);
     }
 
     /* =========================
