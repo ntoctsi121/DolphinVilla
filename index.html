@@ -397,6 +397,26 @@
       .swiper-button-prevReviews, .swiper-button-nextReviews { display: none; }
     }
 
+    /* Mobile portrait: 2-column tiles for Accommodations & Amenities */
+    @media (max-width: 640px) {
+      .feature-grid,
+      .feature-grid-centered {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+        justify-content: stretch;
+      }
+      .feature-grid-centered .feature-card {
+        flex: initial;
+        max-width: none;
+        width: auto;
+      }
+      .feature-card { padding: 1.25rem 0.75rem; }
+      .feature-card .label { font-size: 0.85rem; }
+      .feature-icon { width: 44px; height: 44px; margin-bottom: 0.75rem; }
+      .feature-icon svg { width: 24px; height: 24px; }
+    }
+
     @media screen and (orientation: landscape) and (max-width: 900px) {
       #roatan-fun .fun-top .swiper-slide img { object-fit: contain; }
     }
