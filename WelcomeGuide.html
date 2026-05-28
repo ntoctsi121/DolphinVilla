@@ -1,0 +1,2231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Dolphin Villa at Ocean One — Welcome Guide</title>
+<meta name="viewport" content="width=900" />
+
+<template id="__bundler_thumbnail" data-bg-color="#06384a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e6e7d"/>
+        <stop offset="1" stop-color="#06384a"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#g)"/>
+    <circle cx="940" cy="200" r="80" fill="#ffb547"/>
+    <path d="M 0 620 Q 300 560 600 600 T 1200 580 L 1200 800 L 0 800 Z" fill="#4cc1c9" opacity="0.6"/>
+    <path d="M 0 680 Q 300 620 600 660 T 1200 640 L 1200 800 L 0 800 Z" fill="#06384a"/>
+    <text x="600" y="420" text-anchor="middle"
+          font-family="Georgia, serif" font-size="120" font-style="italic"
+          fill="#fbf6ea">Dolphin Villa</text>
+    <text x="600" y="480" text-anchor="middle"
+          font-family="ui-monospace, monospace" font-size="22" letter-spacing="8"
+          fill="#ff7a59">WELCOME GUIDE</text>
+  </svg>
+</template>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     PALETTE
+     ============================================================ */
+  :root {
+    --ocean-deep:   #06384a;
+    --ocean:        #0e6e7d;
+    --turquoise:    #4cc1c9;
+    --coral:        #ff7a59;
+    --sunset:       #ffb547;
+    --palm:         #2b6a4a;
+    --sand:         #f6ead0;
+    --paper:        #fbf6ea;
+    --paper-warm:   #f3e7cb;
+    --ink:          #1a2b30;
+    --ink-soft:     #4a5a5e;
+    --rule:         rgba(26, 43, 48, 0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { background: #2a3a3f; }
+  body {
+    margin: 0;
+    padding: 24px 0 80px;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .display { font-family: "Yeseva One", "Times New Roman", serif; font-weight: 400; letter-spacing: -0.005em; }
+  .mono    { font-family: "DM Mono", ui-monospace, monospace; }
+  .hand    { font-family: "Caveat", cursive; }
+
+  /* ============================================================
+     PAGE — 8.5x11 binder pages
+     ============================================================ */
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    background: var(--paper);
+    color: var(--ink);
+    margin: 0 auto 28px;
+    padding: 0.42in 0.45in 0.28in 0.85in; /* extra left gutter for hole punch */
+    box-shadow: 0 18px 48px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    font-size: 10pt;
+    line-height: 1.5;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+  }
+  .page.last { page-break-after: auto; break-after: auto; }
+
+  /* binder holes — visible on screen only as a subtle marker */
+  .page::before {
+    content: "";
+    position: absolute;
+    left: 0.35in;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px dashed rgba(26,43,48,0.08);
+  }
+  .page .hole {
+    position: absolute;
+    left: 0.32in;
+    width: 0.22in;
+    height: 0.22in;
+    border-radius: 50%;
+    background: rgba(26,43,48,0.06);
+    border: 1px solid rgba(26,43,48,0.08);
+  }
+  .page .hole.h1 { top: 1.25in; }
+  .page .hole.h2 { top: 5.5in; }
+  .page .hole.h3 { top: 9.75in; }
+
+  /* hide screen-only binder elements when printing */
+  @media print {
+    html, body { background: white; margin: 0; padding: 0; }
+    .page {
+      margin: 0; box-shadow: none;
+      page-break-after: always;
+    }
+    .page::before, .page .hole { display: none; }
+    .screen-only { display: none !important; }
+  }
+
+  /* full-bleed pages (cover, dividers) — no left gutter padding */
+  .page.bleed { padding: 0; }
+
+  /* ============================================================
+     HEADER STRIP — running header on inner pages
+     ============================================================ */
+  .runhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: 9px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .runhead .brand {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--ocean-deep);
+    font-weight: 500;
+  }
+  .runhead .brand .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--coral); display: inline-block;
+  }
+  .runhead .right { color: var(--ink-soft); }
+
+  .runfoot {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .runfoot .page-num {
+    font-family: "Yeseva One", serif;
+    font-size: 13pt;
+    color: var(--coral);
+    letter-spacing: 0;
+  }
+  .runfoot .page-num small {
+    color: var(--ink-soft);
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    margin-left: 4px;
+  }
+
+  /* ============================================================
+     SECTION OPENER (within-page heading)
+     ============================================================ */
+  .opener {
+    display: grid;
+    grid-template-columns: 92px 1fr auto;
+    gap: 22px;
+    align-items: baseline;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  /* welcome-page opener (no num column) */
+  .opener.welcome {
+    grid-template-columns: 1fr auto;
+  }
+  .opener .num {
+    font-family: "Yeseva One", serif;
+    font-size: 38pt;
+    color: var(--coral);
+    line-height: 1;
+  }
+  .opener .num .slash { color: var(--ink); opacity: 0.22; font-size: 22pt; }
+  .opener .title {
+    font-family: "Yeseva One", serif;
+    font-size: 30pt;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .opener .title em { color: var(--ocean); font-style: italic; }
+  .opener .meta {
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ============================================================
+     COMMON TEXT
+     ============================================================ */
+  p { margin: 0 0 10px; }
+  strong { font-weight: 600; color: var(--ocean-deep); }
+  em { font-style: italic; }
+  h2, h3, h4 { font-family: "Yeseva One", serif; font-weight: 400; margin: 0; }
+  ul { margin: 8px 0 12px; padding-left: 18px; }
+  ul li { margin: 0 0 6px; }
+
+  .kicker {
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .kicker .dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--coral); border-radius: 50%;
+    margin-right: 8px;
+    transform: translateY(-2px);
+  }
+
+  .pullquote {
+    font-family: "Caveat", cursive;
+    font-size: 18pt;
+    line-height: 1.2;
+    color: var(--ocean);
+    border-left: 3px solid var(--sunset);
+    padding: 4px 0 4px 14px;
+    margin: 10px 0;
+  }
+
+  /* image placeholder block (replace with <img>) */
+  .ph {
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(14,110,125,0.06) 0 12px,
+        rgba(14,110,125,0.12) 12px 24px);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 14px;
+  }
+  .ph.dark {
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(255,255,255,0.04) 0 12px,
+        rgba(255,255,255,0.10) 12px 24px),
+      var(--ocean-deep);
+    color: rgba(255,255,255,0.78);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  /* ============================================================
+     COVER PAGE
+     ============================================================ */
+  .page.bleed.cover {
+    padding-bottom: 0.5in;
+  }
+  .cover {
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 8%, rgba(255,181,71,0.4), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 12% 92%, rgba(76,193,201,0.45), transparent 60%),
+      linear-gradient(170deg, var(--ocean-deep) 0%, var(--ocean) 55%, #0a5566 100%);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+  }
+  .cover .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55in 0.55in 0 0.95in;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+  }
+  .cover .mark {
+    display: flex; align-items: baseline; gap: 9px;
+    font-family: "Yeseva One", serif;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 15pt;
+    color: var(--paper);
+  }
+  .cover .mark .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--coral);
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+  .cover .title {
+    padding: 0.55in 0.55in 0 0.95in;
+    flex-grow: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover .eyebrow {
+    font-family: "DM Mono", monospace;
+    font-size: 9pt;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-bottom: 18px;
+  }
+  .cover h1 {
+    font-family: "Yeseva One", serif;
+    font-size: 78pt;
+    line-height: 0.92;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .cover h1 .line2 {
+    display: block;
+    color: var(--turquoise);
+    font-style: italic;
+    padding-left: 0.5em;
+  }
+  .cover h1 .line3 {
+    display: block;
+    color: var(--paper);
+    font-size: 0.42em;
+    font-style: normal;
+    padding-left: 2em;
+    margin-top: 14px;
+    letter-spacing: -0.01em;
+    opacity: 0.92;
+  }
+  .cover .sub {
+    padding: 14px 0.55in 0 0.95in;
+    max-width: 5in;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .cover .strip {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.3fr;
+    gap: 10px;
+    padding: 0.4in 0.55in 0.4in 0.95in;
+    height: 3.3in;
+  }
+  .cover .strip .ph {
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(255,255,255,0.06) 0 12px,
+        rgba(255,255,255,0.12) 12px 24px);
+    color: rgba(255,255,255,0.85);
+    border: 1px dashed rgba(255,255,255,0.36);
+  }
+  .cover .strip > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .cover .strip > img.tall { height: calc(100% + 52px); transform: translateY(-26px); }
+  .cover .strip .ph.tall { transform: translateY(-26px); height: calc(100% + 52px); }
+
+  .cover .footer {
+    background: rgba(0,0,0,0.18);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 16px 0.55in 16px 0.95in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+  }
+  .cover .footer .vol { display: flex; gap: 18px; flex-wrap: wrap; transform: translateY(-8px); }
+  .cover .footer .vol span span { color: var(--sunset); margin-right: 6px; }
+
+  /* ============================================================
+     WELCOME LETTER
+     ============================================================ */
+  .letter-wrap {
+    display: grid;
+    grid-template-columns: 1.5in 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 8px;
+  }
+  .letter-wrap .drop {
+    font-family: "Yeseva One", serif;
+    font-size: 64pt;
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--coral);
+    letter-spacing: -0.03em;
+  }
+  .letter-wrap .from {
+    margin-top: 18px;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .letter-wrap .body p {
+    font-size: 11.5pt;
+    line-height: 1.65;
+    margin: 0 0 12px;
+  }
+  .letter-wrap .body p:first-child::first-line { font-weight: 500; }
+
+  .signoff {
+    margin-top: 28px;
+    display: flex; align-items: end; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .signoff .sig {
+    font-family: "Caveat", cursive;
+    font-size: 30pt;
+    line-height: 1;
+    color: var(--ocean);
+  }
+  .signoff .sig small {
+    display: block;
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* ============================================================
+     TOC
+     ============================================================ */
+  .toc-list {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .toc-list li {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 14px;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc-list li .n {
+    font-family: "Yeseva One", serif;
+    font-size: 18pt;
+    color: var(--coral);
+    line-height: 1;
+  }
+  .toc-list li .t {
+    font-family: "Yeseva One", serif;
+    font-size: 16pt;
+    line-height: 1.1;
+  }
+  .toc-list li .t small {
+    display: block;
+    font-family: "DM Sans", sans-serif;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+  .toc-list li .pg {
+    font-family: "DM Mono", monospace;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ============================================================
+     CHECK-IN / arrival panel
+     ============================================================ */
+  .info-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 11px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .info-card.dark {
+    background: var(--ocean-deep);
+    color: var(--paper);
+    border-color: var(--ocean-deep);
+  }
+  .info-card.dark .kicker { color: rgba(255,255,255,0.7); }
+  .info-card.dark strong { color: var(--sunset); }
+  .info-card.coral {
+    background: var(--coral);
+    color: white;
+    border-color: var(--coral);
+  }
+  .info-card.coral .kicker { color: rgba(255,255,255,0.8); }
+  .info-card.coral strong { color: var(--ocean-deep); }
+  .info-card h4 {
+    font-size: 16pt;
+    line-height: 1.1;
+  }
+  .info-card p { margin: 0; font-size: 10pt; line-height: 1.55; }
+
+  /* small inline keyvalue */
+  .kv-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    font-family: "DM Mono", monospace;
+    font-size: 9pt;
+    line-height: 1.7;
+  }
+  .kv-list li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--rule); padding: 5px 0; }
+  .kv-list li span:first-child { color: var(--ink-soft); letter-spacing: 0.14em; text-transform: uppercase; font-size: 8pt; }
+  .info-card.dark .kv-list li { border-bottom-color: rgba(255,255,255,0.16); }
+  .info-card.dark .kv-list li span:first-child { color: rgba(255,255,255,0.6); }
+
+  /* ============================================================
+     2-COL & 3-COL grid helpers
+     ============================================================ */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .grid-2-uneven { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; }
+
+  /* ============================================================
+     DRIVER CARDS
+     ============================================================ */
+  .driver-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 16px 16px 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .driver-card.featured {
+    background: var(--ocean-deep);
+    color: var(--paper);
+    border-color: var(--ocean-deep);
+  }
+  .driver-card.featured .role { color: rgba(255,255,255,0.65); }
+  .driver-card.featured .quote { color: rgba(255,255,255,0.85); }
+  .driver-card .role {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .driver-card .name {
+    font-family: "Yeseva One", serif;
+    font-size: 17pt;
+    line-height: 1.05;
+  }
+  .driver-card.featured .name { color: var(--sunset); }
+  .driver-card .quote { font-size: 9.5pt; line-height: 1.5; flex-grow: 1; }
+  .driver-card .contact {
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
+    font-family: "DM Mono", monospace;
+    font-size: 8.5pt;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .driver-card.featured .contact { border-top-color: rgba(255,255,255,0.22); }
+  .driver-card .contact .lbl { color: var(--coral); margin-right: 6px; letter-spacing: 0.14em; text-transform: uppercase; font-size: 7.5pt; }
+  .driver-card.featured .contact .lbl { color: var(--turquoise); }
+  .driver-card .pin {
+    position: absolute;
+    top: -8px; right: 12px;
+    background: var(--coral); color: white;
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 99px;
+  }
+
+  /* ============================================================
+     RESTAURANT magazine row
+     ============================================================ */
+  .restaurant {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 16px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: stretch;
+  }
+  .restaurant.flip { grid-template-columns: 1.1fr 1fr; }
+  .restaurant.flip .photo { order: 2; }
+  .restaurant.flip .copy { order: 1; }
+  .restaurant:last-child { border-bottom: none; }
+  .restaurant .photo {
+    position: relative;
+    min-height: 1.4in;
+  }
+  .restaurant .photo > img,
+  .restaurant .photo > .ph {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .restaurant .photo .ph {
+    min-height: 1.4in;
+  }
+  .restaurant .photo .badge {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: var(--coral); color: white;
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 99px;
+    z-index: 2;
+  }
+  .restaurant .photo .badge.ocean  { background: var(--ocean); }
+  .restaurant .photo .badge.palm   { background: var(--palm); }
+  .restaurant .photo .badge.sunset { background: var(--sunset); color: var(--ocean-deep); }
+  .restaurant .copy h3 {
+    font-size: 22pt;
+    line-height: 1;
+    margin: 8px 0 6px;
+  }
+  .restaurant .copy h3 em { color: var(--coral); font-style: italic; }
+  .restaurant .copy p {
+    font-size: 9.5pt;
+    line-height: 1.55;
+    margin: 0 0 6px;
+  }
+  .restaurant .copy .tip {
+    margin-top: 6px;
+    border-left: 3px solid var(--sunset);
+    padding: 4px 0 4px 10px;
+    font-family: "Caveat", cursive;
+    font-size: 13pt;
+    line-height: 1.2;
+    color: var(--ocean);
+  }
+
+  /* compact eats grid */
+  .eats-strip {
+    background: var(--ocean-deep);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 16px 18px 12px;
+    margin-top: 8px;
+  }
+  .eats-strip h4 {
+    font-size: 17pt;
+    margin: 0 0 8px;
+  }
+  .eats-strip h4 em { color: var(--sunset); font-style: italic; }
+  .eats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+  }
+  .eat-mini {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+  .eat-mini .num {
+    font-family: "Yeseva One", serif;
+    font-size: 16pt;
+    color: var(--turquoise);
+    line-height: 1;
+  }
+  .eat-mini h5 {
+    font-family: "Yeseva One", serif;
+    font-weight: 400;
+    font-size: 12pt;
+    margin: 0 0 3px;
+    line-height: 1.05;
+  }
+  .eat-mini p { margin: 0; font-size: 8.5pt; line-height: 1.45; color: rgba(255,255,255,0.82); }
+  .eat-mini .loc {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-top: 4px;
+  }
+
+  /* ============================================================
+     MONEY / FAQ cards
+     ============================================================ */
+  .money-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 12px;
+  }
+  .money-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .money-card .tag {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+  .money-card h4 {
+    font-size: 14pt;
+    line-height: 1.05;
+  }
+  .money-card p { margin: 0; font-size: 9.5pt; line-height: 1.5; }
+  .money-card.big {
+    grid-column: span 7;
+    background: var(--ocean-deep);
+    color: var(--paper);
+    padding: 20px 22px;
+  }
+  .money-card.big .tag { color: var(--sunset); }
+  .money-card.big h4 { font-size: 18pt; }
+  .money-card.big p { color: rgba(255,255,255,0.88); }
+  .money-card.rate {
+    grid-column: span 5;
+    background: var(--coral);
+    color: white;
+  }
+  .money-card.rate .tag { color: rgba(255,255,255,0.85); }
+  .money-card.rate .big-num {
+    font-family: "Yeseva One", serif;
+    font-size: 38pt;
+    line-height: 0.95;
+  }
+  .money-card.rate .big-num small {
+    font-family: "DM Sans", sans-serif;
+    font-size: 10pt;
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0;
+  }
+  .money-card.rate p { color: rgba(255,255,255,0.92); }
+  .money-card.half { grid-column: span 6; }
+  .money-card.third { grid-column: span 4; }
+  .money-card.warn { border-left: 4px solid var(--sunset); }
+
+  /* ============================================================
+     CONVENIENCE GRID
+     ============================================================ */
+  .conv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+    margin-top: 10px;
+  }
+  .conv-cell {
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .conv-cell .lbl {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+  .conv-cell h4 { font-size: 14pt; line-height: 1.05; }
+  .conv-cell p { margin: 0; font-size: 9pt; line-height: 1.5; color: var(--ink-soft); }
+
+  /* ============================================================
+     ACTIVITIES grid
+     ============================================================ */
+  .act-feature {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .act-hero-card {
+    position: relative;
+    background: var(--ocean-deep);
+    color: var(--paper);
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 18px 20px;
+    min-height: 3.2in;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .act-hero-card .ph {
+    position: absolute; inset: 0;
+    border: none; border-radius: 0;
+    z-index: 0;
+  }
+  .act-hero-card .scrim {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(6,56,74,0.15) 0%, rgba(6,56,74,0.92) 75%);
+  }
+  .act-hero-card .content { position: relative; z-index: 2; }
+  .act-hero-card .tag {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-bottom: 8px;
+  }
+  .act-hero-card h3 {
+    font-size: 22pt;
+    line-height: 1;
+    margin: 0 0 8px;
+  }
+  .act-hero-card h3 em { color: var(--turquoise); font-style: italic; }
+  .act-hero-card p { margin: 0; font-size: 9.5pt; line-height: 1.5; color: rgba(255,255,255,0.92); }
+  .act-hero-card .creatures {
+    position: absolute; top: 16px; right: 18px;
+    text-align: right;
+    z-index: 2;
+  }
+  .act-hero-card .creatures .lbl {
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-bottom: 4px;
+  }
+  .act-hero-card .creatures .list {
+    font-family: "Caveat", cursive;
+    font-size: 16pt;
+    line-height: 1.05;
+    color: var(--paper);
+  }
+
+  .act-side { display: flex; flex-direction: column; gap: 12px; }
+  .act-side-card {
+    background: var(--coral);
+    color: white;
+    border-radius: 5px;
+    padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 4px;
+    flex: 1;
+  }
+  .act-side-card:nth-child(2) { background: var(--palm); }
+  .act-side-card .tag {
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+  }
+  .act-side-card h4 { font-size: 16pt; line-height: 1; }
+  .act-side-card p { margin: 0; font-size: 9pt; line-height: 1.5; color: rgba(255,255,255,0.92); }
+
+  .act-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .act-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 14px 14px 12px;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .act-card.dark  { background: var(--ocean); color: var(--paper); border-color: var(--ocean); }
+  .act-card.coral { background: var(--coral); color: white; border-color: var(--coral); }
+  .act-card.dark .tag, .act-card.dark .meta { color: rgba(255,255,255,0.72); }
+  .act-card.coral .tag, .act-card.coral .meta { color: rgba(255,255,255,0.85); }
+  .act-card .glyph {
+    font-family: "Yeseva One", serif;
+    font-size: 16pt;
+    color: var(--coral);
+    line-height: 1;
+  }
+  .act-card.dark .glyph { color: var(--sunset); }
+  .act-card.coral .glyph { color: var(--ocean-deep); }
+  .act-card .tag {
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .act-card h4 { font-size: 13pt; line-height: 1.05; }
+  .act-card p { margin: 0; font-size: 9pt; line-height: 1.5; color: var(--ink-soft); flex-grow: 1; }
+  .act-card.dark p, .act-card.coral p { color: rgba(255,255,255,0.92); }
+  .act-card .meta {
+    margin-top: 4px;
+    font-family: "DM Mono", monospace;
+    font-size: 7pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ============================================================
+     OCEAN ONE amenities cards
+     ============================================================ */
+  .amen-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .amen {
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 12px 14px;
+    background: var(--paper);
+  }
+  .amen .lbl {
+    font-family: "DM Mono", monospace;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+  .amen h4 { font-size: 12pt; line-height: 1.05; margin-bottom: 3px; }
+  .amen p { margin: 0; font-size: 8.5pt; line-height: 1.45; color: var(--ink-soft); }
+  .amen.dark {
+    background: var(--ocean-deep);
+    color: var(--paper);
+    border-color: var(--ocean-deep);
+  }
+  .amen.dark p { color: rgba(255,255,255,0.85); }
+  .amen.dark .lbl { color: var(--sunset); }
+
+  /* checklist style */
+  .check {
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .check li {
+    padding: 9px 0 9px 28px;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+  .check li:last-child { border-bottom: none; }
+  .check li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--coral);
+    border-radius: 3px;
+  }
+
+  /* ============================================================
+     FAREWELL
+     ============================================================ */
+  .farewell {
+    background:
+      radial-gradient(ellipse 70% 50% at 20% 10%, rgba(255,181,71,0.4), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 90% 90%, rgba(255,122,89,0.35), transparent 60%),
+      linear-gradient(170deg, var(--ocean-deep) 0%, var(--ocean) 100%);
+    color: var(--paper);
+    padding: 0.55in 0.45in 0.45in 0.85in;
+  }
+  .farewell h2 {
+    font-size: 44pt;
+    line-height: 0.95;
+    margin: 0;
+    max-width: 12ch;
+  }
+  .farewell h2 em { color: var(--sunset); font-style: italic; }
+  .farewell p {
+    font-size: 11pt;
+    line-height: 1.6;
+    max-width: 4.8in;
+    color: rgba(255,255,255,0.92);
+  }
+  .farewell .contact-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-top: 24px;
+  }
+  .farewell .contact-card .tag {
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sunset);
+    margin-bottom: 10px;
+  }
+  .farewell .contact-card .line {
+    font-family: "DM Mono", monospace;
+    font-size: 9.5pt;
+    color: var(--paper);
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  .farewell .contact-card .line:last-child { border-bottom: none; }
+  .farewell .contact-card .line .k { color: var(--turquoise); min-width: 1.2in; letter-spacing: 0.16em; text-transform: uppercase; font-size: 8pt; }
+  .farewell .signoff-final {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.22);
+    display: flex; justify-content: space-between; align-items: end;
+    flex-wrap: wrap;
+  }
+  .farewell .names {
+    font-family: "Caveat", cursive;
+    font-size: 28pt;
+    line-height: 1;
+    color: var(--sunset);
+    padding-left: 16px;
+  }
+  .farewell .meta {
+    font-family: "DM Mono", monospace;
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* small util */
+  .mt-10 { margin-top: 10px; }
+  .mt-14 { margin-top: 12px; }
+  .mt-18 { margin-top: 14px; }
+  .mt-22 { margin-top: 16px; }
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  .stack-14 { display: flex; flex-direction: column; gap: 8px; }
+
+  /* on-screen note */
+  .screen-only {
+    max-width: 8.5in;
+    margin: 0 auto 18px;
+    color: rgba(255,255,255,0.7);
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .screen-only b { color: var(--coral); }
+
+</style>
+</head>
+<body>
+
+<div class="screen-only">
+  Dolphin Villa Welcome Guide &nbsp;·&nbsp; <b>Press ⌘P / Ctrl+P</b> to print as 8.5×11 binder
+</div>
+
+<!-- ============================================================
+     PAGE 1 — COVER
+     ============================================================ -->
+<section class="page bleed cover" data-screen-label="01 Cover">
+  <div class="top">
+    <div class="mark"><span class="dot"></span> Dolphin Villa</div>
+    <div>West Bay · Roatán</div>
+  </div>
+
+  <div class="title">
+    <div class="eyebrow">Your hosts' guide to our little slice of the Caribbean</div>
+    <h1>
+      Welcome to the
+      <span class="line2">Dolphin Villa</span>
+      <span class="line3">at Ocean One · West Bay, Roatán</span>
+    </h1>
+  </div>
+
+  <div class="sub">
+    We've poured a lot of love into this villa, and we hope you find it as
+    special as we do. Inside: the Island Essentials Exchange (our guest-to-guest sharing closet), our favorite restaurants, the best snorkel spot on the island, and everything between.
+  </div>
+
+  <div class="strip">
+    <img src="images/WelcomeGuide/Top01.jpg" alt="Ocean One pool at night" />
+    <img class="tall" src="images/WelcomeGuide/Top08.jpg" alt="Dolphin Villa at Ocean One — exterior" />
+    <img src="images/WelcomeGuide/Interior01.jpg" alt="Villa interior open to the pool" />
+  </div>
+
+  <div class="footer">
+    <div class="mark" style="font-size: 11pt;"><span class="dot"></span> dolphinvillaroatan.com</div>
+    <div class="vol">
+      <span data-comment-anchor="88cda07619-span"><span>★</span> West Bay Beach</span>
+      <span><span>★</span> Roatán, Honduras</span>
+      <span><span>★</span> 16°16′N · 86°34′W</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 2 — WELCOME LETTER
+     ============================================================ -->
+<section class="page" data-screen-label="02 Welcome letter">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">A note from your hosts</div>
+  </div>
+
+  <div class="opener welcome">
+    <div class="title">¡Hola<em>!</em> Welcome, friend.</div>
+    <div class="meta">A personal note<br/>from your hosts</div>
+  </div>
+
+  <div class="letter-wrap">
+    <div>
+      <div class="drop">D.V.</div>
+    </div>
+
+    <div class="body">
+      <p>Thank you so much for booking with us! We are so excited for you to discover our favorite island. We've put a lot of love into our villa, and we hope you find it as special as we do.</p>
+
+      <p>Inside this binder you'll find a few tips and our honest-to-goodness favorites — places to <em>see</em>, things to <em>do</em>, and food worth a second helping. We've also tucked in our favorite hidden corners of the island, the rooftop hot tub at sunset with a drink in hand, and the snorkel route just down the beach we still daydream about between visits.</p>
+
+      <p>If you have any other specific questions during your stay, please do not hesitate to reach out — we'll do our best to help.</p>
+
+      <div class="signoff">
+        <div class="sig">Becky, Nick, Jayden<br/>&amp; Juliette
+          <small>Your Dolphin Villa hosts</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>Dolphin Villa · West Bay · Roatán</div>
+    <div class="page-num">02 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 — TABLE OF CONTENTS
+     ============================================================ -->
+<section class="page" data-screen-label="03 Contents">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Table of contents</div>
+  </div>
+
+  <div class="opener welcome">
+    <div class="title">What's <em>inside</em> this binder.</div>
+    <div class="meta">10 sections<br/>16 pages</div>
+  </div>
+
+  <p style="max-width: 5.6in; color: var(--ink-soft); font-size: 10.5pt; margin-bottom: 16px;">A field guide to the villa, the resort, and our favorite corners of Roatán — from the locks on the patio doors to the best cinnamon bun on the island.</p>
+
+  <ul class="toc-list">
+    <li><div class="n">01</div><div class="t">Arrival &amp; check-in <small>The lobby drop, towel cards, what to expect when you walk up</small></div><div class="pg">PG 04</div></li>
+    <li><div class="n">02</div><div class="t">Villa essentials <small>Wi-Fi, water, A/C, the island-essentials cabinet</small></div><div class="pg">PG 05</div></li>
+    <li><div class="n">03</div><div class="t">The villa's <em>quirks</em> <small>Patio doors, rooftop latch, TV, safe, jacuzzi</small></div><div class="pg">PG 06</div></li>
+    <li><div class="n">04</div><div class="t">Ocean One &amp; Paradise <small>Beach access, dining, jacuzzi, dive discount, gym</small></div><div class="pg">PG 07</div></li>
+    <li><div class="n">05</div><div class="t">Getting around <small>Drivers, rentals, water taxi to West End</small></div><div class="pg">PG 08</div></li>
+    <li><div class="n">06</div><div class="t">Where to <em>eat &amp; drink</em> <small>10 favorites plus 10 more cafés &amp; hole-in-the-walls</small></div><div class="pg">PG 09</div></li>
+    <li><div class="n">07</div><div class="t">Money &amp; everyday answers <small>Currency, tipping, sales tax, bills, FAQ</small></div><div class="pg">PG 12</div></li>
+    <li><div class="n">08</div><div class="t">Groceries &amp; conveniences <small>Eldon's, Fresco, Octopus, mini-marts</small></div><div class="pg">PG 13</div></li>
+    <li><div class="n">09</div><div class="t">Above &amp; <em>below</em> the water <small>Snorkel, dive, day trips, animals, nights out</small></div><div class="pg">PG 14</div></li>
+    <li><div class="n">10</div><div class="t">Departure &amp; farewell <small>Towel cards, feedback, see you soon</small></div><div class="pg">PG 16</div></li>
+  </ul>
+
+  <div class="runfoot">
+    <div>Table of contents</div>
+    <div class="page-num">03 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 3 — ARRIVAL & CHECK-IN
+     ============================================================ -->
+<section class="page" data-screen-label="04 Arrival & Check-in">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 01 · Arrival</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">01<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title"> Arrival &amp; check-in.</div>
+    <div class="meta">Property mgr · Towel cards<br/>Paradise Beach Resort lobby</div>
+  </div>
+
+  <div class="grid-2-uneven">
+    <div>
+      <div class="kicker"><span class="dot"></span> The short version</div>
+      <p class="mt-10">If you've arranged transportation with Ocean One, you'll be greeted at the property by the property manager, who will walk you to your villa and give you a tour.</p>
+      <p>If you've rented a car or taken a private taxi: head to the lobby of <strong>Paradise Beach Resort</strong>, tell them you're checking in for <strong>Ocean One Villas</strong>, and they'll get the property manager out to meet you.</p>
+      <p>For driving directions, set your map to <strong>Paradise Beach Resort, Nicky's Way, West Bay Beach</strong> — Ocean One is just adjacent and shares the same road.</p>
+    </div>
+
+    <div class="info-card dark">
+      <div class="kicker">★ Your hosts at Ocean One</div>
+      <h4 style="color: var(--sunset);">Luis Diaz &amp; Pablo Zuniga</h4>
+      <ul class="kv-list">
+        <li><span>WhatsApp · Luis</span><span>+504 9934-4662</span></li>
+        <li><span>WhatsApp · Pablo</span><span>+504 9738-1964</span></li>
+        <li><span>Email</span><span>reservations@oceanoneroatan.com</span></li>
+        <li><span>Emergency</span><span>+504 9665-9349</span></li>
+        <li><span>Check-in</span><span>3:00 PM</span></li>
+        <li><span>Check-out</span><span>12:00 PM</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-3 mt-18">
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Step 1</div>
+      <h4>Arrive at Paradise</h4>
+      <p>Pull up at Paradise Beach Resort on Nicky's Way. The Ocean One villas share the same entrance.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Step 2</div>
+      <h4>Tell the lobby</h4>
+      <p>"I'm checking in for the Ocean One Villas — the Dolphin Villa, Becky Smith." They'll radio Luis.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Step 3</div>
+      <h4>Towel cards &amp; tour</h4>
+      <p>You'll get towel cards (good for beach towels at the kiosk) and a quick walk-through of the villa.</p>
+    </div>
+  </div>
+
+  <div class="info-card coral mt-18">
+    <div class="kicker">⚠ Heads-up · Towel cards</div>
+    <p style="font-size: 10pt;">Each guest receives a towel card on arrival — exchange it at the kiosk for a beach towel (yours for the beach, pool, or tours). <strong>A $25 replacement fee applies for lost cards, towels, or keys</strong>, so keep track of them. Return everything at check-out.</p>
+  </div>
+
+  <div class="mt-22">
+    <div class="kicker"><span class="dot"></span> Paradise Beach Resort access — included</div>
+    <p class="mt-10">As an Ocean One guest you have <strong>full access to Paradise Beach Hotel amenities</strong> right next door: private beach &amp; chairs, pools, gym, plus complimentary daily activities like cooking classes, cocktail-making sessions, stretching, and more. Just flash your towel card.</p>
+  </div>
+
+  <div class="runfoot">
+    <div>01 · Arrival &amp; check-in</div>
+    <div class="page-num">04 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 4 — VILLA ESSENTIALS
+     ============================================================ -->
+<section class="page" data-screen-label="05 Villa essentials">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 02 · Inside the villa</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">02<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">  Villa essentials.</div>
+    <div class="meta">Wi-Fi · Water · A/C<br/>Kids &amp; everyday things</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="info-card dark">
+      <div class="kicker">Wi-Fi</div>
+      <ul class="kv-list">
+        <li><span>Network</span><span>Villa 9</span></li>
+        <li><span>Password</span><span>Roatanparadise</span></li>
+      </ul>
+      <p style="font-size: 9pt; color: rgba(255,255,255,0.78); margin-top: 6px;">Router lives above the laundry machine or behind the living-room TV — power-cycle it if things slow down.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="kicker">✓ Included in the villa</div>
+      <p style="font-size: 9.5pt;">A starter roll of paper towels, dish soap, sponges, shampoo, conditioner, soap, and toilet paper.</p>
+      <p style="font-size: 9.5pt;">Not included: laundry detergent — though you can sometimes find some in the island-essentials cabinet (see below).</p>
+    </div>
+  </div>
+
+  <div class="kicker mt-22"><span class="dot"></span> Everyday things to know</div>
+
+  <div class="grid-2 mt-10">
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">💧 Drinking water</div>
+      <p>The tap water is fine for showers and dishes, but <strong>don't drink it</strong>. We supply a big jug of purified water in the kitchen, plus a clear pitcher for the fridge and a freezer "core" that snaps in to keep it cold. If you run out, just ask Ocean One staff for a refill.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">🧻 Toilet paper</div>
+      <p>Roatán's septic system is sensitive — please throw all toilet paper into the waste bins rather than flushing. The cleaning staff empties the bins daily.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">⚡ Electricity</div>
+      <p>Power blinks now and then on the island. Our complex has a generator, so outages are brief — but don't rely on the alarm clocks (they reset when power drops). Bonus: the alarm clocks have USB chargers built into the back.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">❄ Air conditioning</div>
+      <p>Separate thermostats in each bedroom. At night, close the bedroom doors so the cool air doesn't mix with the warm third floor. <strong>Please keep villa doors closed when A/C is running</strong>, and turn units off if you're out for more than an hour.</p>
+    </div>
+  </div>
+
+  <div class="info-card dark mt-18">
+    <div class="kicker">★ The Island Essentials Exchange</div>
+    <p>There's a cabinet in the kitchen labeled "Island Essentials Exchange" — a little community closet where past guests have left extras for the next group. Sunscreen, pool toys, non-perishables, basic spices (salt, pepper, garlic powder are usually in the cabinet above the stove or here), and an umbrella. Help yourself to anything that makes your trip easier; leave behind anything you'd like to pass on.</p>
+  </div>
+
+  <div class="kicker mt-18"><span class="dot"></span> For families &mdash; little things we tucked in</div>
+  <p style="font-size: 9.5pt; color: var(--ink-soft); margin-top: 6px;"><strong style="color: var(--ocean-deep);">Stepstool</strong> under the sink in the queen/queen bedroom &middot; <strong style="color: var(--ocean-deep);">Kids' dining set</strong> in the cabinet just left of the kitchen sink &middot; <strong style="color: var(--ocean-deep);">Slippery patio</strong> when wet — roll out the blue rug from the corner &middot; Tuck breakable decor up high if you've got curious little ones.</p>
+
+  <div class="runfoot">
+    <div>02 · Villa essentials</div>
+    <div class="page-num">05 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 5 — VILLA QUIRKS
+     ============================================================ -->
+<section class="page" data-screen-label="06 Villa quirks">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 03 · The quirks</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">03<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">The villa's <em>quirks.</em></div>
+    <div class="meta">Patio doors · Rooftop latch<br/>TV · Safe</div>
+  </div>
+
+  <div>
+    <div class="kicker"><span class="dot"></span> A small island-construction quirks tour</div>
+    <p class="mt-10">This is Roatán — a few small things are charmingly idiosyncratic. Here's what to know so day one doesn't have a "wait, how does this work?" moment. Ask the property manager at check-in to walk you through any of them.</p>
+  </div>
+
+  <div class="stack-14 mt-18">
+    <div class="info-card">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 22pt; line-height: 1;">A</div>
+        <div style="flex-grow: 1;">
+          <div class="kicker">Patio doors → the pool</div>
+          <h4 style="font-size: 15pt; margin: 3px 0 4px;">Pull the right handle down — with the doors pushed tightly together.</h4>
+          <p style="font-size: 9.5pt;">The patio doors lock by pulling the <strong>right</strong>-side handle down while both doors are pressed together — the trick is pushing them together <em>tightly</em> so it catches. The left handle can be in any position. To check, try sliding the door — if it doesn't budge, you're good.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 22pt; line-height: 1;">B</div>
+        <div style="flex-grow: 1;">
+          <div class="kicker">Upper deck door · Rooftop</div>
+          <h4 style="font-size: 15pt; margin: 3px 0 4px;">Easier. Close, latch, push handle up — done.</h4>
+          <p style="font-size: 9.5pt;">When the rooftop deck door is closed and latched, just push the handle up and it returns to its normal position. The door is now locked. Worth the trip — the rooftop is one of our favorite spots on the island.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 22pt; line-height: 1;">C</div>
+        <div style="flex-grow: 1;">
+          <div class="kicker">The TV</div>
+          <h4 style="font-size: 15pt; margin: 3px 0 4px;">Ask the property manager at check-in to walk you through it.</h4>
+          <p style="font-size: 9.5pt;">Smart TV + cable box. Turn on both, then select <strong>HDMI 1, 2, or 3</strong> to access channels and streaming. It's not complicated, but it's easier to learn the input dance once than to fuss with it at 9pm.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 22pt; line-height: 1;">D</div>
+        <div style="flex-grow: 1;">
+          <div class="kicker">The safe</div>
+          <h4 style="font-size: 15pt; margin: 3px 0 4px;">Instructions are taped to the top of the safe.</h4>
+          <p style="font-size: 9.5pt;">Follow the printed instructions. The important bit: to <strong>reset the code</strong>, open the battery cover inside the safe and press the small button. Then enter your new code.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 22pt; line-height: 1;">E</div>
+        <div style="flex-grow: 1;">
+          <div class="kicker">Jacuzzi</div>
+          <h4 style="font-size: 15pt; margin: 3px 0 4px;">Flip it on, give it 1–2 hours to warm up.</h4>
+          <p style="font-size: 9.5pt;">Pre-configured for you. When the two small red lines are visible, it's working properly. Please turn it off after use — sea breezes will steal the heat overnight.  Leave the cover on, otherwise it will not remain hot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>03 · Villa quirks</div>
+    <div class="page-num">06 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 6 — OCEAN ONE & PARADISE
+     ============================================================ -->
+<section class="page" data-screen-label="07 Ocean One & Paradise">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 04 · Resort access</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">04<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Ocean One &amp; <em>Paradise.</em></div>
+    <div class="meta">Steps from your door<br/>Beach · pool · dining</div>
+  </div>
+
+  <div class="grid-2-uneven">
+    <div>
+      <p>Staying with us means you get to enjoy the full amenities of <strong>Paradise Beach Hotel</strong> — the next-door resort — at no extra charge. Beach chairs, pool, gym, and a regular roster of free guest activities. Below is the full list, plus the Cayuco oceanfront restaurant and the things only Ocean One guests get to use.</p>
+    </div>
+    <div class="info-card dark">
+      <div class="kicker">House rules · Quick reminders</div>
+      <ul class="kv-list">
+        <li><span>Smoking</span><span>None inside the villa</span></li>
+        <li><span>Pets</span><span>Not allowed</span></li>
+        <li><span>Quiet hours</span><span>8 PM – 8 AM</span></li>
+        <li><span>Trash</span><span>Designated bins only</span></li>
+        <li><span>Damages</span><span>Report immediately</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kicker mt-22"><span class="dot"></span> Included with your stay</div>
+
+  <div class="amen-list">
+    <div class="amen">
+      <div class="lbl">★ The beach</div>
+      <h4>Paradise's private beach &amp; chairs</h4>
+      <p>Trade your towel card for a fresh towel at the kiosk — they're yours for the day, at the beach, the pool, or on tours.</p>
+    </div>
+    <div class="amen">
+      <div class="lbl">★ Pools &amp; gym</div>
+      <h4>Multi-pool complex</h4>
+      <p>Full run of the Paradise pools. The gym is in the Paradise Tower across from the hotel lobby — request a gym e-card at reception.</p>
+    </div>
+    <div class="amen">
+      <div class="lbl">★ For little ones</div>
+      <h4>Paradise's playground</h4>
+      <p>A small playground at Paradise Beach Hotel — perfect for younger kids to burn off energy between beach swims and pool time.</p>
+    </div>
+    <div class="amen">
+      <div class="lbl">✦ Toes-up dining</div>
+      <h4>Cayuco room service</h4>
+      <p>Caribbean comfort food from Paradise's signature Cayuco bar — delivered straight to your villa. Especially good after a long beach day. Call <strong>+504 9672-3179</strong>.</p>
+    </div>
+  </div>
+
+  <div class="kicker mt-22"><span class="dot"></span> Dining &amp; tours · arranged through Ocean One</div>
+
+  <div class="grid-2 mt-10">
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">🐟 Oceanfront</div>
+      <h4>Cayuco Restaurant</h4>
+      <p>Paradise's signature restaurant — fresh flavors, ocean views, and seasonal themed nights with <strong>Garífuna cultural shows</strong>, live music, and the famous beach dinner. Ask the lobby about that week's schedule.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">🎟 Tours</div>
+      <h4>Concierge Service</h4>
+      <p>At the Paradise Hotel lobby — books exclusive tours at the best rates. Stop by, or have Luis loop them in.</p>
+    </div>
+  </div>
+
+  <ul class="kv-list mt-10" style="font-size: 9.5pt;">
+    <li><span>🤿 Dive discount · Ocean One guests</span><span>+504 9450-5014</span></li>
+  </ul>
+
+  <div class="runfoot">
+    <div>04 · Ocean One &amp; Paradise</div>
+    <div class="page-num">07 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 7 — TRANSPORTATION
+     ============================================================ -->
+<section class="page" data-screen-label="08 Transportation">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 05 · Getting around</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">05<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Getting <em>around.</em></div>
+    <div class="meta">Drivers · Rentals · Water taxi<br/>West Bay → Coxen Hole</div>
+  </div>
+
+  <div>
+    <div class="kicker"><span class="dot"></span> The short version</div>
+    <p class="mt-10">If you're planning to stay on West Bay Beach to relax, swim, snorkel and dive, <strong>you definitely don't need a car</strong>. But if you're the type to explore, there's plenty to see across the island.</p>
+    <p>Taxis and private drivers handle most of it — though with a big group, that adds up. Rent from the airport, from West Bay Mall (just outside the Ocean One entrance), or from the kiosk inside Infinity Bay just down the road. <strong>Ocean One offers airport transfers</strong>; for a similar price you can hire a private driver who'll also stop at the grocery on the way.</p>
+  </div>
+
+  <div class="kicker mt-22">★ TRUSTED DRIVERS — TELL THEM YOU'RE STAYING WITH BECKY &amp; NICK AT THE DOLPHIN VILLA</div>
+
+  <div class="grid-3 mt-10">
+    <div class="driver-card featured">
+      <div class="pin">Top pick</div>
+      <div class="role">Private driver · English</div>
+      <div class="name">Jesi Alvarez<br/><span style="color: rgba(255,255,255,0.55); font-size: 9pt; font-family: 'DM Mono', monospace; letter-spacing: 0; text-transform: none;">Roatan Driver</span></div>
+      <div class="quote">Reliable, communicative, speaks great English. Will stop at the grocery on the way to the villa so you can stock up. Mention Becky and she'll take great care of you.</div>
+      <div class="contact">
+        <div><span class="lbl">WhatsApp</span> +504 9542-6832</div>
+        <div><span class="lbl">Find on</span> Facebook</div>
+      </div>
+    </div>
+
+    <div class="driver-card">
+      <div class="role">Island cars + driver</div>
+      <div class="name">Leonardo</div>
+      <div class="quote">Much cheaper than the mainstream rentals and very reliable — handled airport + excursions for a group of 50 without a hitch. "Island style" cars: run-down, but perfect with sandy kids. Usually cash; sometimes credit card if you ask.</div>
+      <div class="contact">
+        <div><span class="lbl">WhatsApp</span> +504 3246-1274</div>
+        <div><span class="lbl">Note</span> Ask ahead for grocery stop</div>
+      </div>
+    </div>
+
+    <div class="driver-card">
+      <div class="role">Newer SUVs + insurance</div>
+      <div class="name">Werner Leon Sun</div>
+      <div class="quote">Recommended if you want newer cars or SUVs, full insurance, and the ability to pay car rental by credit card. English is also very good.</div>
+      <div class="contact">
+        <div><span class="lbl">WhatsApp</span> +504 9435-9696</div>
+        <div><span class="lbl">Payment</span> Credit card OK</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kicker mt-22">✦ Other ways to get around</div>
+
+  <div class="grid-3 mt-10" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="info-card">
+      <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 24pt; line-height: 1;">⟲</div>
+      <h4 style="font-size: 13pt;">Rent for a day</h4>
+      <p style="font-size: 9pt;">West Bay Mall and the Infinity Bay entrance both have car-rental kiosks for short rentals.</p>
+    </div>
+    <div class="info-card">
+      <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 24pt; line-height: 1;">FB</div>
+      <h4 style="font-size: 13pt;">Private FB rentals</h4>
+      <p style="font-size: 9pt;">Join the Roatan travel Facebook groups for cheaper private car rentals from locals.</p>
+    </div>
+    <div class="info-card">
+      <div style="font-family: 'Yeseva One', serif; color: var(--coral); font-size: 24pt; line-height: 1;">$5<small style="font-family: 'DM Sans', sans-serif; font-size: 9pt; color: var(--ink-soft); letter-spacing: 0;">/pp</small></div>
+      <h4 style="font-size: 13pt;">Water taxi → West End</h4>
+      <p style="font-size: 9pt;">The most fun way to get to West End's restaurants &amp; nightlife. Each way.</p>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>05 · Getting around</div>
+    <div class="page-num">08 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 8 — FOOD & DRINK 1
+     ============================================================ -->
+<section class="page" data-screen-label="09 Food & drink">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 06 · Eat &amp; drink</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">06<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Where to <em>eat &amp; drink.</em></div>
+    <div class="meta">11 spots, hand-picked<br/>West Bay · West End</div>
+  </div>
+
+  <div class="grid-2-uneven">
+    <div>
+      <div class="kicker"><span class="dot"></span> An island truth</div>
+      <p class="mt-10">There are more restaurants than you'll ever need within walking distance. We also recommend a water taxi to <strong>West End</strong> to check out the places there. You really can't go wrong — and food &amp; drinks here are cheaper than most other islands we've traveled to.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Pro tip</div>
+      <p style="font-size: 10pt;">For small, popular spots (Lily Pond Garden, The Drunken Sailor, Kristi's), <strong>reserve ahead</strong> or go off-peak. WhatsApp or Facebook is usually the easiest way to book.</p>
+    </div>
+  </div>
+
+  <article class="restaurant mt-22">
+    <div class="photo">
+      <div class="badge">House favorite</div>
+      <img src="images/WelcomeGuide/Bananarama-Front-scaled.jpg" alt="Bananarama on the beach" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 01 · Right next door · West Bay</div>
+      <h3>Bananarama<em>.</em></h3>
+      <p>Right next door on the beach. Super casual, very reasonably priced, with 2-for-1 food &amp; drink specials posted daily on a whiteboard. Show up in swimsuits — the kids play in the sand while your food cooks.</p>
+    </div>
+  </article>
+
+  <article class="restaurant flip">
+    <div class="photo">
+      <div class="badge ocean">Monday lobster</div>
+      <img src="images/WelcomeGuide/Beachers.jpg" alt="Beachers on the sand" style="width: 100%; height: 100%; object-fit: cover; object-position: center 70%; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 02 · Short walk toward West End</div>
+      <h3>Beachers<em>.</em></h3>
+      <p>A close second on West Bay. Coconut shrimp is delicious, and the <strong>Monday-night lobster special</strong> gets you a couple of lobster tails with sides for about $20. Get there early on Mondays — they fill up fast.</p>
+    </div>
+  </article>
+
+  <article class="restaurant">
+    <div class="photo">
+      <div class="badge palm">Where we got married</div>
+      <img src="images/WelcomeGuide/Kismet.jpg" alt="Kismet at Lighthouse Point" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 03 · Lighthouse Point</div>
+      <h3>Kismet<em>.</em></h3>
+      <p>At the Meridian at Lighthouse Point — westernmost point of the island, with a restaurant right on the beach. Open for lunch and dinner. Very secluded — especially nice on cruise-ship days.</p>
+      <div class="tip">we actually got married here. it's that pretty.</div>
+    </div>
+  </article>
+
+  <div class="runfoot">
+    <div>06 · Eat &amp; drink</div>
+    <div class="page-num">09 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 9 — FOOD & DRINK 2
+     ============================================================ -->
+<section class="page" data-screen-label="10 Food & drink continued">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 06 · Eat &amp; drink (cont.)</div>
+  </div>
+
+  <article class="restaurant">
+    <div class="photo">
+      <div class="badge sunset">Brunch goals</div>
+      <img src="images/WelcomeGuide/Ibagari.jpg" alt="Luna Muna at Ibagari" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 04 · Ibagari Boutique Resort · West Bay</div>
+      <h3>Luna Muna<em>.</em></h3>
+      <p>Still in West Bay but off the main beach — a cute boutique resort with an amazing restaurant. It's pricey, but worth it. Especially good for brunch. The setting is gorgeous and the food is delicious.</p>
+    </div>
+  </article>
+
+  <article class="restaurant flip">
+    <div class="photo">
+      <div class="badge">Hidden gem</div>
+      <img src="images/WelcomeGuide/DrunkenSailor.jpg" alt="The Drunken Sailor · West End" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 05 · West End</div>
+      <h3>The Drunken Sailor<em>.</em></h3>
+      <p>Looks like one of West End's many little dive bars, but it's actually an authentic Italian restaurant owned by an Italian expat and his family. Super reasonable for what it is. The owner is often in the back cooking and will come out to explain the menu.</p>
+      <div class="tip">tiny place — reserve, or arrive at an off time.</div>
+    </div>
+  </article>
+
+  
+
+  <div class="runfoot">
+    <div>06 · Eat &amp; drink (continued)</div>
+    <div class="page-num">10 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 11 — MORE WE LOVE (split out from page 10)
+     ============================================================ -->
+<section class="page" data-screen-label="11 More we love">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 06 · More we love</div>
+  </div>
+
+  <div class="opener welcome">
+    <div class="title">Ten more <em>we love.</em></div>
+    <div class="meta">A second helping<br/>West Bay &amp; West End</div>
+  </div>
+
+  <p style="color: var(--ink-soft); font-size: 10pt; margin-bottom: 14px;">A second round of restaurants, cafés, and hole-in-the-wall favorites — most within walking distance, a few worth a short taxi. Numbers continue from the featured picks on the previous pages.</p>
+
+  <div class="eats-strip">
+    <h4>And ten more we <em>love</em>.</h4>
+    <div class="eats-grid">
+      <div class="eat-mini">
+        <div class="num">06</div>
+        <div>
+          <h5>Kristi's Island Restaurant</h5>
+          <p>Right across from the Ocean One Complex, just outside West Bay Lodge. Run by a couple of expats; the food is delicious. Small — reserve for dinner if you're not going off-peak.</p>
+          <div class="loc">West Bay · expat-owned</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">07</div>
+        <div>
+          <h5>Las Rocas</h5>
+          <p>At the very end of West Bay toward West End — cross the boardwalk. Reasonably priced breakfast, lunch and dinner. Try the lobster burrito and fish empanadas. Heads up: gets buggy in the early evening.</p>
+          <div class="loc">West Bay End · breakfast</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">08</div>
+        <div>
+          <h5>Ginger's</h5>
+          <p>In Half Moon Bay, West End. Some of the best fresh fish on the island, and another perfect spot to let the kids splash in calm, shallow water while you wait for the food.</p>
+          <div class="loc">Half Moon Bay · fresh fish</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">09</div>
+        <div>
+          <h5>Sundowners</h5>
+          <p>A West End icon — two-story bar right on the water with frequent live music. Where the divers and expats hang out at sunset. Views from here are <em>insane</em>.</p>
+          <div class="loc">West End · sunset bar</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">10</div>
+        <div>
+          <h5>Sandy Buns</h5>
+          <p>The best cinnamon bun you'll ever have in your life. Trust us.</p>
+          <div class="loc">West End · bakery</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">11</div>
+        <div>
+          <h5>Lily Pond Garden</h5>
+          <p>A true hidden gem run by Zack &amp; his partner — reservation-only B&amp;B + restaurant. The fish melts in your mouth. More of an adult, upscale ambiance — but Zack was lovely with our two little ones.</p>
+          <div class="loc">West End · reservations only</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">12</div>
+        <div>
+          <h5>Arlyn's Place</h5>
+          <p>Tiny hole-in-the-wall in the shopping complex down Bananarama road (take a left out of Ocean One, then first left toward the beach). Local-style, and the <em>best breakfast deal</em> around — fresh baleadas (homemade tortillas with beans, cheese, egg, and a dozen fillings) for a couple of dollars. Practice your Spanish — they don't speak English.</p>
+          <div class="loc">Bananarama Rd · cash · breakfast</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">13</div>
+        <div>
+          <h5>Bean Crazy</h5>
+          <p>Right across the street from Ocean One. All kinds of coffee drinks, delicious breakfasts and lunches, and yummy smoothies.</p>
+          <div class="loc">West Bay · café · across the street</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">14</div>
+        <div>
+          <h5>Argentinian Grill</h5>
+          <p>Down the beach in West Bay. Known for steaks and seafood — get the <strong>whole grilled fish</strong>, you won't regret it.</p>
+          <div class="loc">West Bay · steaks &amp; seafood</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">15</div>
+        <div>
+          <h5>Totally Taco</h5>
+          <p>Another tiny hole-in-the-wall on Bananarama road (just left of Ocean One). Basically takeout only, but some of the best tacos on the island. Perfect lunch back at the pool.</p>
+          <div class="loc">Bananarama Rd · takeout · tacos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>06 · More we love</div>
+    <div class="page-num">11 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 10 — MONEY & FAQ
+     ============================================================ -->
+<section class="page" data-screen-label="12 Money & FAQ">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 07 · Money &amp; everyday</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">07<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Money &amp; <em>everyday answers.</em></div>
+    <div class="meta">Currency · Tipping<br/>Cards · Tax</div>
+  </div>
+
+  <div class="money-grid">
+    <div class="money-card big">
+      <div class="tag">Currency · Conversion</div>
+      <h4>The US Dollar works everywhere.</h4>
+      <p>No need to stress about exchanging money before you arrive. Occasionally prices are listed in Honduran Lempiras, but vendors still take USD.</p>
+      <p><strong style="color: rgb(14, 110, 125)">Heads-up:</strong> if your dollar bill has even a small tear, it may be rejected — bring crisp bills if you can.</p>
+    </div>
+
+    <div class="money-card rate">
+      <div class="tag">The rate, roughly</div>
+      <div class="big-num">26L <small>≈ $1 USD</small></div>
+      <p>So something priced at 100L is about $4. Or open the iPhone Calculator → tap the icon → toggle Convert.</p>
+    </div>
+
+    <div class="money-card half">
+      <div class="tag">Credit cards</div>
+      <h4>Bring Visa or Mastercard.</h4>
+      <p>Accepted most places, but not all. <strong>Amex is hit-or-miss</strong> — carry a backup. Vendors rarely charge a card fee, and paying in Lempiras usually gives you a better rate than the vendor would offer. Use a card with no foreign-transaction fees, even paying in USD.</p>
+    </div>
+
+    <div class="money-card half warn">
+      <div class="tag">Tipping tip</div>
+      <h4>Tell the server before they swipe.</h4>
+      <p>Paying by card at restaurants, you usually need to <strong>tell your server the tip amount before</strong> they run the card — there's often no line to write it in. If you forget, cash tips are always welcome. Rule of thumb: ~15%.</p>
+    </div>
+
+    <div class="money-card half">
+      <div class="tag">Small bills</div>
+      <h4>Your best friend in Roatán.</h4>
+      <p>We always bring a stash of $1s and $5s — a few hundred dollars' worth — and it makes life so much easier. Local vendors and service staff really appreciate small bills for tips, snacks, taxis, and quick purchases.</p>
+    </div>
+
+    <div class="money-card half warn">
+      <div class="tag">Sales tax surprise</div>
+      <h4>15%–19%, depending.</h4>
+      <p>Sales tax in Roatán is steep. If a price doesn't include tax it can be a surprise at checkout — most vendors will tell you whether tax is baked in, but when in doubt, just ask. No one likes unexpected math on vacation.</p>
+    </div>
+  </div>
+
+  <div class="kicker mt-22"><span class="dot"></span> A few more common questions</div>
+
+  <div class="grid-2 mt-10">
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Wi-Fi reset</div>
+      <p style="font-size: 9.5pt;">The router lives above the laundry machine or behind the living-room TV. Power-cycle if it gets sluggish.</p>
+    </div>
+    <div class="info-card">
+      <div class="kicker" style="color: var(--coral);">Lost key</div>
+      <p style="font-size: 9.5pt;">Contact Luis at <strong>+504 9934-4662</strong> for a replacement ($25 fee).</p>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>07 · Money &amp; everyday answers</div>
+    <div class="page-num">12 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 11 — GROCERIES & CONVENIENCES
+     ============================================================ -->
+<section class="page" data-screen-label="13 Groceries & conveniences">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 08 · Groceries</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">08<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Groceries &amp; <em>conveniences.</em></div>
+    <div class="meta">Eldon's · Fresco · Octopus<br/>Mini-marts &amp; more</div>
+  </div>
+
+  <div class="grid-2-uneven">
+    <div>
+      <div class="kicker"><span class="dot"></span> Pro tip</div>
+      <p class="mt-10">Bring all toiletries and staples you need from home — but in a pinch, the island has everything. We recommend stocking up at <strong>Eldon's</strong>, the big grocery store, on your way from the airport to the villa.</p>
+      <p>Don't have a car? Most private drivers and taxis will stop at the grocery on the way from the airport for only a few extra dollars — just ask ahead of time.</p>
+    </div>
+    <div class="info-card dark">
+      <div class="kicker">RIGHT NEXT DOOR · 30 METERS SOUTH OF OCEAN ONE</div>
+      <h4 style="color: var(--sunset);">Mini-market — 2 minute walk</h4>
+      <p style="font-size: 9.5pt;">There's a small grocery mini-market just <strong>30 meters to the left of the Ocean One entrance</strong> for snacks, drinks, and everyday necessities. Useful when you don't feel like leaving West Bay.</p>
+    </div>
+  </div>
+
+  <div class="conv-grid mt-22">
+    <div class="conv-cell">
+      <div class="lbl">★ Best stop</div>
+      <h4>Eldon's</h4>
+      <p>The big supermarket in Coxen Hole, right by the airport. Cheapest and best stocked. Most private drivers will stop here on the way from the airport to West Bay for a few extra dollars.</p>
+    </div>
+    <div class="conv-cell">
+      <div class="lbl">Produce</div>
+      <h4>Fresco</h4>
+      <p>Fresh fruit &amp; vegetable market right across from the entrance to Ocean One. Perfect for breakfast staples — and avocados for guacamole on the rooftop.</p>
+    </div>
+    <div class="conv-cell">
+      <div class="lbl">In a pinch</div>
+      <h4>Octopus</h4>
+      <p>Small (and very expensive) convenience store in West Bay Mall — the outdoor complex of shops just to the left as you exit Ocean One.</p>
+    </div>
+    <div class="conv-cell">
+      <div class="lbl">On the beach</div>
+      <h4>Beacher's Mini-Mart</h4>
+      <p>Small grocery right next to Beacher's restaurant on West Bay Beach. Staples and alcohol. Not cheap, but very convenient if you don't feel like moving.</p>
+    </div>
+    <div class="conv-cell">
+      <div class="lbl">Get help</div>
+      <h4>Ask your driver</h4>
+      <p>No car? Jesi, Leonardo, Werner — or your Ocean One transfer — will all swing past the grocery on the way from the airport for a few extra dollars. Just ask ahead.</p>
+    </div>
+    <div class="conv-cell">
+      <div class="lbl">Sundries</div>
+      <h4>What to pack</h4>
+      <p>Reef-safe sunscreen, your own snorkel gear if you have it, a soft cooler bag, bug spray (especially for evenings), and a stash of crisp $1s and $5s.</p>
+    </div>
+  </div>
+
+  <div class="pullquote mt-22">avocados from fresco + happy hour on the rooftop = a perfect roatán evening.</div>
+
+  <div class="runfoot">
+    <div>08 · Groceries &amp; conveniences</div>
+    <div class="page-num">13 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 12 — ACTIVITIES 1 (snorkel + diving + main)
+     ============================================================ -->
+<section class="page" data-screen-label="14 Activities · in the water">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 09 · In the water</div>
+  </div>
+
+  <div class="opener">
+    <div class="num">09<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
+    <div class="title">Above &amp; <em>below</em> the water.</div>
+    <div class="meta">Snorkel · Dive · Day trips<br/>Animal encounters · Nights out</div>
+  </div>
+
+  <div class="act-feature">
+    <div class="act-hero-card">
+      <div class="ph dark">Underwater · reef &amp; fish</div>
+      <div class="scrim"></div>
+      <div class="creatures">
+        <div class="lbl">We've seen</div>
+        <div class="list">
+          fish · coral · squid<br/>
+          octopus · turtles<br/>
+          eels &amp; stingrays
+        </div>
+      </div>
+      <div class="content">
+        <div class="tag">★ The main event</div>
+        <h3>Some of the best <em>snorkeling</em> in the world — just down the beach.</h3>
+        <p>Walk out to the beach, turn left, and head all the way to the end where the rocks are. Enter the water and swim straight out to the reef, then go right. There's a huge reef around the island, and a big shelf with a drop-off. You can snorkel here for hours.</p>
+      </div>
+    </div>
+
+    <div class="act-side">
+      <div class="act-side-card">
+        <div class="tag">For little kids</div>
+        <h4>Swimming with the fishies.</h4>
+        <p>In the shallow water by the rocks, you can stand and be surrounded by colorful fish. For families with little ones, this is always the highlight — now anywhere we travel, our kids are disappointed when they're not surrounded by fish in shallow water.</p>
+      </div>
+      <div class="act-side-card">
+        <div class="tag">Can't-miss</div>
+        <h4>Scuba diving.</h4>
+        <p>If you dive, you can't come to Roatán without diving. Extremely affordable; the reef is close so boat rides are short. Night dives, shipwrecks, drift dives — you name it. Favorite shop: <strong>West Bay Divers.</strong> Ocean One also offers <strong>guest dive discounts</strong> at the private dive center — call <strong>+504 9450-5014</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2 mt-14" style="grid-template-columns: 1.2fr 1fr;">
+    <div class="info-card dark">
+      <div class="kicker">Day trip · weather-permitting</div>
+      <h4 style="color: var(--sunset); font-size: 16pt;">Cayos Cochinos.</h4>
+      <p style="font-size: 9.5pt;">Tiny remote islands about two hours away with some of the most pristine, untouched snorkeling we've ever seen. Most tours include a fresh fish lunch cooked for you by the locals. Not cheap — definitely worth it. Boats only go if the weather is good.</p>
+    </div>
+    <div class="info-card coral">
+      <div class="kicker">Boats · booze · snorkel</div>
+      <h4 style="color: var(--ocean-deep); font-size: 16pt;">Mono Loco.</h4>
+      <p style="font-size: 9.5pt;">Snorkel tours, sunset tours, dinner cruises. The food and drinks are fantastic and the trips are super fun — music, dancing, partying. Kids loved it too.</p>
+    </div>
+  </div>
+
+  <div class="runfoot">
+    <div>09 · Above &amp; below the water</div>
+    <div class="page-num">14 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 13 — ACTIVITIES 2 (land + nights)
+     ============================================================ -->
+<section class="page" data-screen-label="15 Activities · on the island">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div class="runhead">
+    <div class="brand"><span class="dot"></span> Dolphin Villa · Welcome Guide</div>
+    <div class="right">Section 09 · On the island</div>
+  </div>
+
+  <div class="kicker"><span class="dot"></span> On dry land &amp; in the evenings</div>
+
+  <div class="act-grid mt-10">
+    <div class="act-card">
+      <div class="tag">Friday + Sunday nights</div>
+      <div class="glyph">🔥</div>
+      <h4>Fire dancers.</h4>
+      <p>Free shows on the beach a couple times a week. Sundays in front of Bananarama, Fridays in front of Infinity Bay — you can watch the show shortly after sundown.</p>
+      <div class="meta">FREE · RIGHT AFTER SUNDOWN</div>
+    </div>
+
+    <div class="act-card">
+      <div class="tag">Sundays · Bananarama</div>
+      <div class="glyph">🦀</div>
+      <h4>Crab races.</h4>
+      <p>Drink specials, live music, and people betting on hermit crabs. Proceeds go to a nonprofit helping infants of mothers with HIV.</p>
+      <div class="meta">Sun evenings · good cause</div>
+    </div>
+
+    <div class="act-card">
+      <div class="tag">Anthony's Key Resort · Sandy Bay</div>
+      <div class="glyph">🐬</div>
+      <h4>Dolphin encounters.</h4>
+      <p>A dolphin research center where the dolphins are regularly let into the ocean and come back freely. Encounters for all ages — waist-deep, snorkel, even a dive encounter. Book ahead online.</p>
+      <div class="meta">25 min from West Bay · Book online</div>
+    </div>
+
+    <div class="act-card dark">
+      <div class="tag">Jungle · canopy · animals</div>
+      <div class="glyph">↟</div>
+      <h4>Mayan Jungle Canopy.</h4>
+      <p>Ziplining; our kids (2 and 5 at the time) were able to double-zip with us. Go early — it gets hot, and you walk up a lot of steps. Also has animal encounters (monkeys, sloths, feed birds) and offers roundtrip transport.</p>
+      <div class="meta">Transport from villa · best in morning</div>
+    </div>
+
+    <div class="act-card">
+      <div class="tag">Animal sanctuary · West Bay</div>
+      <div class="glyph">🦜</div>
+      <h4>Gumbalimba Park.</h4>
+      <p>Right at the entrance to West Bay. Hold macaws, have monkeys jump on your head, see iguanas. A true sanctuary — the monkeys &amp; macaws aren't caged. You sometimes see their macaws flying over West Bay.</p>
+      <div class="meta">Walking distance · family-friendly</div>
+    </div>
+
+    <div class="act-card coral">
+      <div class="tag">East End Tour</div>
+      <div class="glyph">🦈</div>
+      <h4>Mangroves + sharks.</h4>
+      <p>Boat ride through the mangroves, then snorkeling — some include a swim with sharks. Guests have called it the highlight of their trip. Recommended operator: <strong>Tyler Hynds, Eastroatan Tours.</strong></p>
+      <div class="meta">Highly recommended by guests</div>
+    </div>
+
+    <div class="act-card">
+      <div class="tag">Private island day trip</div>
+      <div class="glyph">⛱</div>
+      <h4>Brady's Cay.</h4>
+      <p>About a 40-min drive past French Harbour. Park, take their pontoon shuttle to the island, and spend the day on the beach with a restaurant on-site. Go on a non-cruise-ship day — Google cruise schedules — and you'll have it nearly to yourself.</p>
+      <div class="meta">Skip cruise-ship days</div>
+    </div>
+
+    <div class="act-card">
+      <div class="tag">TKM Photography</div>
+      <div class="glyph">📸</div>
+      <h4>Family photos · TKM Photography</h4>
+      <p>Canadian photographer who takes amazing family photos at a fraction of US pricing. Patient and flexible with little kids, and she'll even let you change outfits for water photos.</p>
+      <div class="meta">tkmphotography.com · Facebook</div>
+    </div>
+
+    <div class="act-card dark">
+      <div class="tag">Booked through the resort</div>
+      <div class="glyph">🎟</div>
+      <h4>Concierge tours.</h4>
+      <p>Christopher at the Paradise Hotel lobby can arrange any of the above — at the best rates Ocean One has negotiated. Stop by, or have Luis loop him in.</p>
+      <div class="meta">Paradise Hotel lobby</div>
+    </div>
+  </div>
+
+  <div class="pullquote" style="margin-top: 12px; display: none;">most of all: leave room in your itinerary for doing nothing. the rooftop deck at sunset is half the reason we built this villa for guests.</div>
+
+  <div class="runfoot">
+    <div>09 · Above &amp; below the water (cont.)</div>
+    <div class="page-num">15 <small>/ 16</small></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PAGE 14 — CHECK-OUT & FAREWELL
+     ============================================================ -->
+<section class="page bleed farewell last" data-screen-label="16 Check-out & farewell">
+  <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
+
+  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; font-family: 'DM Mono', monospace; font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.65); padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+    <div style="color: rgba(255,255,255,0.92);"><span style="display:inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); margin-right: 8px; transform: translateY(-1px);"></span> Dolphin Villa · Welcome Guide</div>
+    <div>Section 10 · Departure &amp; farewell</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 64px 1fr auto; gap: 18px; align-items: baseline; padding-bottom: 18px; margin-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.22);">
+    <div style="font-family: 'Yeseva One', serif; font-size: 38pt; color: var(--sunset); line-height: 1;">10<span style="color: rgba(255,255,255,0.35); font-size: 22pt;">/</span></div>
+    <div style="font-family: 'Yeseva One', serif; font-size: 30pt; line-height: 1; letter-spacing: -0.01em; color: var(--paper);">Departure &amp; <em style="color: var(--turquoise); font-style: italic;">farewell.</em></div>
+    <div style="font-family: 'DM Mono', monospace; font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-align: right; line-height: 1.7;">Check-out · 12 PM<br/>See you again soon</div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; align-items: stretch; margin-bottom: 28px;">
+    <h2>We hope you fall <em>head-over-heels</em> for Roatán.</h2>
+    <figure style="margin: 0; position: relative; min-height: 2.4in; border-radius: 6px; overflow: hidden; box-shadow: 0 14px 36px rgba(0,0,0,0.4);">
+      <img src="images/WelcomeGuide/Bot14.jpg" alt="Sunset moment at Roatán" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;" />
+    </figure>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start;">
+    <div>
+      <p>There are so many things we love about this island, we couldn't possibly fit it all in here — but we hope this is a good start, and helps you create the most amazing vacation ever.</p>
+      <p>Thank you for choosing the <strong style="color: rgb(255, 122, 89)">Dolphin Villa</strong> for your Roatán getaway. We want to make sure our villa provides you with the best vacation experience possible, and we would love any suggestions you have to make it better.</p>
+      <p style="font-family: 'Caveat', cursive; font-size: 18pt; color: var(--sunset); line-height: 1.2; margin-top: 14px;">If you had a great experience, please write a note in our guest book — future guests love the recommendations.</p>
+    </div>
+
+    <div>
+      <div style="font-family: 'DM Mono', monospace; font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sunset); margin-bottom: 10px;">★ Before you leave — quick check-list</div>
+      <ul class="check">
+        <li>Return all beach towels &amp; towel cards (lost ones are $25 each).</li>
+        <li>Return your key to management at the Dive Center.</li>
+        <li>Turn off all lights, appliances, and A/C units.</li>
+        <li>Lock all doors and windows.</li>
+        <li>Drop a note in the guest book — recommendations &amp; suggestions welcome.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contact-card" style="display: flex; gap: 20px; align-items: stretch;">
+    <div style="flex: 1; min-width: 0;">
+      <div class="tag">Reach us anytime</div>
+      <div class="line"><span class="k">Website</span> dolphinvillaroatan.com</div>
+      <div class="line"><span class="k">Email</span> dolphinvillaroatan@gmail.com</div>
+      <div class="line"><span class="k">Ocean One · Luis</span> +504 9934-4662 &nbsp;·&nbsp; Emergency +504 9665-9349</div>
+      <div class="line"><span class="k">Reviews</span><span style="font-size: 11px">Airbnb · Expedia/VRBO · Google · Website · Facebook (DolphinVilla Roatan)
+★  The greatest compliment is a 5-star review!  ★</span></div>
+    </div>
+    <div style="flex-shrink: 0; display: flex; align-items: center;">
+      <img src="images/WelcomeGuide/qr-dolphinvillaroatan.png" alt="QR code · dolphinvillaroatan.com" style="width: 1.05in; height: 1.05in; display: block; background: white; padding: 5px; border-radius: 4px;" />
+    </div>
+  </div>
+
+  <div class="signoff-final">
+    <div class="names">xo, Becky, Nick,<br/>Jayden &amp; Juliette</div>
+    <div class="meta">
+      Dolphin Villa<br/>
+      at Ocean One · West Bay · Roatán<br/>
+      — see you soon —
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
