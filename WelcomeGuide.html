@@ -293,7 +293,7 @@
      COVER PAGE
      ============================================================ */
   .page.bleed.cover {
-    padding-bottom: 0.5in;
+    padding-bottom: 0;
   }
   .cover {
     background:
@@ -407,7 +407,7 @@
     background: rgba(0,0,0,0.18);
     border-top: 1px solid rgba(255,255,255,0.2);
     border-bottom: 1px solid rgba(255,255,255,0.12);
-    padding: 16px 0.55in 16px 0.95in;
+    padding: 26px 0.55in 16px 0.95in;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -696,6 +696,14 @@
     line-height: 1.2;
     color: var(--ocean);
   }
+
+  /* page 10 holds five featured rows — relax so they breathe and fill the page */
+  .eats-cont .restaurant { padding: 3px 0; }
+  .eats-cont .restaurant .photo,
+  .eats-cont .restaurant .photo .ph { min-height: 1.36in; }
+  .eats-cont .restaurant .copy h3 { font-size: 21pt; margin: 6px 0 5px; }
+  .eats-cont .restaurant .copy p { font-size: 9.5pt; line-height: 1.5; margin: 0 0 6px; }
+  .eats-cont .restaurant .copy .tip { font-size: 13pt; margin-top: 5px; }
 
   /* compact eats grid */
   .eats-strip {
@@ -1118,8 +1126,8 @@
      ============================================================ -->
 <section class="page bleed cover" data-screen-label="01 Cover">
   <div class="top">
-    <div class="mark"><span class="dot"></span> Dolphin Villa</div>
-    <div>West Bay · Roatán</div>
+    <div>16°16′N · 86°34′W</div>
+    <div>WEST BAY BEACH<span style="background: transparent; margin: 0 0.55em; color: var(--sunset);">★</span>ROATÁN, HONDURAS</div>
   </div>
 
   <div class="title">
@@ -1131,9 +1139,17 @@
     </h1>
   </div>
 
-  <div class="sub">
-    We've poured a lot of love into this villa, and we hope you find it as
-    special as we do. Inside: the Island Essentials Exchange (our guest-to-guest sharing closet), our favorite restaurants, the best snorkel spot on the island, and everything between.
+  <div class="sub" style="max-width: none; display: flex; gap: 30px; align-items: center; justify-content: space-between; padding-right: 0.55in;">
+    <p style="margin: 0; max-width: 4.3in;">We've poured a lot of love into this villa, and we hope you find it as
+    special as we do. Inside: the Island Essentials Exchange (our guest-to-guest sharing closet), our favorite restaurants, the best snorkel spot on the island, and everything between.</p>
+
+    <div style="flex-shrink: 0; display: flex; align-items: center; gap: 14px;">
+      <div style="text-align: right; max-width: 1.5in;">
+        <div class="mono" style="font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sunset); margin-bottom: 7px;">Prefer it on your phone?</div>
+        <div class="hand" style="font-size: 15pt; line-height: 1.15; color: var(--paper);">Scan for an online copy of this guide</div>
+      </div>
+      <img src="images/WelcomeGuide/qr-online-guide.png" alt="Scan for an online copy of the guide" style="width: 1.15in; height: 1.15in; display: block; background: white; padding: 6px; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.35);" />
+    </div>
   </div>
 
   <div class="strip">
@@ -1142,13 +1158,8 @@
     <img src="images/WelcomeGuide/Interior01.jpg" alt="Villa interior open to the pool" />
   </div>
 
-  <div class="footer">
-    <div class="mark" style="font-size: 11pt;"><span class="dot"></span> dolphinvillaroatan.com</div>
-    <div class="vol">
-      <span data-comment-anchor="88cda07619-span"><span>★</span> West Bay Beach</span>
-      <span><span>★</span> Roatán, Honduras</span>
-      <span><span>★</span> 16°16′N · 86°34′W</span>
-    </div>
+  <div class="footer" style="padding: 13px 53px 16px 91px; height: 6px; font-weight: 400; border-width: 1px 0px; gap: 0px; justify-content: center; font-size: 19px">
+    <div class="mark" style="font-size: 11pt; gap: 8px; padding: 3px 0px 0px"><span class="dot"></span> dolphinvillaroatan.com</div>
   </div>
 </section>
 
@@ -1222,7 +1233,7 @@
     <li><div class="n">07</div><div class="t">Money &amp; everyday answers <small>Currency, tipping, sales tax, bills, FAQ</small></div><div class="pg">PG 12</div></li>
     <li><div class="n">08</div><div class="t">Groceries &amp; conveniences <small>Eldon's, Fresco, Octopus, mini-marts</small></div><div class="pg">PG 13</div></li>
     <li><div class="n">09</div><div class="t">Above &amp; <em>below</em> the water <small>Snorkel, dive, day trips, animals, nights out</small></div><div class="pg">PG 14</div></li>
-    <li><div class="n">10</div><div class="t">Departure &amp; farewell <small>Towel cards, feedback, see you soon</small></div><div class="pg">PG 16</div></li>
+    <li style="border-width: 0px"><div class="n">10</div><div class="t">Departure &amp; farewell <small>Towel cards, feedback, see you soon</small></div><div class="pg">PG 16</div></li>
   </ul>
 
   <div class="runfoot">
@@ -1639,7 +1650,7 @@
   <div class="opener">
     <div class="num">06<span class="slash">/</span><span style="font-size:16pt; color: var(--ink-soft);">10</span></div>
     <div class="title">Where to <em>eat &amp; drink.</em></div>
-    <div class="meta">11 spots, hand-picked<br/>West Bay · West End</div>
+    <div class="meta">18 SPOTS, HAND-PICKED WEST BAY · WEST END</div>
   </div>
 
   <div class="grid-2-uneven">
@@ -1699,7 +1710,7 @@
 <!-- ============================================================
      PAGE 9 — FOOD & DRINK 2
      ============================================================ -->
-<section class="page" data-screen-label="10 Food & drink continued">
+<section class="page eats-cont" data-screen-label="10 Food & drink continued">
   <div class="hole h1"></div><div class="hole h2"></div><div class="hole h3"></div>
 
   <div class="runhead">
@@ -1727,12 +1738,49 @@
     <div class="copy">
       <div class="kicker"><span class="dot"></span> 05 · West End</div>
       <h3>The Drunken Sailor<em>.</em></h3>
-      <p>Looks like one of West End's many little dive bars, but it's actually an authentic Italian restaurant owned by an Italian expat and his family. Super reasonable for what it is. The owner is often in the back cooking and will come out to explain the menu.</p>
+      <p>Looks like one of West End's many little dive bars, but it's actually an authentic Italian restaurant owned by an Italian expat and his family. Super reasonable for what it is. The owner, Lorenzo, is often in the back cooking and will come out to explain the menu.</p>
       <div class="tip">tiny place — reserve, or arrive at an off time.</div>
     </div>
   </article>
 
-  
+  <article class="restaurant">
+    <div class="photo">
+      <div class="badge sunset">Sunset on the sand</div>
+      <img src="images/WelcomeGuide/ArgentinianGrill.webp" alt="Argentinian Grill · sunset on West Bay beach" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 06 · Down the beach · West Bay</div>
+      <h3>Argentinian <em>Grill.</em></h3>
+      <p>A short stroll down the beach in West Bay, with tables right on the sand and one of the prettiest sunset views around. Known for its steaks and seafood — get the <strong>whole grilled fish</strong>, you won't regret it. Time it for golden hour and order another round while the sky does its thing.</p>
+      <div class="tip">go for sunset — the beachfront tables fill up fast.</div>
+    </div>
+  </article>
+
+  <article class="restaurant flip">
+    <div class="photo">
+      <div class="badge palm">Best cinnamon bun</div>
+      <img src="images/WelcomeGuide/SandyBuns.jpg" alt="Sandy Buns Bakery &amp; Café · West End" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 07 · West End · bakery &amp; café</div>
+      <h3>Sandy <em>Buns.</em></h3>
+      <p>A cheerful little pink-and-yellow bakery and café in West End, and home to the best cinnamon bun you'll ever have in your life. Trust us. Swing by in the morning for fresh-baked treats and good coffee before the day gets going.</p>
+      <div class="tip">come early — the cinnamon buns sell out.</div>
+    </div>
+  </article>
+
+  <article class="restaurant" style="border-width: 0px">
+    <div class="photo">
+      <div class="badge ocean">Special night out</div>
+      <img src="images/WelcomeGuide/Alera.jpg" alt="Alera · garden dining on West Bay Beach" style="width: 100%; height: 100%; object-fit: cover; border-radius: 3px; display: block;" />
+    </div>
+    <div class="copy">
+      <div class="kicker"><span class="dot"></span> 08 · West Bay Beach</div>
+      <h3>Alera<em>.</em></h3>
+      <p>When you're after an upscale night out, this is the one — a romantic garden room strung with lights beneath a leafy canopy, right on West Bay Beach. The kitchen leans into Caribbean roots with a refined, elevated touch. Worth dressing up for.</p>
+      <div class="tip">save it for a special evening — reserve ahead.</div>
+    </div>
+  </article>
 
   <div class="runfoot">
     <div>06 · Eat &amp; drink (continued)</div>
@@ -1752,17 +1800,17 @@
   </div>
 
   <div class="opener welcome">
-    <div class="title">Ten more <em>we love.</em></div>
-    <div class="meta">A second helping<br/>West Bay &amp; West End</div>
+    <div class="title" style="padding: 5px 0px 0px">Ten more<br/><em>we love.</em></div>
+    <div class="meta" style="padding: 0px 0px 5px; margin: 0px">A second helping · West Bay &amp; West End</div>
   </div>
 
-  <p style="color: var(--ink-soft); font-size: 10pt; margin-bottom: 14px;">A second round of restaurants, cafés, and hole-in-the-wall favorites — most within walking distance, a few worth a short taxi. Numbers continue from the featured picks on the previous pages.</p>
+  <p style="color: var(--ink-soft); font-size: 10pt; margin-bottom: 8px;">A second round of restaurants, cafés, and hole-in-the-wall favorites — most within walking distance, a few worth a short taxi. Numbers continue from the featured picks on the previous pages.</p>
 
   <div class="eats-strip">
     <h4>And ten more we <em>love</em>.</h4>
     <div class="eats-grid">
       <div class="eat-mini">
-        <div class="num">06</div>
+        <div class="num">09</div>
         <div>
           <h5>Kristi's Island Restaurant</h5>
           <p>Right across from the Ocean One Complex, just outside West Bay Lodge. Run by a couple of expats; the food is delicious. Small — reserve for dinner if you're not going off-peak.</p>
@@ -1770,7 +1818,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">07</div>
+        <div class="num">10</div>
         <div>
           <h5>Las Rocas</h5>
           <p>At the very end of West Bay toward West End — cross the boardwalk. Reasonably priced breakfast, lunch and dinner. Try the lobster burrito and fish empanadas. Heads up: gets buggy in the early evening.</p>
@@ -1778,7 +1826,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">08</div>
+        <div class="num">11</div>
         <div>
           <h5>Ginger's</h5>
           <p>In Half Moon Bay, West End. Some of the best fresh fish on the island, and another perfect spot to let the kids splash in calm, shallow water while you wait for the food.</p>
@@ -1786,7 +1834,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">09</div>
+        <div class="num">12</div>
         <div>
           <h5>Sundowners</h5>
           <p>A West End icon — two-story bar right on the water with frequent live music. Where the divers and expats hang out at sunset. Views from here are <em>insane</em>.</p>
@@ -1794,15 +1842,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">10</div>
-        <div>
-          <h5>Sandy Buns</h5>
-          <p>The best cinnamon bun you'll ever have in your life. Trust us.</p>
-          <div class="loc">West End · bakery</div>
-        </div>
-      </div>
-      <div class="eat-mini">
-        <div class="num">11</div>
+        <div class="num">13</div>
         <div>
           <h5>Lily Pond Garden</h5>
           <p>A true hidden gem run by Zack &amp; his partner — reservation-only B&amp;B + restaurant. The fish melts in your mouth. More of an adult, upscale ambiance — but Zack was lovely with our two little ones.</p>
@@ -1810,7 +1850,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">12</div>
+        <div class="num">14</div>
         <div>
           <h5>Arlyn's Place</h5>
           <p>Tiny hole-in-the-wall in the shopping complex down Bananarama road (take a left out of Ocean One, then first left toward the beach). Local-style, and the <em>best breakfast deal</em> around — fresh baleadas (homemade tortillas with beans, cheese, egg, and a dozen fillings) for a couple of dollars. Practice your Spanish — they don't speak English.</p>
@@ -1818,7 +1858,7 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">13</div>
+        <div class="num">15</div>
         <div>
           <h5>Bean Crazy</h5>
           <p>Right across the street from Ocean One. All kinds of coffee drinks, delicious breakfasts and lunches, and yummy smoothies.</p>
@@ -1826,19 +1866,27 @@
         </div>
       </div>
       <div class="eat-mini">
-        <div class="num">14</div>
-        <div>
-          <h5>Argentinian Grill</h5>
-          <p>Down the beach in West Bay. Known for steaks and seafood — get the <strong>whole grilled fish</strong>, you won't regret it.</p>
-          <div class="loc">West Bay · steaks &amp; seafood</div>
-        </div>
-      </div>
-      <div class="eat-mini">
-        <div class="num">15</div>
+        <div class="num">16</div>
         <div>
           <h5>Totally Taco</h5>
           <p>Another tiny hole-in-the-wall on Bananarama road (just left of Ocean One). Basically takeout only, but some of the best tacos on the island. Perfect lunch back at the pool.</p>
           <div class="loc">Bananarama Rd · takeout · tacos</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">17</div>
+        <div>
+          <h5>Pura Vida</h5>
+          <p>Tucked into West End, serving up Costa Rican plates with some of the freshest and unique flavors on the island. There's a gelato shop attached, too — the perfect way to cool off after your meal.</p>
+          <div class="loc">West End · Costa Rican · gelato</div>
+        </div>
+      </div>
+      <div class="eat-mini">
+        <div class="num">18</div>
+        <div>
+          <h5>Yahongreh</h5>
+          <p>A breakfast and bakery spot in West End with some of the lowest prices imaginable. Come for delicious smoothies, good coffee, and other Honduran fare to start the day right.</p>
+          <div class="loc">West End · breakfast · bakery</div>
         </div>
       </div>
     </div>
@@ -2015,8 +2063,7 @@
 
   <div class="act-feature">
     <div class="act-hero-card">
-      <div class="ph dark">Underwater · reef &amp; fish</div>
-      <div class="scrim"></div>
+      <img src="images/WelcomeGuide/Parrotfish.jpg" alt="Parrotfish over the reef" style="position: absolute; top: 16px; left: 18px; width: 2.05in; height: 1.2in; object-fit: cover; border-radius: 5px; z-index: 2; box-shadow: 0 6px 18px rgba(0,0,0,0.4);" />
       <div class="creatures">
         <div class="lbl">We've seen</div>
         <div class="list">
@@ -2227,6 +2274,115 @@
   </div>
 </section>
 
+<!-- ============================================================
+     TWEAKS
+     ============================================================ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+  const PALETTES = {
+    caribbean: {
+      "--ocean-deep":   "#06384a",
+      "--ocean":        "#0e6e7d",
+      "--turquoise":    "#4cc1c9",
+      "--coral":        "#ff7a59",
+      "--sunset":       "#ffb547",
+      "--palm":         "#2b6a4a",
+      "--paper":        "#fbf6ea",
+      "--paper-warm":   "#f3e7cb",
+      "--ink":          "#1a2b30",
+      "--ink-soft":     "#4a5a5e",
+    },
+    sunset: {
+      "--ocean-deep":   "#4a1a2e",
+      "--ocean":        "#a8324a",
+      "--turquoise":    "#ffb38a",
+      "--coral":        "#ff5b6c",
+      "--sunset":       "#ffcf5c",
+      "--palm":         "#7a3a4b",
+      "--paper":        "#fff5e6",
+      "--paper-warm":   "#fde2c4",
+      "--ink":          "#2c1620",
+      "--ink-soft":     "#6a3c48",
+    },
+    jungle: {
+      "--ocean-deep":   "#1c3220",
+      "--ocean":        "#3c6147",
+      "--turquoise":    "#a3c878",
+      "--coral":        "#e4734a",
+      "--sunset":       "#f1c45c",
+      "--palm":         "#2b6a4a",
+      "--paper":        "#f4ecd4",
+      "--paper-warm":   "#e6dab9",
+      "--ink":          "#1c2418",
+      "--ink-soft":     "#4f5a44",
+    },
+    crisp: {
+      "--ocean-deep":   "#0c2540",
+      "--ocean":        "#1a4977",
+      "--turquoise":    "#7fb6c9",
+      "--coral":        "#d4694a",
+      "--sunset":       "#e5b04c",
+      "--palm":         "#3c5a3f",
+      "--paper":        "#ffffff",
+      "--paper-warm":   "#f3eee2",
+      "--ink":          "#152331",
+      "--ink-soft":     "#54616d",
+    },
+  };
+
+  const DolphinTweakDefaults = /*EDITMODE-BEGIN*/{
+    "palette": "caribbean",
+    "hostNames": "Becky, Nick, Jayden & Juliette",
+    "villaTitle": "Dolphin Villa"
+  }/*EDITMODE-END*/;
+
+  function applyPalette(name) {
+    const p = PALETTES[name] || PALETTES.caribbean;
+    const root = document.documentElement;
+    Object.entries(p).forEach(([k, v]) => root.style.setProperty(k, v));
+  }
+
+  function DolphinApp() {
+    const [t, setTweak] = window.useTweaks(DolphinTweakDefaults);
+
+    React.useEffect(() => { applyPalette(t.palette); }, [t.palette]);
+
+    return (
+      <window.TweaksPanel title="Tweaks">
+        <window.TweakSection label="Palette · binder mood">
+          <window.TweakSelect
+            label="Color story"
+            value={t.palette}
+            options={[
+              { value: "caribbean", label: "Caribbean (default)" },
+              { value: "crisp",     label: "Crisp · paper-white" },
+              { value: "sunset",    label: "Sunset · warm" },
+              { value: "jungle",    label: "Jungle · green" },
+            ]}
+            onChange={v => setTweak("palette", v)}
+          />
+        </window.TweakSection>
+
+        <window.TweakSection label="Print">
+          <div style={{fontFamily: "DM Sans, sans-serif", fontSize: 12, color: "var(--twk-muted, #888)", lineHeight: 1.5, padding: "4px 0"}}>
+            Press <b>⌘P</b> / <b>Ctrl+P</b> to print all 14 pages at 8.5×11 in, ready for a 3-ring binder. Use <b>Background graphics</b> ON in print settings.
+          </div>
+        </window.TweakSection>
+      </window.TweaksPanel>
+    );
+  }
+
+  const __dolphinRoot = document.createElement("div");
+  document.body.appendChild(__dolphinRoot);
+  ReactDOM.createRoot(__dolphinRoot).render(<DolphinApp />);
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
