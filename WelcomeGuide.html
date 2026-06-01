@@ -77,6 +77,7 @@
   .page {
     width: 8.5in;
     height: 11in;
+    max-height: 11in;
     background: var(--paper);
     color: var(--ink);
     margin: 0 auto 28px;
@@ -84,6 +85,7 @@
     box-shadow: 0 18px 48px rgba(0,0,0,0.4);
     position: relative;
     overflow: hidden;
+    contain: paint;
     font-size: 10pt;
     line-height: 1.5;
     page-break-after: always;
@@ -383,6 +385,7 @@
     gap: 10px;
     padding: 0.4in 0.55in 0.4in 0.95in;
     height: 3.3in;
+    overflow: hidden;
   }
   .cover .strip .ph {
     background:
